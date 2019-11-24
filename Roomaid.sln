@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29503.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Error Handling", "..\..\source\repos\Roomaid\Error Handling\Error Handling.csproj", "{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorThreatTest", "..\..\source\repos\Roomaid\ErrorThreatTest\ErrorThreatTest.csproj", "{B8D28D6A-18E1-4321-B80A-6B62B812C24C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8D28D6A-18E1-4321-B80A-6B62B812C24C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8D28D6A-18E1-4321-B80A-6B62B812C24C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8D28D6A-18E1-4321-B80A-6B62B812C24C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8D28D6A-18E1-4321-B80A-6B62B812C24C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {91AA9124-9364-4DBA-9EC8-F3F15E6BB953}
+	EndGlobalSection
+EndGlobal
