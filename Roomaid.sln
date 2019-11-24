@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Error Handling", "..\..\source\repos\Roomaid\Error Handling\Error Handling.csproj", "{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Error Handling", "Error Handling\Error Handling.csproj", "{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorThreatTest", "..\..\source\repos\Roomaid\ErrorThreatTest\ErrorThreatTest.csproj", "{B8D28D6A-18E1-4321-B80A-6B62B812C24C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorThreatTest", "ErrorThreatTest\ErrorThreatTest.csproj", "{B8D28D6A-18E1-4321-B80A-6B62B812C24C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
