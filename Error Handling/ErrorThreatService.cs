@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 
-namespace Error_Handling
+namespace ErrorHandling
 {
     /// <summary>
     /// Service that takes different exceptions and determines the threat based on the type and severity
-    /// Returns a value Level, which is an enumerated List within the namespace Error_Handling
+    /// Returns a value Level, which is an enumerated List within the namespace ErrorHandling
     /// </summary>
     public partial class ErrorThreatService
     {

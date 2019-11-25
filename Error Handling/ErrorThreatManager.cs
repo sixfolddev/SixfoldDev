@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace Error_Handling
+namespace ErrorHandling
 {
     public class ErrorThreatManager
     {

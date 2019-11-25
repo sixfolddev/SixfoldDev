@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Error_Handling.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="ErrorHandling.Global" Language="C#" %>

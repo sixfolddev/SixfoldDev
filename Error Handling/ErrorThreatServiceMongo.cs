@@ -3,7 +3,7 @@ using System;
 
 
 
-namespace Error_Handling
+namespace ErrorHandling
 {
     /// <summary>
     /// Continuation of ErrorThreatService for MongoSpecificExceptions

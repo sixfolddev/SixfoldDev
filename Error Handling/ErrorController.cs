@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Error_Handling
+namespace ErrorHandling
 {
     //Levels are used to determine severity of things logged, as well as helping determine how to handle errors 
     public enum Level { None, Info, Debug, Error, Warning, Fatal };
