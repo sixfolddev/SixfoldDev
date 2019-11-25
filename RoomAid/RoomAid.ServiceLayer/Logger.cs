@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace RoomAid.ServiceLayer
 {
     public class Logger
@@ -29,8 +24,9 @@ namespace RoomAid.ServiceLayer
             // TODO: Grab session id and user id
             string userId = "";
             string sessionId = "";
+            var logId = new Guid();
 
-            var logMessage = new LogMessage(time, className, methodName, level, userId, sessionId, text);
+            var logMessage = new LogMessage(logId, time, className, methodName, level, userId, sessionId, text);
             LogDAO.WriteLog(logMessage);
         }
 
