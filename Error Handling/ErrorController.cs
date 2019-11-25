@@ -31,7 +31,7 @@ namespace Error_Handling
             ErrorThreatManager ThreatManager = new ErrorThreatManager();
             Lev = ThreatManager.GetThreatLevel(Exceptione);
             ErrorResponseManager ResponseManager = new ErrorResponseManager();
-            ResponseManager.GetResponse(Exceptione);
+            ResponseManager.GetResponse(Exceptione, Lev);
             //Log(Lev, Exceptoine)
 
         }

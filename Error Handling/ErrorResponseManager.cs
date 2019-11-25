@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+
 
 namespace Error_Handling
 {
@@ -10,10 +8,10 @@ namespace Error_Handling
         public ErrorResponseManager()
         { }
 
-        public void GetResponse(Exception e)
+        public void GetResponse(Exception e, Level level)
         {
             ErrorResponseService Response = new ErrorResponseService();
-            Response.GetResponse(e);
+            Response.GetResponse(e, level);
         }
 
     }
