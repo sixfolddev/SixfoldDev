@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace RoomAid.ServiceLayer
 {
-    class Logger
+    public interface ILogFormatter
     {
-
-
+        string FormatLog(LogMessage logMessage);
     }
 }
