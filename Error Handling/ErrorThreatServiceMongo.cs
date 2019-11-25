@@ -37,7 +37,7 @@ namespace Error_Handling
         /// <returns>Level</returns>
         public Level GetThreatLevel(MongoConfigurationException exceptione)
         {
-            return Level.Fatal;
+            return Level.Error;
         }
         /// <summary>
         /// GetThreatLevel of MongoCursorNotFoundException
@@ -55,7 +55,7 @@ namespace Error_Handling
         /// <returns>Level</returns>
         public Level GetThreatLevel(MongoInternalException exceptione)
         {
-            return Level.Warning;
+            return Level.Error;
         }
 
         /// <summary>

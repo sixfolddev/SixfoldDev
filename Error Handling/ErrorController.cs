@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace Error_Handling
 {
@@ -33,7 +30,8 @@ namespace Error_Handling
         {
             ErrorThreatManager ThreatManager = new ErrorThreatManager();
             Lev = ThreatManager.GetThreatLevel(Exceptione);
-
+            ErrorResponseManager ResponseManager = new ErrorResponseManager();
+            ResponseManager.GetResponse(Exceptione);
             //Log(Lev, Exceptoine)
 
         }
