@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,9 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 
 namespace RoomAid.ServiceLayer
+=======
+﻿namespace RoomAid.ServiceLayer
+>>>>>>> 4d61057e7258b4cbbc69cb18b1832a8a028b16a4
 {
     class DataStoreHandler : ILogHandler
     {
