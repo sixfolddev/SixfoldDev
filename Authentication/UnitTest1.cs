@@ -13,12 +13,15 @@ namespace UnitTestAuthentication
         [TestMethod]
         public void salt()
         {
-            Assert.AreNotEqual(authentication.getRetrievedSalt(), -1);
+            //Testing if salt gets retrieved
+            Assert.AreNotEqual(authentication.getRetrievedSalt(), "");
         }
         [TestMethod]
         public void hashing()
         {
-            Assert.AreEqual(authentication.generateHash(), "ZgXRBbgVVjx20b8hGJstIC/U97nb6FZrcBC+khDT0Vs=");
+            //check if hashed pw is the same is the one stored to user ID in pw file
+            //If this passes, user is authenticated
+            Assert.AreEqual(authentication.generateHash(), authentication.dataStoreHash());
         }
     }
 }
