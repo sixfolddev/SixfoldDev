@@ -24,5 +24,10 @@ namespace RoomAid.ServiceLayer
             CallingMethod = methodName;
             Text = text;
         }
+
+        public string GetParamNames()
+        {
+            return "LogGUID,Time,CallingClass,CallingMethod,Level,UserID,SessionID,Text";
+        }
     }
 }

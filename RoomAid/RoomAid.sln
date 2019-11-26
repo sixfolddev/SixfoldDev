@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29418.71
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer", "RoomAid.ServiceLayer\RoomAid.ServiceLayer.csproj", "{29A3335E-7538-4CDE-90DC-ACE201F259F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.DataAccessLayer", "RoomAid.DataAccessLayer\RoomAid.DataAccessLayer.csproj", "{51E4EC8F-A565-46A8-AC30-CB38DFDAA513}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{29A3335E-7538-4CDE-90DC-ACE201F259F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{29A3335E-7538-4CDE-90DC-ACE201F259F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29A3335E-7538-4CDE-90DC-ACE201F259F6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{51E4EC8F-A565-46A8-AC30-CB38DFDAA513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{51E4EC8F-A565-46A8-AC30-CB38DFDAA513}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{51E4EC8F-A565-46A8-AC30-CB38DFDAA513}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{51E4EC8F-A565-46A8-AC30-CB38DFDAA513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

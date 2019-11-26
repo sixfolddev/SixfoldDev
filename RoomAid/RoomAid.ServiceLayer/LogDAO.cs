@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Diagnostics;
+using System.IO;
+
 namespace RoomAid.ServiceLayer
 {
     public static class LogDAO
     {
         public static bool WriteLog(LogMessage logMessage)
         {
+            DataStoreHandler DSHandler = new DataStoreHandler();
+            FileHandler FHandler = new FileHandler();
+
             try
             {
-                DataStoreHandler DSHandler = new DataStoreHandler();
-                FileHandler FHandler = new FileHandler();
                 DSHandler.WriteLog(logMessage);
                 FHandler.WriteLog(logMessage);
             }
-            catch (Exception e)
+            catch (IOException e)
             {
-                // TODO: Delete log entry that was stored
-
-                return false;
+                DSHandler.DeleteLog(logMessage);
+                FHandler.DeleteLog(logMessage);
             }
 
             return true;
