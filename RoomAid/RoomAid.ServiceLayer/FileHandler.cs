@@ -1,10 +1,9 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Text;
 
 namespace RoomAid.ServiceLayer
 {
-    internal class FileHandler : ILogHandler
+    public class FileHandler : ILogHandler
     {
         private readonly string _directory;
         private readonly ILogFormatter _formatter;
@@ -19,6 +18,7 @@ namespace RoomAid.ServiceLayer
             _formatter = new SingleLineFormatter();
         }
 
+        // TODO: Write async
         /// <summary>
         /// Writes a log entry to a .csv file. If it fails, tries again up to 3x before throwing an exception.
         /// </summary>
@@ -35,7 +35,8 @@ namespace RoomAid.ServiceLayer
                     {
                         directory.Create();
                     }
-                    string path = Path.Combine(_directory, logMessage.Time.ToString("yyyyMMdd"), ".csv");
+                    string fileName = logMessage.Time.ToString("yyyyMMdd") + ".csv";
+                    string path = Path.Combine(_directory, fileName);
                     StreamWriter writer;
                     if (!File.Exists(path)) // If file doesn't exist, create and write parameter names as first line
                     {
@@ -46,7 +47,7 @@ namespace RoomAid.ServiceLayer
                     }
                     using (writer = new StreamWriter(path, true, Encoding.UTF8)) // UTF8 Encoding recommended for .NET Framework 4.7.2
                     {
-                        writer.WriteLine(_formatter.FormatLog(logMessage)); // TODO: Write async
+                        writer.WriteLine(_formatter.FormatLog(logMessage));
                     }
                     writer.Close();
                     return true;
@@ -74,7 +75,8 @@ namespace RoomAid.ServiceLayer
             {
                 try
                 {
-                    string path = Path.Combine(_directory, logMessage.Time.ToString("yyyyMMdd"), ".csv");
+                    string fileName = logMessage.Time.ToString("yyyyMMdd") + ".csv";
+                    string path = Path.Combine(_directory, fileName);
                     using (var reader = new StreamReader(path))
                     {
                         string line;
@@ -86,7 +88,7 @@ namespace RoomAid.ServiceLayer
                             {
                                 using (writer)
                                 {
-                                    writer.WriteLine(line); // TODO: Write async
+                                    writer.WriteLine(line);
                                 }
                             }
                         }
