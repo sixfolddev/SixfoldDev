@@ -8,7 +8,23 @@ namespace UnitTest
     [TestClass]
     public class ArchiveTest
     {
-       
+        [TestMethod]
+        ///<summary>
+        ///Test for IsSpaceEnough(), should return false for insufficient space
+        ///</summary>
+        public void SpaceCheckNotPass()
+        {
+            //Arrange
+            ArchiveService archiver = new ArchiveService();
+            bool expected = false;
+            //Act
+            bool actual = archiver.IsSpaceEnough(new System.IO.DriveInfo("D"),9999999999999999999);
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
+
         [TestMethod]
         ///<summary>
         ///Test for log archiveable, a log file that is old enough should pass
