@@ -9,6 +9,7 @@ namespace RoomAid.ServiceLayer.Service
 {
     public class ArchiveService
     {
+        //Variables used 
         private string logStorageDirectory;
         private string archiveStorageDirectory;
         private int logLife;
@@ -21,6 +22,8 @@ namespace RoomAid.ServiceLayer.Service
         //Constructor
         public ArchiveService()
         {
+            //All these attributes should be store in a configuration file for furture development
+            //Hard code is for testing.
             logStorageDirectory = @"D:\LogStorage\";
             archiveStorageDirectory = @"D:\ArchiveStorage\";
             logLife = 30;
@@ -102,6 +105,10 @@ namespace RoomAid.ServiceLayer.Service
             if (resultSet.Count == 0)
             {
                 //log.createLog(failure);
+                return false;
+            }
+            if (FileOutPut(resultSet) == false)
+            {
                 return false;
             }
             //Only if all steps were oeprated succeffully, the archive process could return true

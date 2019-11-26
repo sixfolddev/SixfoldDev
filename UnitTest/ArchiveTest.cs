@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RoomAid.ServiceLayer.Service;
 
@@ -22,8 +23,6 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
-
-
 
         [TestMethod]
         ///<summary>
@@ -132,13 +131,31 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
-
+        ///<summary>
+        ///Test for DeleteLog(), when the file is openend and cannot be 
+        ///deleted, the method should return a false.
+        ///</summary>
+        [TestMethod]
+        public void DeleteNotPassC()
+        {
+            //Arrange
+            ArchiveService archiver = new ArchiveService();
+            bool expected = false;
+            //Act
+            System.IO.File.WriteAllText(@"D:\LogStorage\20190701.csv", "testing");
+            StreamReader reader = new StreamReader(@"D:\LogStorage\20190701.csv");
+            bool actual = archiver.DeleteLog("20190701.csv");
+            reader.Close();
+            archiver.DeleteLog("20190701.csv");
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
         ///<summary>
         ///Test for DeleteLog() the method should delete a file correctly if the file path is 
         ///correct
         ///</summary>
         [TestMethod]
-        public void DeletePass()
+        public void DeletePassA()
         {
             //Arrange
             ArchiveService archiver = new ArchiveService();
@@ -164,7 +181,23 @@ namespace UnitTest
             //Assert
             Assert.AreEqual(expected, actual);
         }
-    
+        [TestMethod]
+        public void RunArchivePass()
+        {
+            //Arrange
+            ArchiveService archiver = new ArchiveService();
+            bool expected = true;
+            string filePath = @"D:\LogStorage\201906";
+            for(int i = 0; i < 30; i++)
+            {
+                string fileName = filePath + i + ".csv";
+                System.IO.File.WriteAllText(fileName, "testing");
+            }
+            //Act
+            bool actual = archiver.RunArchive();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
 
