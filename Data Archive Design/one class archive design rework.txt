@@ -1,0 +1,26 @@
+title Design for Data Archive
+
+Timer->ArchiveService:new ArchiveService
+Timer<--ArchiveService: instance
+ArchiveService->ArchiveService: bool RunArchive()
+ArchiveService->Log Storage: bool IsSpaceEnough(string driveOfArchive)
+note right of Log Storage:Return true if the drive has \nenough space for archiving, \nfalse if the space is not \nenough or the drive is not ready.
+Log Storage --> ArchiveService: return true/false
+ArchiveService ->ArchiveService: List<string> GetFileName()
+note right of ArchiveService:return a list<string> resultSet
+note right of Log Storage:go through all files in the log \nstorage and check if they are old\nenough to be archived
+loop foreach file in Log Storage
+ArchiveService->Log Storage:bool Archiveable(string FileName)
+ArchiveService <--Log Storage:return true/false
+note right of ArchiveService:return true and add file name\ninto resultSet if the file is old enough\notherwise return false
+end
+ArchiveService ->ArchiveService: bool FileOutPut(List<string> resultSet)
+loop foreach fileName in resultSet
+ArchiveService->Archive Storage:bool AddToCompressed(string FileName)
+ArchiveService <--Archive Storage:return true/false
+note right of ArchiveService:return true if added successfully\northerwise retry 3 times if still fail\n end the arhive and notify the admin
+ArchiveService->Archive Storage:bool DeleteFile(string FileName)
+ArchiveService <--Archive Storage:return true/false
+note right of ArchiveService:return true if delete successfully\northerwise retry 3 times if still fail\n end the arhive and notify the admin
+end
+ArchiveService ->ArchiveService: if every step return true then archive is finished, otherwise log it as failure 
