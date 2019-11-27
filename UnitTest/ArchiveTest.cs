@@ -34,7 +34,9 @@ namespace UnitTest
             ArchiveService archiver = new ArchiveService();
             bool expected = false;
             //Act
+            File.WriteAllText(@"D:\LogStorage\20191119.csv", "testing");
             bool actual = archiver.Archiveable("20191119.csv");
+            archiver.DeleteLog("20191119.csv");
             Console.WriteLine("the result is:"+actual);
             //Assert
             Assert.AreEqual(expected, actual);
@@ -50,7 +52,25 @@ namespace UnitTest
             ArchiveService archiver = new ArchiveService();
             bool expected = true;
             //Act
+            File.WriteAllText(@"D:\LogStorage\20190919.csv", "testing");
             bool actual = archiver.Archiveable("20190919.csv");
+            archiver.DeleteLog("20190919.csv");
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+
+        ///<summary>
+        ///Test for log archiveable, if the given file name could not be found, it should return false
+        ///</summary>
+        [TestMethod]
+        public void ArchiveableNotPass()
+        {
+            //Arrange
+            ArchiveService archiver = new ArchiveService();
+            bool expected = false;
+            //Act
+            bool actual = archiver.Archiveable("NotExists.csv");
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -125,7 +145,7 @@ namespace UnitTest
             ArchiveService archiver = new ArchiveService();
             bool expected = false;
             //Act
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190801.csv", "testing");
+            File.WriteAllText(@"D:\LogStorage\20190801.csv", "testing");
             archiver.DeleteLog("20190801.csv");
             bool actual = archiver.DeleteLog("20190801.csv");
             //Assert
@@ -142,7 +162,7 @@ namespace UnitTest
             ArchiveService archiver = new ArchiveService();
             bool expected = false;
             //Act
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190701.csv", "testing");
+            File.WriteAllText(@"D:\LogStorage\20190701.csv", "testing");
             StreamReader reader = new StreamReader(@"D:\LogStorage\20190701.csv");
             bool actual = archiver.DeleteLog("20190701.csv");
             reader.Close();
@@ -161,7 +181,7 @@ namespace UnitTest
             ArchiveService archiver = new ArchiveService();
             bool expected = true;
             //Act
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190825.csv", "testing");
+            File.WriteAllText(@"D:\LogStorage\20190825.csv", "testing");
             bool actual = archiver.DeleteLog("20190825.csv");
             Console.WriteLine("the result is:" + actual);
             //Assert
@@ -174,7 +194,7 @@ namespace UnitTest
             //Arrange
             ArchiveService archiver = new ArchiveService();
             bool expected = true;
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
+            File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
             var resultSet = archiver.GetFileNames();
             //Act
             bool actual = archiver.FileOutPut(resultSet);
@@ -187,21 +207,14 @@ namespace UnitTest
             //Arrange
             ArchiveService archiver = new ArchiveService();
             bool expected = false;
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190819.csv", "testing");
+            File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
+            File.WriteAllText(@"D:\LogStorage\20190819.csv", "testing");
             var resultSet = archiver.GetFileNames();
             archiver.DeleteLog("20190819.csv");
 
             //Act
             bool actual = archiver.FileOutPut(resultSet);
-
-            //clean the archive storage
-            DirectoryInfo dir = new DirectoryInfo(@"D:\ArchiveStorage\");
-
-            foreach (FileInfo file in dir.GetFiles())
-            {
-                file.Delete();
-            }
+            DirClean();
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -216,19 +229,24 @@ namespace UnitTest
             for(int i = 0; i < 30; i++)
             {
                 string fileName = filePath + i + ".csv";
-                System.IO.File.WriteAllText(fileName, "testing");
+                File.WriteAllText(fileName, "testing");
             }
             //Act
             bool actual = archiver.RunArchive();
+            DirClean();
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        public static void DirClean()
+        {
             //clean the archive storage
             DirectoryInfo dir = new DirectoryInfo(@"D:\ArchiveStorage\");
 
-            foreach (FileInfo file in dir.GetFiles())
+           foreach (FileInfo file in dir.GetFiles())
             {
-                file.Delete();
+            file.Delete();
             }
-            //Assert
-            Assert.AreEqual(expected, actual);
         }
     }
 }
