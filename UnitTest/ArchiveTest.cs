@@ -182,6 +182,31 @@ namespace UnitTest
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
+        public void OutPutNotPassA()
+        {
+            //Arrange
+            ArchiveService archiver = new ArchiveService();
+            bool expected = false;
+            System.IO.File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
+            System.IO.File.WriteAllText(@"D:\LogStorage\20190819.csv", "testing");
+            var resultSet = archiver.GetFileNames();
+            archiver.DeleteLog("20190819.csv");
+
+            //Act
+            bool actual = archiver.FileOutPut(resultSet);
+
+            //clean the archive storage
+            DirectoryInfo dir = new DirectoryInfo(@"D:\ArchiveStorage\");
+
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                file.Delete();
+            }
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
         public void RunArchivePass()
         {
             //Arrange
@@ -195,6 +220,13 @@ namespace UnitTest
             }
             //Act
             bool actual = archiver.RunArchive();
+            //clean the archive storage
+            DirectoryInfo dir = new DirectoryInfo(@"D:\ArchiveStorage\");
+
+            foreach (FileInfo file in dir.GetFiles())
+            {
+                file.Delete();
+            }
             //Assert
             Assert.AreEqual(expected, actual);
         }

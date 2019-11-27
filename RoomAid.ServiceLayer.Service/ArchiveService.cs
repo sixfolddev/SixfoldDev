@@ -43,7 +43,7 @@ namespace RoomAid.ServiceLayer.Service
         /// <returns>True if it is old enough, False if it is not</returns>
         public bool Archiveable(string fileName)
         {
-            string logDate = fileName.Substring(0, 8);
+            string logDate = fileName.Substring(0, 8);//always use first 8 char for yyyyMMdd format
             DateTime.TryParseExact(logDate, dateFormat, new CultureInfo(cultureInfo),
                 DateTimeStyles.None, out DateTime logDateTime);
             if ((DateTime.UtcNow - logDateTime).TotalDays > logLife)
