@@ -28,8 +28,7 @@ namespace ErrorHandling
         /// </summary>
         public void Handle()
         {
-            ErrorThreatManager ThreatManager = new ErrorThreatManager();
-            Lev = ThreatManager.GetThreatLevel(Exceptione);
+            Lev = ErrorThreatManager.GetThreatLevel(Exceptione);
             ErrorResponseManager ResponseManager = new ErrorResponseManager();
             ResponseManager.GetResponse(Exceptione, Lev);
             //Log(Lev, Exceptoine)

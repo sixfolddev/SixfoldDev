@@ -10,16 +10,9 @@ namespace ErrorHandling
     /// Service that takes different exceptions and determines the threat based on the type and severity
     /// Returns a value Level, which is an enumerated List within the namespace ErrorHandling
     /// </summary>
-    public partial class ErrorThreatService
+    public static partial class ErrorThreatService
     {
-        public ErrorThreatService()
-        { }
-        /// <summary>
-        /// Get ThreatLevel of Generic Exception
-        /// </summary>
-        /// <param name="exceptione"></param>
-        /// <returns>Level</returns>
-        public Level GetThreatLevel(Exception exceptione)
+        public static Level GetThreatLevel(Exception exceptione)
         {
             return Level.Error;
         }
@@ -28,7 +21,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(SqlException exceptione)
+        public static Level GetThreatLevel(SqlException exceptione)
         {
             if (exceptione.Class <= 10)
             {
@@ -52,7 +45,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(UnauthorizedAccessException exceptione)
+        public static Level GetThreatLevel(UnauthorizedAccessException exceptione)
         {
             return Level.Error;  
 
@@ -62,7 +55,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(HttpUnhandledException exceptione)
+        public static Level GetThreatLevel(HttpUnhandledException exceptione)
         {
             return Level.Error;
         }

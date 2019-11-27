@@ -8,14 +8,14 @@ namespace ErrorHandling
     /// <summary>
     /// Continuation of ErrorThreatService for MongoSpecificExceptions
     /// </summary>
-    public partial class ErrorThreatService
+    public static partial class ErrorThreatService
     {
         /// <summary>
         /// GetThreatLevel of mongoauthenticationexception
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoAuthenticationException exceptione)
+        public static Level GetThreatLevel(MongoAuthenticationException exceptione)
         {
             return Level.Fatal;
         }
@@ -24,7 +24,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoConnectionException exceptione)
+        public static Level GetThreatLevel(MongoConnectionException exceptione)
         {
             return Level.Warning;
         }
@@ -33,7 +33,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoConfigurationException exceptione)
+        public static Level GetThreatLevel(MongoConfigurationException exceptione)
         {
             return Level.Error;
         }
@@ -42,7 +42,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoCursorNotFoundException exceptione)
+        public static Level GetThreatLevel(MongoCursorNotFoundException exceptione)
         {
             return Level.Warning;
         }
@@ -51,7 +51,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoInternalException exceptione)
+        public static Level GetThreatLevel(MongoInternalException exceptione)
         {
             return Level.Error;
         }
@@ -61,7 +61,7 @@ namespace ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoException exceptione)
+        public static Level GetThreatLevel(MongoException exceptione)
         {
             return Level.Error;
         }
