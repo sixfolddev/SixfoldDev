@@ -7,7 +7,7 @@ using System;
 namespace ErrorThreatTest
 {
     /// <summary>
-    /// Class to Test Functionality of Error Threat Assessment
+    /// Class to Test Functionality of Warning Threat Assessment
     /// </summary>
     [TestClass]
     public class ThreatTest
@@ -63,7 +63,7 @@ namespace ErrorThreatTest
             ErrorController ThreatController = new ErrorController(new MongoConfigurationException("yeet"));
 
             ThreatController.Handle();
-            answer = (ThreatController.Lev == Level.Error);
+            answer = (ThreatController.Lev == Level.Warning);
 
             Assert.IsTrue(answer);
 
@@ -84,7 +84,7 @@ namespace ErrorThreatTest
             ErrorController ThreatController = new ErrorController(new MongoInternalException("ye"));
 
             ThreatController.Handle();
-            answer = (ThreatController.Lev == Level.Error);
+            answer = (ThreatController.Lev == Level.Warning);
 
             Assert.IsTrue(answer);
         }
@@ -99,7 +99,7 @@ namespace ErrorThreatTest
             ErrorController ErrorThreatController = new ErrorController(new MongoException("yeet"));
             //act
             ErrorThreatController.Handle();
-            bool answer = (ErrorThreatController.Lev == Level.Error);
+            bool answer = (ErrorThreatController.Lev == Level.Warning);
 
             //assert
             Assert.IsTrue(answer);
@@ -113,7 +113,7 @@ namespace ErrorThreatTest
             ErrorController ThreatController = new ErrorController(new System.Exception("yee"));
 
             ThreatController.Handle();
-            answer = (ThreatController.Lev == Level.Error);
+            answer = (ThreatController.Lev == Level.Warning);
 
             Assert.IsTrue(answer);
         }
@@ -132,7 +132,7 @@ namespace ErrorThreatTest
 
                 ErrorController ThreatController = new ErrorController(e);
                 ThreatController.Handle();
-                answer = (ThreatController.Lev == Level.Error);
+                answer = (ThreatController.Lev == Level.Warning);
             }
             catch (Exception)
             {

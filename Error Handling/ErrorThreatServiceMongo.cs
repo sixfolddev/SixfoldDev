@@ -26,7 +26,7 @@ namespace ErrorHandling
         /// <returns>Level</returns>
         public static Level GetThreatLevel(MongoConnectionException exceptione)
         {
-            return Level.Warning;
+            return Level.Error;
         }
         /// <summary>
         /// GetThreatLevel of MongoConfigurationException
@@ -35,7 +35,7 @@ namespace ErrorHandling
         /// <returns>Level</returns>
         public static Level GetThreatLevel(MongoConfigurationException exceptione)
         {
-            return Level.Error;
+            return Level.Warning;
         }
         /// <summary>
         /// GetThreatLevel of MongoCursorNotFoundException
@@ -44,7 +44,7 @@ namespace ErrorHandling
         /// <returns>Level</returns>
         public static Level GetThreatLevel(MongoCursorNotFoundException exceptione)
         {
-            return Level.Warning;
+            return Level.Error;
         }
         /// <summary>
         /// GetThreatLevel of MongoInternalException
@@ -53,7 +53,7 @@ namespace ErrorHandling
         /// <returns>Level</returns>
         public static Level GetThreatLevel(MongoInternalException exceptione)
         {
-            return Level.Error;
+            return Level.Warning;
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace ErrorHandling
         /// <returns>Level</returns>
         public static Level GetThreatLevel(MongoException exceptione)
         {
-            return Level.Error;
+            return Level.Warning;
         }
 
         

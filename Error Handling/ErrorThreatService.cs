@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 
-namespace ErrorHandling
+namespace ErrorHandling 
 {
     /// <summary>
     /// Service that takes different exceptions and determines the threat based on the type and severity
@@ -14,7 +14,7 @@ namespace ErrorHandling
     {
         public static Level GetThreatLevel(Exception exceptione)
         {
-            return Level.Error;
+            return Level.Warning;
         }
         /// <summary>
         /// GetThreatLevel of SqlException based off of .Class property, which contains severity
@@ -29,11 +29,11 @@ namespace ErrorHandling
             }
             else if (exceptione.Class <= 16)
             {
-                return Level.Error;
+                return Level.Warning;
             }
             else if (exceptione.Class <= 19)
             {
-                return Level.Warning;
+                return Level.Error;
             }
             else
             {
@@ -47,7 +47,7 @@ namespace ErrorHandling
         /// <returns>Level</returns>
         public static Level GetThreatLevel(UnauthorizedAccessException exceptione)
         {
-            return Level.Error;  
+            return Level.Warning;  
 
         }
         /// <summary>
@@ -57,7 +57,7 @@ namespace ErrorHandling
         /// <returns>Level</returns>
         public static Level GetThreatLevel(HttpUnhandledException exceptione)
         {
-            return Level.Error;
+            return Level.Warning;
         }
         
     }
