@@ -19,6 +19,7 @@ namespace RoomAid.ServiceLayer.Service
         private double allocatedSpace;//Assuem we always leave 0.5 GB for a minmum allocated space
         private string sevenZipPath;
         private int timeOfRetry;
+        private string message;
         //Constructor
         public ArchiveService()
         {
@@ -35,6 +36,7 @@ namespace RoomAid.ServiceLayer.Service
             timeOfRetry = 3;
             
         }
+
         /// <summary>
         /// Method Archiveable will check the given filename to see if this log file is old enough to be
         /// archived. 
@@ -43,51 +45,80 @@ namespace RoomAid.ServiceLayer.Service
         /// <returns>True if it is old enough, False if it is not</returns>
         public bool Archiveable(string fileName)
         {
-            string filePath = logStorageDirectory + fileName;
-                if (File.Exists(filePath) == false)
-                {
-                    return false;
-                }
-                string logDate = fileName.Substring(0, 8);//always use first 8 char for yyyyMMdd format
-            DateTime.TryParseExact(logDate, dateFormat, new CultureInfo(cultureInfo),
+            //Split the file name to remove ".csv"
+            string[] split = fileName.Split('.');
+
+            //After split, the first element in string[] should be the log's created date
+            string logDate = split[0];
+
+            //Convert and check if it is a datetime
+            bool isDateTime = DateTime.TryParseExact(logDate, dateFormat, new CultureInfo(cultureInfo),
                 DateTimeStyles.None, out DateTime logDateTime);
-            if ((DateTime.UtcNow - logDateTime).TotalDays > logLife)
+
+            //Check if the log's life is old enough, return true if file name is correct and it is old enough
+            //Else, return false
+            if ((DateTime.UtcNow - logDateTime).TotalDays > logLife&& isDateTime==true)
             {
                 return true;
             }
             return false;
         }
 
-
         /// <summary>
-        /// Method GetFileNames will go through the log storage, check all log files and collect log files that are
-        /// old enough to be archive into a list.
+        /// Method GetFileNames will go through the log storage, for each file under the storage path, Archiveable()
+        /// method shall be called to check if the log file should be archived, and if the return is true, certain
+        /// file's file name shall be added into a list.
         /// </summary>
         /// <returns>resultSet the list of log files that should be archived</returns>
         public List<string> GetFileNames()
         {
-           var resultSet = new List<string>();
-            foreach (var logFile in Directory.GetFiles(logStorageDirectory))
+            //Create the list for all file names that should be archived
+            var resultSet = new List<string>();
+
+            //Use a for loop to go through the log storage path
+            foreach (string logFile in Directory.GetFiles(logStorageDirectory))
             {
+                //Get the file name
                 string fileName = Path.GetFileName(logFile);
+
+                //Call Archiveable() method with the file name
                 if (Archiveable(fileName) == true)
                 {
+                    //If the method return true then add the file name into the list
                     resultSet.Add(fileName);
                 }
             }
             
+            //return the list once the for loop ended
             return resultSet;
         }
 
+        /// <summary>
+        /// Method IsPsaceEnough() will check if the storage has enough space for archiving.
+        /// </summary>
+        /// <param name="driveOfArchive">the information of drive where the storage at</param>
+        /// <param name="requiredSpace">the estimated required space for archiving</param>
+        /// <returns>True if the space is enough and the drive is availabe, otherwise return false</returns>
         public bool IsSpaceEnough(DriveInfo driveOfArchive, double requiredSpace)
         {
+            //Check if the drive's available free space is less than the required space, it also check if
+            //the drive is curretly not available
             if (driveOfArchive.AvailableFreeSpace < requiredSpace || !driveOfArchive.IsReady)
             {
-                
+                //return false if space is not enough or the drive is not available
                 return false;
             }
+
+            //return true otherwise
             return true;
         }
+
+        /// <summary>
+        /// Method GetFileNames will go through the log storage, for each file under the storage path, Archiveable()
+        /// method shall be called to check if the log file should be archived, and if the return is true, certain
+        /// file's file name shall be added into a list.
+        /// </summary>
+        /// <returns>resultSet the list of log files that should be archived</returns>
         public bool RunArchive()
         {
             //Before any step of archive started, the space check is required, if the free space is
@@ -95,25 +126,25 @@ namespace RoomAid.ServiceLayer.Service
             //The admin shall be notified and this archive period shall be logged as failure
             if(IsSpaceEnough(driveOfArchive, allocatedSpace) == false)
             {
-                //log.createLog(failure);
-                //notify admin
+                message = "Insufficient space for archiving.";
                 return false;
             }
             //Before start the archive, system need to make sure that 7z.exe is installed in the machine
             if (File.Exists(sevenZipPath) == false)
             {
+                message = "Cannot found 7z.exe for archiving";
                 return false;
             }
-            var resultSet = new List<string>(); 
-            resultSet = GetFileNames();
+            List<string> resultSet = GetFileNames();
             //if the result set is empty, the archive process must be stopped.
             if (resultSet.Count == 0)
             {
-                //log.createLog(failure);
+                message = "No files are required to be archived";
                 return false;
             }
             if (FileOutPut(resultSet) == false)
             {
+
                 return false;
             }
             //Only if all steps were oeprated succeffully, the archive process could return true
@@ -191,7 +222,7 @@ namespace RoomAid.ServiceLayer.Service
                 process.WaitForExit();
                 process.Close();
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //log.createLog(failure);
                
@@ -212,7 +243,7 @@ namespace RoomAid.ServiceLayer.Service
                 }
                 File.Delete(filePath);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //log.createLog(failure);
                 return false;

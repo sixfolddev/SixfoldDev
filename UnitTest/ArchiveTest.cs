@@ -214,7 +214,7 @@ namespace UnitTest
 
             //Act
             bool actual = archiver.FileOutPut(resultSet);
-            DirClean();
+            //DirClean();
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -233,7 +233,7 @@ namespace UnitTest
             }
             //Act
             bool actual = archiver.RunArchive();
-            DirClean();
+            //DirClean();
             //Assert
             Assert.AreEqual(expected, actual);
         }
