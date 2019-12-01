@@ -36,7 +36,7 @@ namespace ErrorThreatTest
             }
             catch (Exception)
             {
-                answer = true;
+               
             }
 
             

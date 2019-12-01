@@ -16,8 +16,25 @@ namespace ErrorHandling
         /// <param name="level"></param>
         public void GetResponse(Exception e, Level level)
         {
-            ErrorResponseService Response = new ErrorResponseService();
-            Response.GetResponse(e, level);
+            IErrorResponseService ResponseService;
+            if(level == Level.Fatal)
+            {
+                 ResponseService = new FatalResponseService(e);
+            }
+            else if (level == Level.Error)
+            {
+                 ResponseService = new ErrorResponseService(e);
+            }
+            else if (level == Level.Warning)
+            {
+                 ResponseService = new WarningResponseService(e);
+            }
+            else
+            {
+                 ResponseService = new CatchNonUrgentResponseService(e);
+            }
+
+            ResponseService.GetResponse();
         }
 
     }

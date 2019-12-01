@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Error_Handling</RootNamespace>
+    <RootNamespace>ErrorHandling</RootNamespace>
     <AssemblyName>Error Handling</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
@@ -105,16 +105,20 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CatchNonUrgentResponseService.cs" />
     <Compile Include="ErrorController.cs" />
     <Compile Include="ErrorResponseManager.cs" />
     <Compile Include="ErrorResponseService.cs" />
+    <Compile Include="FatalResponseService.cs" />
     <Compile Include="ErrorThreatManager.cs" />
     <Compile Include="ErrorThreatService.cs" />
     <Compile Include="ErrorThreatServiceMongo.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="IErrorResponseService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WarningResponseService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -1,14 +1,19 @@
 ﻿using System;
-
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
 namespace ErrorHandling
 {
-    public class ErrorResponseService
+    public class ErrorResponseService : IErrorResponseService
     {
-        public ErrorResponseService()
-        { }
+        public Exception E { get; set; }
+        public ErrorResponseService(Exception e)
+        { 
+            E = e; 
+        }
 
-        public void GetResponse(Exception e, Level level)
+        public void GetResponse()
         {
 
         }
