@@ -10,6 +10,8 @@ namespace RoomAid.ServiceLayer.Service
     public class ArchiveService
     {
         //Variables used 
+
+        //
         private string logStorageDirectory;
         private string archiveStorageDirectory;
         private int logLife;
@@ -34,6 +36,7 @@ namespace RoomAid.ServiceLayer.Service
             allocatedSpace = 250000000;
             sevenZipPath = @"D:\7-Zip\7z.exe";
             timeOfRetry = 3;
+            message = "Archive Successed";
             
         }
 
@@ -114,11 +117,11 @@ namespace RoomAid.ServiceLayer.Service
         }
 
         /// <summary>
-        /// Method GetFileNames will go through the log storage, for each file under the storage path, Archiveable()
-        /// method shall be called to check if the log file should be archived, and if the return is true, certain
-        /// file's file name shall be added into a list.
+        /// RunArchive() method is the main method which will call each method step by step to finish the archive
+        /// Only if all steps were successful, the method shall return true, otherwise the method shall return false
+        /// and create message based on reasons of failure
         /// </summary>
-        /// <returns>resultSet the list of log files that should be archived</returns>
+        /// <returns>true for archive successed, ortherwise false</returns>
         public bool RunArchive()
         {
             //Before any step of archive started, the space check is required, if the free space is
@@ -129,42 +132,73 @@ namespace RoomAid.ServiceLayer.Service
                 message = "Insufficient space for archiving.";
                 return false;
             }
+
             //Before start the archive, system need to make sure that 7z.exe is installed in the machine
             if (File.Exists(sevenZipPath) == false)
             {
                 message = "Cannot found 7z.exe for archiving";
                 return false;
             }
+
+            //Create a new list for resultSet to store all file names that are needed to be archived
             List<string> resultSet = GetFileNames();
+
             //if the result set is empty, the archive process must be stopped.
             if (resultSet.Count == 0)
             {
                 message = "No files are required to be archived";
                 return false;
             }
+
+            //Output the compressed file
             if (FileOutPut(resultSet) == false)
             {
-
+                message = "Failed to compress or delete one or multiple files";
                 return false;
             }
             //Only if all steps were oeprated succeffully, the archive process could return true
             return true;
         }
+
+        /// <summary>
+        /// Method FileOutPut() method shall add all files that needed to be archived into a compressed file and then delete the 
+        /// original log files
+        /// </summary>
+        /// <param name="resuktSet">The list which stored all file names of files that required to be archived</param>
+        /// <returns>True if all files in resultSet are archived and original files were deleted successfully
+        /// return false if any file is failed to be archived or deleted</returns>
         public bool FileOutPut(List<string> resultSet)
         {
+            //Set the result as true 
             bool ifSuccess = true;
-            string deleteFailed = @"D:\LogStorage\";
-            string compressFailed = @"D:\LogStorage\";
+
+            //Message string used for admin notification, start at the storage path to help the admin find the files with problems
+            string deleteFailed = logStorageDirectory;
+            string compressFailed = archiveStorageDirectory;
+
+            //Instead of create new process each time, we pass through the same process to do the commandline
+            //This will reduce the runtime for archive process from 3 sec to 1 sec
+            Process process = new Process();
+
+            //The process shall use 7z.exe to call the commandline
+            process.StartInfo.FileName = sevenZipPath;
+
+            //Use a for loop to go through every file name in resultSet
             foreach (string fileName in resultSet)
             {
+                //Call AddToSevenZip() method to check if certain file is added into compressed file successfully
+                bool compressSuccess = AddToSevenZip(fileName, process);
 
-                bool compressSuccess = AddToSevenZip(fileName);
-
+                //If any file is failed to be compressed. start to retry compress the file 
                 if (compressSuccess == false)
                 {
+                    //Retry until it reached the limit time of retry or it successed
                     for (int i = 0; i< timeOfRetry;i++)
                     {
-                        compressSuccess = AddToSevenZip(fileName);
+                        //Call AddToSevenZip() method again to check if certain file is added into compressed file successfully
+                        compressSuccess = AddToSevenZip(fileName, process);
+
+                        //If the result is true, then stop the retry, set ifSuccess as true
                         if (compressSuccess == true)
                         {
                             ifSuccess = true;
@@ -173,28 +207,42 @@ namespace RoomAid.ServiceLayer.Service
                         }
                        
                     }
+
+                    //If the retry failed three times, skip this file and start to compress the next file
+                    //Add this file's name into the message, so the admin can know what files have problems
                     if(compressSuccess == false)
                     {
-                        compressFailed = compressFailed + fileName;
+                        compressFailed = compressFailed + fileName+"， \n";
                         ifSuccess = false;
                     } 
                 }   
+
+                //If this file is compressed successfully, then start to delete the original log file
                 if (compressSuccess == true)
                 {
+                    //Call DeleteLog() method to check if it could be deleted successfully
                     bool deleteSuccess = DeleteLog(fileName);
+
+                    //If the deletion failed, start to retry the deletion
                     if(deleteSuccess == false)
                     {
+                        //Use a for loop to retry the deletion until it return true, or reach the limit retry time
                         for (int i = 0; i < timeOfRetry; i++)
                         {
+
+                            //Call DeleteLog() method again
                             deleteSuccess = DeleteLog(fileName);
                             if (deleteSuccess == true)
                             {
+                                //if retry successed, stop the retry
                                 ifSuccess = true;
                                 break;
                                 //Notify admin with compressFailed
                             }
 
                         }
+
+                        //If the deletion still failed, add this file name into the message, and return false
                         if (deleteSuccess == false)
                         {
                             deleteFailed = deleteFailed + fileName;
@@ -204,52 +252,92 @@ namespace RoomAid.ServiceLayer.Service
                 }
                
             }
+
+            //Close the process when the for loop is finished
+            process.Close();
+
+            //Return the result if the file out put is successfully
             return ifSuccess;
         }
 
-        public bool AddToSevenZip(string fileName)
+        /// <summary>
+        /// Method AddToSevenZip method shall add specific file into the compressed file based a given file name 
+        /// </summary>
+        /// <param name="fileName">The name of the file which should be added into the compressed file</param>
+        /// <param name="process">The process passed from FileOutPut method which will run the commandline</param>
+        /// <returns>True if the file is added into compressed file successfully, otherwise return false</returns>
+        public bool AddToSevenZip(string fileName, Process process)
         {
             try
             {
-                Process process = new Process();
-                process.StartInfo.FileName = sevenZipPath;
+                //Set the file path for the output compressed file
                 string outPutFilePath = archiveStorageDirectory + DateTime.Now.ToString(dateFormat) +
                     ".7z";
+
+                //Set path for the log file which needed to be archived
                 string filePath = logStorageDirectory + fileName;
+
+                //Set the argument as the commanline for 7z to add a file into to the compressed file.
+                //a - means add for 7z commandline
                 process.StartInfo.Arguments = " a -t7z " + outPutFilePath + " " + filePath + "";
+
+                //Hide the console page
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+
+                //Start the process
                 process.Start();
                 process.WaitForExit();
-                process.Close();
+                
             }
             catch (Exception)
             {
-                //log.createLog(failure);
-               
+                //Catch any error during the process such as the file opened or not found at the moment.
+                //Return false if the add to compress file failed
                 return false;
             }
+
+            //Return true if the process succeed
             return true;
 
         }
 
+        /// <summary>
+        /// Method DeleteLog() will check find the specific file based on the given file name and then delete it.
+        /// </summary>
+        /// <param name="fileName">The name of the file which should be deleted</param>
+        /// <returns>True if the file is deleteled successfully, otherwise return false</returns>
         public bool DeleteLog(string fileName)
         {
+            //Get the file path by combineing the storage path and the file name
             string filePath = logStorageDirectory + fileName;
+
             try
             {
+                //Make sure the file exists, if the file is already deleted or not exists, it should not be deleted
                 if (File.Exists(filePath) == false)
                 {
+                    //Return false if the file cannot be found
                     return false;
                 }
+
+                //If the file exist, delete it
                 File.Delete(filePath);
             }
             catch (Exception)
             {
-                //log.createLog(failure);
+                //Catch the error while deleting the file, such as the file was opened or cannot be find when delete it
                 return false;
             }
-            return true;
 
+            //Check again to make sure the file is deleted
+            if (File.Exists(filePath) == true)
+            {
+                //If the file exists, it means the deletion failed, return false
+                return false;
+            }
+
+            //Return true if deletion was sucessful
+            return true;
         }
     }
 }
