@@ -9,11 +9,14 @@ namespace ErrorHandling
         public string Subject { get; set; }
         public string ToUsername { get; set; }
         public string ToEmail { get; set; }
-        public FatalResponseService(Exception e) 
+        public FatalResponseService(Exception e)
         {
             E = e;
             ToUsername = "SysAdmin";
             ToEmail = "sixfolddev@gmail.com";
+            Subject = "The System requires your Immediate Attention";
+            Body = $@"System Admin: 
+            An exception of type {0} has occurred and requires your immediate attention. Please check logs for the day. ";
 
         }
 
