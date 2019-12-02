@@ -28,7 +28,7 @@ namespace RoomAid.Authorization
         {
             _displayName = null;
             _householdID = 0; //Hack review how to evaluate non household ID
-            _enabledAuthZ = false;
+            _enabledAuthZ = true; //TODO determine if this value should be true. by default even anonymous users should have access to some features... 
             _adminAuthZ = new bool[2] { false, false};
             _accountAuthZ = new bool[3] { false, false, false };
             _searchHouseholdAuthZ = false;

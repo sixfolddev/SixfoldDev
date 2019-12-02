@@ -1,0 +1,8 @@
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\bin\Debug\netstandard2.0\RoomAid.Authorization.deps.json
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\bin\Debug\netstandard2.0\RoomAid.Authorization.dll
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\bin\Debug\netstandard2.0\RoomAid.Authorization.pdb
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.csproj.CoreCompileInputs.cache
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.AssemblyInfoInputs.cache
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.AssemblyInfo.cs
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.dll
+C:\Users\Jacen\Documents\GitHub\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.pdb
