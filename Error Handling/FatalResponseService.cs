@@ -1,9 +1,8 @@
 ﻿using System;
 
-
 namespace ErrorHandling
 {
-    public class FatalResponseService : IErrorResponseService
+    public class FatalResponseService : IErrorResponseService, IEmailReady
     {
         public Exception E { get; set; }
         public FatalResponseService(Exception e) 

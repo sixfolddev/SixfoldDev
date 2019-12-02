@@ -8,7 +8,7 @@ using Google.Apis.Util;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
-using MimeKit.Text;
+
 
 namespace Emailing
 {
