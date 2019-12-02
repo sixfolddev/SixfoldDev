@@ -128,12 +128,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Error Handling\ErrorHandling.csproj">
-      <Project>{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}</Project>
-      <Name>ErrorHandling</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

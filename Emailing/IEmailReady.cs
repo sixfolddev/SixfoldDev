@@ -1,10 +1,10 @@
-﻿using System;
-
-
-namespace Emailing
+﻿namespace Emailing
 {
-    interface IEmailReady
+    public interface IEmailReady
     {
-
+        string Body { get; set; }
+        string Subject { get; set; }
+        string ToUsername { get; set; }
+        string ToEmail { get; set; }
     }
 }

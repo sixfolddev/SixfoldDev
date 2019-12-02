@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using System.Threading.Tasks;
-using ErrorHandling;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Gmail.v1;
 using Google.Apis.Util;
@@ -56,8 +55,7 @@ namespace Emailing
                 }
                 catch (Exception e)
                 {
-                    ErrorController Control = new ErrorController(e);
-                    Control.Handle();
+                    throw;
                 }
              
                 
