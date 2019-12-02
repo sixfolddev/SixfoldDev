@@ -8,7 +8,7 @@ using Google.Apis.Util;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using MimeKit;
-
+using MimeKit.Text;
 
 namespace Emailing
 {
@@ -21,6 +21,14 @@ namespace Emailing
         public string clientID = "740461239177-531qol5vrlgltl6mqcd5q7ebl70ftdqr.apps.googleusercontent.com";
         public string clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
         public string email = "roomaidnotifications@gmail.com";
+
+
+        public void SendEmail()
+        {
+
+        }
+
+
         private async Task EmailSendAsync(MimeMessage message)
         {
             var secrets = new ClientSecrets
@@ -55,37 +63,28 @@ namespace Emailing
                 
             }
         }
-
-        private MimeMessage BuildMessage(Exception e)
+        /// <summary>
+        /// uses passed in parameters in order to build email messages for sending
+        /// </summary>
+        /// <param name="body"></param>
+        /// <param name="subject"></param>
+        /// <param name="to"></param>
+        /// <returns></returns>
+        private MimeMessage BuildMessage(string body, string subject, MailboxAddress to)
         {
             MimeMessage Message = new MimeMessage();
+            
+            
             Message.From.Add(new MailboxAddress("RoomAidNotifications@DoNotRespond", "roomaidnotifications@gmail.com"));
-            Message.To.Add(new MailboxAddress("SysAdmin", "sixfolddev@gmail.com"));
-            Message.Subject = "RoomAid needs your immediate attention!";
-
-            Message.Body = new TextPart("plain")
-            {
-                Text = $@"SysAdmin,
-            
-            An {e.GetType()} occurred that needs your immediate attention. Please view error logs for today when given the chance.
-
-            RoomAidNotifications"
-            };
+            Message.To.Add(to);
+            var BuildBody = new BodyBuilder();
+            BuildBody.TextBody = body;
+            Message.Body = BuildBody.ToMessageBody();
 
             return Message;
         }
 
-        private MimeMessage BuildMessage(string email, string subject, string message)
-        {
-            MimeMessage Message = new MimeMessage();
-
-            
-
-
-
-            return Message;
-        }
-
+        
       
     }
 }

@@ -13,7 +13,7 @@ namespace ErrorHandling
 
         public void GetResponse()
         {
-
+            
         }
     }
 }

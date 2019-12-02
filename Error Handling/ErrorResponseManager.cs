@@ -10,7 +10,7 @@ namespace ErrorHandling
         public ErrorResponseManager()
         { }
         /// <summary>
-        /// calls method To perform responses depending on type of exception and level of severity
+        /// calls method To create responseservices depending on type of exception and level of severity, and then executes them
         /// </summary>
         /// <param name="e"></param>
         /// <param name="level"></param>
