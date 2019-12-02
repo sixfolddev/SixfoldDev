@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace ErrorHandling
+namespace RoomAid.ErrorHandling
 {
     public static class ErrorThreatManager
     {

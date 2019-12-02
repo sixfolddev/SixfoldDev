@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Error Handling\ErrorHandling.csproj" />
+    <ProjectReference Include="..\Error Handling\RoomAid.ErrorHandling.csproj" />
   </ItemGroup>
 
 </Project>

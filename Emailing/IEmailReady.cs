@@ -1,4 +1,4 @@
-﻿namespace Emailing
+﻿namespace RoomAid.ServiceLayer.Emailing
 {
     public interface IEmailReady
     {

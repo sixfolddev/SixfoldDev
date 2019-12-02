@@ -3,7 +3,7 @@ using System;
 
 
 
-namespace ErrorHandling
+namespace RoomAid.ErrorHandling
 {
     /// <summary>
     /// Continuation of ErrorThreatService for MongoSpecificExceptions

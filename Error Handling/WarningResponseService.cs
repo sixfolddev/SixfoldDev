@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ErrorHandling
+namespace RoomAid.ErrorHandling
 {
     class WarningResponseService : IErrorResponseService
     {

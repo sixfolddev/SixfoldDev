@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ErrorHandling
+namespace RoomAid.ErrorHandling
 {
     //Levels are used to determine severity of things logged, as well as helping determine how to handle errors 
     public enum Level { None, Info, Debug, Warning, Error, Fatal };
@@ -29,9 +29,9 @@ namespace ErrorHandling
         public void Handle()
         {
             Lev = ErrorThreatManager.GetThreatLevel(Exceptione);
-            ErrorResponseManager ResponseManager = new ErrorResponseManager();
-            ResponseManager.GetResponse(Exceptione, Lev);
-            //Log(Lev, Exceptoine)
+            ErrorResponseManager ResponseManager = new ErrorResponseManager(Exceptione);
+            ResponseManager.GetResponse(Lev);
+            
 
         }
         

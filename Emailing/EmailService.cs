@@ -9,7 +9,7 @@ using MailKit.Security;
 using MimeKit;
 
 
-namespace Emailing
+namespace RoomAid.ServiceLayer.Emailing
 {
     /// <summary>
     /// This class is about sending and securing emails sent from our roomaidnotifications@gmail.com

@@ -1,5 +1,5 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ErrorHandling;
+using RoomAid.ErrorHandling;
 using MongoDB.Driver;
 using System.Data.SqlClient;
 using System;

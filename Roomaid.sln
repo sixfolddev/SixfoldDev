@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHandling", "Error Handling\ErrorHandling.csproj", "{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ErrorHandling", "Error Handling\RoomAid.ErrorHandling.csproj", "{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorThreatTest", "ErrorThreatTest\ErrorThreatTest.csproj", "{B8D28D6A-18E1-4321-B80A-6B62B812C24C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ErrorResponseTest", "Error Response Test\ErrorResponseTest.csproj", "{C557B561-37D6-4AA4-8C55-EA1F26193E2E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Emailing", "Emailing\Emailing.csproj", "{4F74C44B-4392-416A-BD1F-CD55034A9D97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.Emailing", "Emailing\RoomAid.ServiceLayer.Emailing.csproj", "{4F74C44B-4392-416A-BD1F-CD55034A9D97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

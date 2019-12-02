@@ -1,8 +1,8 @@
 ﻿using System;
-using Emailing;
+using RoomAid.ServiceLayer.Emailing;
 using MimeKit;
 
-namespace ErrorHandling
+namespace RoomAid.ErrorHandling
 {
     public class FatalResponseService : IErrorResponseService, IEmailReady 
     {
@@ -25,6 +25,7 @@ namespace ErrorHandling
         {
             var Emailer = new EmailService();
             Emailer.EmailSender(Body, Subject, ToUsername, ToEmail);
+
         }
     }
 }

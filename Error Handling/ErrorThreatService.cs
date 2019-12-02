@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 
-namespace ErrorHandling 
+namespace RoomAid.ErrorHandling 
 {
     /// <summary>
     /// Service that takes different exceptions and determines the threat based on the type and severity
-    /// Returns a value Level, which is an enumerated List within the namespace ErrorHandling
+    /// Returns a value Level, which is an enumerated List within the namespace RoomAidErrorHandling
     /// </summary>
     public static partial class ErrorThreatService
     {
