@@ -1,8 +1,10 @@
 ﻿using System;
 using Emailing;
+using MimeKit;
+
 namespace ErrorHandling
 {
-    public class FatalResponseService : IErrorResponseService, IEmailReady
+    public class FatalResponseService : IErrorResponseService, IEmailReady 
     {
         public Exception E { get; set; }
         public string Body { get; set; }
@@ -15,14 +17,14 @@ namespace ErrorHandling
             ToUsername = "SysAdmin";
             ToEmail = "sixfolddev@gmail.com";
             Subject = "The System requires your Immediate Attention";
-            Body = $@"System Admin: 
-            An exception of type {0} has occurred and requires your immediate attention. Please check logs for the day. ";
+            Body = $"System Admin:\n An exception of type {e.GetType()} has occurred and requires your immediate attention. Please check logs for the day.";
 
         }
 
         public void GetResponse()
         {
-            
+            var Emailer = new EmailService();
+            Emailer.EmailSender(Body, Subject, ToUsername, ToEmail);
         }
     }
 }

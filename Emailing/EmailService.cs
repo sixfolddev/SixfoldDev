@@ -16,14 +16,20 @@ namespace Emailing
     /// </summary>
     public class EmailService
     {
+
         //These are client id and secrets of the googleapi project, used for token based authn
         public string clientID = "740461239177-531qol5vrlgltl6mqcd5q7ebl70ftdqr.apps.googleusercontent.com";
         public string clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
         public string email = "roomaidnotifications@gmail.com";
 
+        public EmailService()
+        { }
 
-        public void SendEmail()
+        public void EmailSender(string body, string subject, string nameTo, string emailTo)
         {
+            MimeMessage Message = BuildMessage(body, subject, new MailboxAddress(nameTo, emailTo));
+            Task.Run(() => EmailSendAsync(Message));
+
 
         }
 
@@ -75,6 +81,7 @@ namespace Emailing
             
             Message.From.Add(new MailboxAddress("RoomAidNotifications@DoNotRespond", "roomaidnotifications@gmail.com"));
             Message.To.Add(to);
+            Message.Subject = subject;
             var BuildBody = new BodyBuilder
             {
                 TextBody = body
