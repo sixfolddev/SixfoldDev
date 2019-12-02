@@ -31,8 +31,6 @@ namespace RoomAid.ErrorHandling
             Lev = ErrorThreatManager.GetThreatLevel(Exceptione);
             ErrorResponseManager ResponseManager = new ErrorResponseManager(Exceptione);
             ResponseManager.GetResponse(Lev);
-            
-
         }
         
         

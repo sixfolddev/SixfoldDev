@@ -25,10 +25,10 @@ namespace RoomAid.ServiceLayer.Emailing
         public EmailService()
         { }
 
-        public void EmailSender(string body, string subject, string nameTo, string emailTo)
+        public async void EmailSenderAsync(string body, string subject, string nameTo, string emailTo)
         {
             MimeMessage Message = BuildMessage(body, subject, new MailboxAddress(nameTo, emailTo));
-            Task.Run(() => EmailSendAsync(Message));
+            await EmailSendAsync(Message);
 
 
         }
