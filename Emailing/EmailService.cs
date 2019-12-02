@@ -53,7 +53,7 @@ namespace Emailing
                     await client.SendAsync(message);
                     client.Disconnect(true);
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -75,8 +75,10 @@ namespace Emailing
             
             Message.From.Add(new MailboxAddress("RoomAidNotifications@DoNotRespond", "roomaidnotifications@gmail.com"));
             Message.To.Add(to);
-            var BuildBody = new BodyBuilder();
-            BuildBody.TextBody = body;
+            var BuildBody = new BodyBuilder
+            {
+                TextBody = body
+            };
             Message.Body = BuildBody.ToMessageBody();
 
             return Message;
