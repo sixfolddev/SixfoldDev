@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 
-namespace RoomAid.ServiceLayer
+namespace RoomAid.ServiceLayer.Logging
 {
     public static class LogDAO
     {

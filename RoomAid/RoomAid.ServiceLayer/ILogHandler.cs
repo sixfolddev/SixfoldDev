@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RoomAid.ServiceLayer
+namespace RoomAid.ServiceLayer.Logging
 {
     public interface ILogHandler
     {

@@ -2,7 +2,7 @@
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RoomAid.ServiceLayer;
+using RoomAid.ServiceLayer.Logging;
 
 namespace RoomAid.Logging.Tests
 {

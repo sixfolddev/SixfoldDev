@@ -1,4 +1,4 @@
-﻿namespace RoomAid.ServiceLayer
+﻿namespace RoomAid.ServiceLayer.Logging
 {
     public class LogLevels
     {

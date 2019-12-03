@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace RoomAid.ServiceLayer
+namespace RoomAid.ServiceLayer.Logging
 {
     public class FileHandler : ILogHandler
     {

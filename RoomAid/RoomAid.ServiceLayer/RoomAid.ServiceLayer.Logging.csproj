@@ -7,8 +7,8 @@
     <ProjectGuid>{29A3335E-7538-4CDE-90DC-ACE201F259F6}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RoomAid.ServiceLayer</RootNamespace>
-    <AssemblyName>RoomAid.ServiceLayer</AssemblyName>
+    <RootNamespace>RoomAid.ServiceLayer.Logging</RootNamespace>
+    <AssemblyName>RoomAid.ServiceLayer.Logging</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>

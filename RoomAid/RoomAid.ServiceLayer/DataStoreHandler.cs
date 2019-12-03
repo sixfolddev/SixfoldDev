@@ -2,7 +2,7 @@
 using MongoDB.Bson;
 using MongoDB.Driver;
 
-namespace RoomAid.ServiceLayer
+namespace RoomAid.ServiceLayer.Logging
 {
     public class DataStoreHandler : ILogHandler
     {
