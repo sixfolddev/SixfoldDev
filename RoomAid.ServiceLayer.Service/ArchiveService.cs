@@ -277,7 +277,7 @@ namespace RoomAid.ServiceLayer.Service
 
                 //Write the _message to explain the failure
                 _message = "File Out Put Failure: Failed to compress or delete one or multiple files";
-                //Notify the admin
+                //ToDo: Notify the admin
             }
             //Return the result if the file out put is successfully
             return ifSuccess;
