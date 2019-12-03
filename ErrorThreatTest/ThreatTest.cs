@@ -3,6 +3,7 @@ using RoomAid.ErrorHandling;
 using MongoDB.Driver;
 using System.Data.SqlClient;
 using System;
+using MongoDB.Bson;
 
 namespace ErrorThreatTest
 {
@@ -12,7 +13,9 @@ namespace ErrorThreatTest
     [TestClass]
     public class ThreatTest
     {
-        
+        //MongoClient _client = new MongoClient("mongodb+srv://rwUser:4agLEh9JFz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
+        public IMongoCollection<BsonDocument> collection;
+
         /// <summary>
         /// Method to test if MongoAuthenticationException is returning fatal
         /// </summary>
@@ -23,9 +26,8 @@ namespace ErrorThreatTest
             bool Answer = false;
             try
             {
-                String ConnectionString = "mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority";
-                MongoClient Client = new MongoClient(ConnectionString);
-                var Database = Client.GetDatabase("test");
+                MongoClient Client = new MongoClient("mongodb+srv://rwUser:4agLEh9Fz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
+                IMongoDatabase db = Client.GetDatabase("test");
             }   
             catch (MongoAuthenticationException e)
             {
@@ -34,9 +36,9 @@ namespace ErrorThreatTest
                 ErrorThreatController.Handle();
                 Answer = ErrorThreatController.Lev == Level.Warning;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-               
+               Console.WriteLine(e);
             }
 
             

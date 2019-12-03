@@ -13,14 +13,16 @@ namespace RoomAid.ServiceLayer.Emailing
 {
     /// <summary>
     /// This class is about sending and securing emails sent from our roomaidnotifications@gmail.com
+    /// 
+    /// to actually send emails, make sure to remove the system.net and everything inside of it from web.config
     /// </summary>
     public class EmailService
     {
 
         //These are client id and secrets of the googleapi project, used for token based authn
-        private string _clientID = "740461239177-531qol5vrlgltl6mqcd5q7ebl70ftdqr.apps.googleusercontent.com";
-        private string _clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
-        private string _email = "roomaidnotifications@gmail.com";
+        private readonly string _clientID = "740461239177-531qol5vrlgltl6mqcd5q7ebl70ftdqr.apps.googleusercontent.com";
+        private readonly string _clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
+        private readonly string _email = "roomaidnotifications@gmail.com";
 
         //blank constructor
         public EmailService()
@@ -29,9 +31,15 @@ namespace RoomAid.ServiceLayer.Emailing
         //async method that creates message and then sends the email
         public async void EmailSenderAsync(string body, string subject, string nameTo, string emailTo)
         {
-            MimeMessage Message = BuildMessage(body, subject, new MailboxAddress(nameTo, emailTo));
-            await EmailSendAsync(Message);
+            try
+            {
+                MimeMessage Message = BuildMessage(body, subject, new MailboxAddress(nameTo, emailTo));
+                await EmailSendAsync(Message);
+            }
+            catch(Exception)
+            {
 
+            }
 
         }
 
