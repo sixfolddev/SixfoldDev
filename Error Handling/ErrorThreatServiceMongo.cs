@@ -28,15 +28,7 @@ namespace RoomAid.ErrorHandling
         {
             return Level.Error;
         }
-        /// <summary>
-        /// GetThreatLevel of MongoConfigurationException
-        /// </summary>
-        /// <param name="exceptione"></param>
-        /// <returns>Level</returns>
-        public static Level GetThreatLevel(MongoConfigurationException exceptione)
-        {
-            return Level.Warning;
-        }
+ 
         /// <summary>
         /// GetThreatLevel of MongoCursorNotFoundException
         /// </summary>
@@ -46,15 +38,7 @@ namespace RoomAid.ErrorHandling
         {
             return Level.Error;
         }
-        /// <summary>
-        /// GetThreatLevel of MongoInternalException
-        /// </summary>
-        /// <param name="exceptione"></param>
-        /// <returns>Level</returns>
-        public static Level GetThreatLevel(MongoInternalException exceptione)
-        {
-            return Level.Warning;
-        }
+     
 
         /// <summary>
         /// GetThreatLevel of Generic MongoException

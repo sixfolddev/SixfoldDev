@@ -4,10 +4,10 @@ namespace RoomAid.ErrorHandling
 {
     class WarningResponseService : IErrorResponseService
     {
-        public Exception E { get; set; }
+        private readonly Exception _e;
         public WarningResponseService(Exception e)
         {
-            E = e;
+            _e = e;
         }
 
         public void GetResponse()

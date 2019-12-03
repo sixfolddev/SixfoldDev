@@ -14,13 +14,12 @@ namespace RoomAid.ErrorHandling
     public class ErrorController
     {
 
-        public Exception Exceptione
-        { get; set; }
+        private readonly Exception _exceptione;
         public Level Lev
         { get;set; }
         public ErrorController(Exception e)
         { 
-            Exceptione = e;
+            _exceptione = e;
         }
 
         /// <summary>
@@ -28,8 +27,8 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         public void Handle()
         {
-            Lev = ErrorThreatManager.GetThreatLevel(Exceptione);
-            ErrorResponseManager ResponseManager = new ErrorResponseManager(Exceptione);
+            Lev = ErrorThreatManager.GetThreatLevel(_exceptione);
+            ErrorResponseManager ResponseManager = new ErrorResponseManager(_exceptione);
             ResponseManager.GetResponse(Lev);
         }
         

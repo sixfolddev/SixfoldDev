@@ -115,7 +115,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IEmailReady.cs" />
+    <Compile Include="EmailReady.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmailService.cs" />
   </ItemGroup>

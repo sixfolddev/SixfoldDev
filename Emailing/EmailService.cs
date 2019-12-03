@@ -18,9 +18,9 @@ namespace RoomAid.ServiceLayer.Emailing
     {
 
         //These are client id and secrets of the googleapi project, used for token based authn
-        public string clientID = "740461239177-531qol5vrlgltl6mqcd5q7ebl70ftdqr.apps.googleusercontent.com";
-        public string clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
-        public string email = "roomaidnotifications@gmail.com";
+        private string _clientID = "740461239177-531qol5vrlgltl6mqcd5q7ebl70ftdqr.apps.googleusercontent.com";
+        private string _clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
+        private string _email = "roomaidnotifications@gmail.com";
 
         //blank constructor
         public EmailService()
@@ -44,11 +44,11 @@ namespace RoomAid.ServiceLayer.Emailing
         {
             var secrets = new ClientSecrets
             {
-                ClientId = clientID,
-                ClientSecret = clientSecret
+                ClientId = _clientID,
+                ClientSecret = _clientSecret
             };
        //waits for credentials bassed on the secrets given, and gets a refresh token if too much time has passed 
-        var credentials = await GoogleWebAuthorizationBroker.AuthorizeAsync(secrets, new[] { GmailService.Scope.MailGoogleCom }, email, CancellationToken.None);
+        var credentials = await GoogleWebAuthorizationBroker.AuthorizeAsync(secrets, new[] { GmailService.Scope.MailGoogleCom }, _email, CancellationToken.None);
             if(credentials.Token.IsExpired(SystemClock.Default))
             {
                 await credentials.RefreshTokenAsync(CancellationToken.None);
@@ -86,7 +86,7 @@ namespace RoomAid.ServiceLayer.Emailing
             MimeMessage Message = new MimeMessage();
             
             
-            Message.From.Add(new MailboxAddress("RoomAidNotifications@DoNotRespond", email));
+            Message.From.Add(new MailboxAddress("RoomAidNotifications@DoNotRespond", _email));
             Message.To.Add(to);
             Message.Subject = subject;
             var BuildBody = new BodyBuilder

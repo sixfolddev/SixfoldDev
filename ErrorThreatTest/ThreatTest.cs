@@ -32,7 +32,7 @@ namespace ErrorThreatTest
                 ErrorController ErrorThreatController = new ErrorController(e);
 
                 ErrorThreatController.Handle();
-                Answer = (ErrorThreatController.Lev == Level.Fatal);
+                Answer = ErrorThreatController.Lev == Level.Warning;
             }
             catch (Exception)
             {
@@ -75,18 +75,6 @@ namespace ErrorThreatTest
         {
             //bool Answer;
             //ErrorController ThreatController = new ErrorController(new MongoCursorNotFoundException());
-        }
-
-        [TestMethod]
-        public void TestMongoInternalException()
-        {
-            bool Answer = false;
-            ErrorController ThreatController = new ErrorController(new MongoInternalException("ye"));
-
-            ThreatController.Handle();
-            Answer = (ThreatController.Lev == Level.Warning);
-
-            Assert.IsTrue(Answer);
         }
 
         /// <summary>

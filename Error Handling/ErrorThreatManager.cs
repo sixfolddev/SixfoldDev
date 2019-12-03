@@ -3,6 +3,7 @@
 
 namespace RoomAid.ErrorHandling
 {
+    
     public static class ErrorThreatManager
     {
         /// <summary>
