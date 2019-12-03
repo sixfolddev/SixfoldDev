@@ -5,7 +5,7 @@ using RoomAid.Authorization;
 namespace RoomAid.AuthorizationTests
 {
     [TestClass]
-    public class CreateHostAuthZTests
+    public class CreateTenantAuthZTests
     {
         AuthZFactory factory;
         AuthZAttribute attributes;
@@ -18,10 +18,10 @@ namespace RoomAid.AuthorizationTests
         {
             //arrange
             factory = new AuthZFactory();
-            adminAuthZ = new bool[2] { false, true };
+            adminAuthZ = new bool[2] { true, true };
             householdID = 1234;
             displayName = "ExampleName";
-            attributes = factory.CreateHostAuthZ(displayName, householdID, adminAuthZ);
+            attributes = factory.CreateTenantAuthZ(displayName, householdID, adminAuthZ);
         }
 
         [TestMethod]
@@ -40,7 +40,7 @@ namespace RoomAid.AuthorizationTests
             //Act
             var expected = attributes.HouseholdID;
             //Assert
-            Assert.AreEqual((int) 1234, expected);
+            Assert.AreEqual((int)1234, expected);
         }
 
         [TestMethod]
@@ -56,7 +56,7 @@ namespace RoomAid.AuthorizationTests
         public void AdminAuthZTest_Pass()
         {
             //Arrange
-            bool[] expected = new bool[2] { false, true };
+            bool[] expected = new bool[2] { true, true };
             //Act
             var authZ = attributes.AdminAuthZ;
             //Assert
@@ -107,7 +107,7 @@ namespace RoomAid.AuthorizationTests
         public void InviteAuthZTest_Pass()
         {
             //Arrange
-            bool[] expected = new bool[4] { true, true, false, true };
+            bool[] expected = new bool[4] { false, true, false, true };
             //Act
             var actual = attributes.InviteAuthZ;
             //Assert
@@ -121,7 +121,7 @@ namespace RoomAid.AuthorizationTests
         public void HouseholdAuthZTest_Pass()
         {
             //Arrange
-            bool[] expected = new bool[4] { false, true, true, true };
+            bool[] expected = new bool[4] { false, true, false, false };
             //Act
             var actual = attributes.HouseholdAuthZ;
             //Assert
@@ -135,7 +135,7 @@ namespace RoomAid.AuthorizationTests
         public void TenantAuthZTest_Pass()
         {
             //Arrange
-            bool[] expected = new bool[5] { true, true, true, true, false };
+            bool[] expected = new bool[5] { true, false, false, false, true };
             //Act
             var actual = attributes.TenantAuthZ;
             //Assert
@@ -150,7 +150,7 @@ namespace RoomAid.AuthorizationTests
         public void ExpenseAuthZTest_Pass()
         {
             //Arrange
-            bool[] expected = new bool[4] {true, true, true, true };
+            bool[] expected = new bool[4] { false, true, false, false};
             //Act
             var actual = attributes.ExpenseAuthZ;
             //Assert
@@ -164,7 +164,7 @@ namespace RoomAid.AuthorizationTests
         public void TaskAuthZTest_Pass()
         {
             //Arrange
-            bool[] expected = new bool[4] { true, true, true, true };
+            bool[] expected = new bool[4] { false, true, false, false};
             //Act
             var actual = attributes.TaskAuthZ;
             //Assert
@@ -178,7 +178,7 @@ namespace RoomAid.AuthorizationTests
         public void SRequestAuthZTest_Pass()
         {
             //Arrange
-            bool[] expected = new bool[4] { true, true, true, true };
+            bool[] expected = new bool[4] {true, true, false, false};
             //Act
             var actual = attributes.SRequestAuthZ;
             //Assert

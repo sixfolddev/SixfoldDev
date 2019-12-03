@@ -95,52 +95,53 @@ namespace RoomAid.Authorization
         public bool EnabledAuthZ { get => _enabledAuthZ; set => _enabledAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of Admin privileges
+        /// Qualifier of Admin privileges. AdminAuthZ[0]: canCreateAdmin, AdminAuthZ[1]: canEnableAccount
         /// </summary>
         public bool[] AdminAuthZ { get => _adminAuthZ;  }
 
         /// <summary>
-        /// Qualifier of User account privileges
+        /// Qualifier of User account privileges. AccountAuthZ[0]:Edit, AccountAuthZ[1]: View, AccountAuthZ[2]: Delete
         /// </summary>
         public bool[] AccountAuthZ { get => _accountAuthZ; set => _accountAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User search privileges
+        /// Qualifier of User search privileges.
         /// </summary>
         public bool SearchHouseholdAuthZ { get => _searchHouseholdAuthZ; set => _searchHouseholdAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User message privileges 
+        /// Qualifier of User message privileges. MessageAuthZ[0]:Send, MessageAuthZ[1]: Reply, MessageAuthZ[2]: View
+        /// MessageAuthZ[3]: Mark, MessageAuthZ[4]: Delete
         /// </summary>
         public bool[] MessageAuthZ { get => _messageAuthZ; set => _messageAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User message privileges 
+        /// Qualifier of User invite privileges. InviteAuthZ[0]: Send, InviteAuthZ[1]: View, InviteAuthZ[2]: Accept, InviteAuthZ[3]: Decline
         /// </summary>
         public bool[] InviteAuthZ { get => _inviteAuthZ; set => _inviteAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User message privileges 
+        /// Qualifier of User household privileges. HouseholdAuthZ[0]: Create, HouseholdAuthZ[1]: View, HouseholdAuthZ[2]: Edit, HouseholdAuthZ[3]: Disband
         /// </summary>
         public bool[] HouseholdAuthZ { get => _householdAuthZ; set => _householdAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User message privileges 
+        /// Qualifier of User tenant privileges. TenantAuthZ[0]: Create, TenantAuthZ[1]: Promote, TenantAuthZ[2]: Demote, TenantAuthZ[3]: Remove, TenantAuthZ[4]: Leave
         /// </summary>
         public bool[] TenantAuthZ { get => _tenantAuthZ; set => _tenantAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User message privileges 
+        /// Qualifier of User expense privileges. ExpenseAuthZ[0]: Create, ExpenseAuthZ[1]: View, ExpenseAuthZ[2]: Edit, ExpenseAuthZ[3]: Delete
         /// </summary>
         public bool[] ExpenseAuthZ { get => _expenseAuthZ; set => _expenseAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User message privileges 
+        /// Qualifier of User task privileges. TaskAuthZ[0]: Create, TaskAuthZ[1]: View, TaskAuthZ[2]: Edit, TaskAuthZ[3]: Delete
         /// </summary>
         public bool[] TaskAuthZ { get => _taskAuthZ; set => _taskAuthZ = value; }
 
         /// <summary>
-        /// Qualifier of User message privileges 
+        /// Qualifier of User supply request privileges. SRequestAuthZ[0]: Create, SRequestAuthZ[1]: View, SRequestAuthZ[2]: Edit, SRequestAuthZ[3]: Delete
         /// </summary>
         public bool[] SRequestAuthZ { get => _sRequestAuthZ; set => _sRequestAuthZ = value; }
     }

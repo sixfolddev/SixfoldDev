@@ -4,22 +4,22 @@ using System.Text;
 
 namespace RoomAid.Authorization
 {
-    public enum AuthRole
-    {
-        anon,
-        user,
-        tenant,
-        cohost,
-        host
-    }
-    public enum AuthAdmin
-    {
-        nonadmin,
-        admin,
-        sysadmin
-    }
     public class AuthZInvoker
     {
+        public enum AuthRole
+        {
+            anon,
+            user,
+            tenant,
+            cohost,
+            host
+        }
+        public enum AuthAdmin
+        {
+            nonadmin,
+            admin,
+            sysadmin
+        }
         private AuthZFactory _authZFactory = new AuthZFactory();
         /// <summary>
         /// Evaluates admin authorization privileges to provide to AuthZFactory
@@ -55,9 +55,9 @@ namespace RoomAid.Authorization
                 switch (role)
                 {
                     case AuthRole.user:
-                        if ((displayName == null) || (householdID != 0))
+                        if ((displayName == null))
                         {
-                            throw new ArgumentException("User display name or householdID is invalid");
+                            throw new ArgumentException("User display name is invalid");
                         }   
                         return _authZFactory.CreateUserAuthZ(displayName, adminAuthZ);
                     case AuthRole.host:
