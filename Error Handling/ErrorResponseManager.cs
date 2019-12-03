@@ -7,42 +7,45 @@ namespace RoomAid.ErrorHandling
 /// </summary>
     public class ErrorResponseManager
     {
-        private readonly Exception _e;
-        public ErrorResponseManager(Exception e)
+
+        public ErrorResponseManager()
         {
-            _e = e;
+            
         }
         /// <summary>
         /// calls method To create responseservices depending on type of exception and level of severity, and then executes them
         /// </summary>
         /// <param name="e"></param>
         /// <param name="level"></param>
-        public void GetResponse(AnalyzedError Err)
+        public AnalyzedError GetResponse(AnalyzedError Err)
         {
             IErrorResponseService ResponseService;
             if(Err.Lev == Level.Fatal)
             {
-                 ResponseService = new FatalResponseService(_e);
+                 ResponseService = new FatalResponseService(Err);
             }
             else if (Err.Lev == Level.Error)
             {
-                 ResponseService = new ErrorResponseService(_e);
+                 ResponseService = new ErrorResponseService(Err);
             }
             else
             {
-                 ResponseService = new WarningResponseService(_e);
+                 ResponseService = new WarningResponseService(Err);
             }
-
-            ResponseService.GetResponse();
             try
             {
                 //Log(Err, E.ToString())
             }
             catch (Exception caught)
             {
-                var Failure =new FatalResponseService(caught);
+                var Failure = new FatalResponseService(new AnalyzedError(caught)
+                {
+                    Lev = Level.Fatal
+                });
                 Failure.GetResponse();
             }
+
+            return ResponseService.GetResponse();
         }
 
     }

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
 
@@ -10,9 +8,9 @@ namespace RoomAid.ErrorHandling
     /// Service that takes different exceptions and determines the threat based on the type and severity
     /// Returns a value Level, which is an enumerated List within the namespace RoomAidErrorHandling
     /// </summary>
-    public static partial class ErrorThreatService
+    public partial class ErrorThreatService
     {
-        public static Level GetThreatLevel(Exception exceptione)
+        public Level GetThreatLevel(Exception exceptione)
         {
             return Level.Warning;
         }
@@ -21,7 +19,7 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(SqlException exceptione)
+        public Level GetThreatLevel(SqlException exceptione)
         {
             if (exceptione.Class <= 10)
             {
@@ -45,7 +43,7 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(UnauthorizedAccessException exceptione)
+        public Level GetThreatLevel(UnauthorizedAccessException exceptione)
         {
             return Level.Warning;  
 
@@ -55,7 +53,7 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(HttpUnhandledException exceptione)
+        public Level GetThreatLevel(HttpUnhandledException exceptione)
         {
             return Level.Warning;
         }

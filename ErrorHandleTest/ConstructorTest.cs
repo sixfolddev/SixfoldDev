@@ -2,7 +2,7 @@
 using RoomAid.ErrorHandling;
 using System;
 
-namespace ErrorHandlingTest
+namespace RoomAid.ErrorHandlingTest
 {
     [TestClass]
     public class ConstructorTest
@@ -24,15 +24,29 @@ namespace ErrorHandlingTest
         [TestMethod]
         public void ErrorResponseManagerConstructorTest()
         {
-            var Err = new ErrorResponseManager(new Exception());
+            var Err = new ErrorResponseManager();
             Assert.IsInstanceOfType(Err, typeof(ErrorResponseManager));
         }
 
         [TestMethod]
         public void FatalResponseServiceConstructorTest()
         {
-            var Err = new FatalResponseService(new Exception());
+            var Err = new FatalResponseService(new AnalyzedError(new Exception()));
             Assert.IsInstanceOfType(Err, typeof(FatalResponseService));
+        }
+
+        [TestMethod]
+        public void ErrorThreatManagerConstructorTest()
+        {
+            var Err = new ErrorThreatManager(new Exception());
+            Assert.IsInstanceOfType(Err, typeof(ErrorThreatManager));
+        }
+
+        [TestMethod]
+        public void ErrorThreatServiceConstructorTest()
+        {
+            var Err = new ErrorThreatService();
+            Assert.IsInstanceOfType(Err, typeof(ErrorThreatService));
         }
 
     }

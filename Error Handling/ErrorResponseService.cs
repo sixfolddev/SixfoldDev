@@ -7,15 +7,21 @@ namespace RoomAid.ErrorHandling
 {
     public class ErrorResponseService : IErrorResponseService
     {
-        private readonly Exception _e;
-        public ErrorResponseService(Exception e)
-        { 
-            _e = e; 
+        public AnalyzedError Err { get; }
+        public ErrorResponseService(AnalyzedError err)
+        {
+            Err = err;
         }
 
-        public void GetResponse()
+        public AnalyzedError GetResponse()
         {
+            MessageMaker();
+            return Err;
+        }
 
+        private void MessageMaker()
+        {
+            Err.Message = "An Error has occurred and your request could not be fulfilled at this time. Please try again";
         }
     }
 }

@@ -8,14 +8,17 @@ namespace RoomAid.ErrorHandling
     /// <summary>
     /// Continuation of ErrorThreatService for MongoSpecificExceptions
     /// </summary>
-    public static partial class ErrorThreatService
+    public partial class ErrorThreatService
     {
+        public ErrorThreatService()
+        { }
+
         /// <summary>
         /// GetThreatLevel of mongoauthenticationexception
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(MongoAuthenticationException exceptione)
+        public Level GetThreatLevel(MongoAuthenticationException exceptione)
         {
             return Level.Fatal;
         }
@@ -24,7 +27,7 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(MongoConnectionException exceptione)
+        public Level GetThreatLevel(MongoConnectionException exceptione)
         {
             return Level.Error;
         }
@@ -34,7 +37,7 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(MongoCursorNotFoundException exceptione)
+        public Level GetThreatLevel(MongoCursorNotFoundException exceptione)
         {
             return Level.Error;
         }
@@ -45,7 +48,7 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(MongoException exceptione)
+        public Level GetThreatLevel(MongoException exceptione)
         {
             return Level.Warning;
         }

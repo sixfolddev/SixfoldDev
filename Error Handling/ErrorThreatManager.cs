@@ -1,21 +1,27 @@
 ﻿using System;
 
-
 namespace RoomAid.ErrorHandling
 {
-    
-    public static class ErrorThreatManager
+
+    public class ErrorThreatManager
     {
+        private readonly Exception _e;
+        public ErrorThreatManager(Exception e)
+        {
+            _e = e;
+        }
+
         /// <summary>
         /// Calls the Overloaded GetThreatLevel Method of ErrorThreatService
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static AnalyzedError GetThreatLevel(Exception exceptione)
+        public AnalyzedError GetThreatLevel()
         {
-             AnalyzedError Analysis = new AnalyzedError(exceptione);
-             Analysis.Lev = ErrorThreatService.GetThreatLevel(exceptione);
-             return Analysis;
+            AnalyzedError Analysis = new AnalyzedError(_e);
+            var ThreatService = new ErrorThreatService();
+            Analysis.Lev = ThreatService.GetThreatLevel(_e);
+            return Analysis;
         }
     }
 }

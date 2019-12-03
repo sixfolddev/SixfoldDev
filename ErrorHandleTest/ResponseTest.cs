@@ -1,6 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Error_Response_Test
+namespace RoomAid.ErrorHandlingTest
 {
     [TestClass]
     public class ResponseTest

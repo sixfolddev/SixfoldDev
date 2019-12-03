@@ -5,11 +5,12 @@ namespace RoomAid.ErrorHandling
 {
     public class AnalyzedError
     {
-        private readonly Exception _e;
+        public Exception E { get; }
         public Level Lev { get; set; }
+        public String Message { get; set; }
         public AnalyzedError(Exception e)
         {
-            _e = e;
+            E = e;
         }
         
 

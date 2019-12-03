@@ -4,15 +4,30 @@ namespace RoomAid.ErrorHandling
 {
     class WarningResponseService : IErrorResponseService
     {
-        private readonly Exception _e;
-        public WarningResponseService(Exception e)
+        public AnalyzedError Err { get; }
+        public WarningResponseService(AnalyzedError err)
         {
-            _e = e;
+            Err = err;
         }
 
-        public void GetResponse()
+        public AnalyzedError GetResponse()
         {
 
+
+
+            return Err;
+        }
+
+        private void MessageMaker()
+        {
+            if(Err.E is UnauthorizedAccessException)
+            {
+                Err.Message = "You do not have permissions for this resource";
+            }
+            else
+            {
+                Err.Message = "Something unexpected has occurred";
+            }
         }
     }
 }

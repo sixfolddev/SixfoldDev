@@ -9,6 +9,8 @@ namespace RoomAid.ErrorHandling
         /// Helps with organizing differennt types of responses depending on threat level
         /// </summary>
         /// 
-        void GetResponse();
+        AnalyzedError GetResponse();
+
+        
     }
 }

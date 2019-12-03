@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System;
 using MongoDB.Bson;
 
-namespace ErrorThreatTest
+namespace RoomAid.ErrorHandlingTest
 {
     /// <summary>
     /// Class to Test Functionality of Warning Threat Assessment
@@ -64,11 +64,16 @@ namespace ErrorThreatTest
         public void TestMongoConfigurationException()
         {
             bool Answer;
-            ErrorController ThreatController = new ErrorController(new MongoConfigurationException("yeet"));
+            try
+            {
+                throw new MongoConfigurationException("f");
+            }
+            catch(Exception e)
+            {
 
-            ThreatController.Handle();
-            Answer = (ThreatController.Err.Lev == Level.Warning);
-
+                ErrorThreatService Service = new ErrorThreatService();
+                Answer = Service.GetThreatLevel(e) == Level.Warning;
+            }
             Assert.IsTrue(Answer);
 
 
@@ -88,11 +93,10 @@ namespace ErrorThreatTest
         public void TestMongoException()
         {
             //assign
-            ErrorController ErrorThreatController = new ErrorController(new MongoException("yeet"));
+            bool Answer;
             //act
-            ErrorThreatController.Handle();
-            bool Answer = (ErrorThreatController.Err.Lev == Level.Warning);
-
+            var Service = new ErrorThreatService();
+            Answer = Service.GetThreatLevel(new MongoException("yeet")) == Level.Warning;
             //assert
             Assert.IsTrue(Answer);
 
@@ -102,9 +106,12 @@ namespace ErrorThreatTest
         public void TestErrorThreatManager()
         {
             bool Answer = false;
-            var Err = new AnalyzedError(new Exception());
-            Err.Lev = Level.Warning;
-            var Compare = ErrorThreatManager.GetThreatLevel(new Exception());
+            var Err = new AnalyzedError(new Exception())
+            {
+                Lev = Level.Warning
+            };
+            var Manager = new ErrorThreatManager(new Exception());
+            var Compare = Manager.GetThreatLevel();
             Answer = (Compare.Lev == Err.Lev);
             Assert.IsTrue(Answer);
 
@@ -115,11 +122,16 @@ namespace ErrorThreatTest
         public void TestGeneralException()
         {
             bool Answer;
-            ErrorController ThreatController = new ErrorController(new System.Exception("yee"));
+            var Service = new ErrorThreatService();
 
-            ThreatController.Handle();
-            Answer = (ThreatController.Err.Lev == Level.Warning);
-
+            try
+            {
+                Answer = Service.GetThreatLevel(new Exception()) == Level.Warning;
+            }
+            catch
+            {
+                throw;
+            }
             Assert.IsTrue(Answer);
         }
 
