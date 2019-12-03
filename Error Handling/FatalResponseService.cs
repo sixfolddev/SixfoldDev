@@ -29,7 +29,7 @@ namespace RoomAid.ErrorHandling
         public void GetResponse()
         {
             var Emailer = new EmailService();
-            Emailer.EmailSenderAsync(_body, _subject, _toUsername, _toEmail);
+            Emailer.EmailSender(_body, _subject, _toUsername, _toEmail);
 
         }
     }

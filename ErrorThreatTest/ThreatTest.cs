@@ -26,7 +26,7 @@ namespace ErrorThreatTest
             bool Answer = false;
             try
             {
-                MongoClient Client = new MongoClient("mongodb+srv://rwUser:4agLEh9Fz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
+                MongoClient Client = new MongoClient("mongodb+srv://rwUser:4agLEh9JFz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
                 IMongoDatabase db = Client.GetDatabase("test");
             }   
             catch (MongoAuthenticationException e)
@@ -36,13 +36,15 @@ namespace ErrorThreatTest
                 ErrorThreatController.Handle();
                 Answer = ErrorThreatController.Lev == Level.Warning;
             }
-            catch (Exception e)
+            catch (Exception)
             {
-               Console.WriteLine(e);
+                Assert.Fail();
+                throw;
             }
 
-            
             Assert.IsTrue(Answer);
+
+            
         }
 
         [TestMethod]

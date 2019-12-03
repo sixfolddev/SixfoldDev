@@ -20,8 +20,7 @@ namespace RoomAid.ServiceLayer.Emailing
     {
 
         //These are client id and secrets of the googleapi project, used for token based authn
-        private readonly string _clientID = "740461239177-531qol5vrlgltl6mqcd5q7ebl70ftdqr.apps.googleusercontent.com";
-        private readonly string _clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
+       
         private readonly string _email = "roomaidnotifications@gmail.com";
 
         //blank constructor
@@ -29,18 +28,11 @@ namespace RoomAid.ServiceLayer.Emailing
         { }
 
         //async method that creates message and then sends the email
-        public async void EmailSenderAsync(string body, string subject, string nameTo, string emailTo)
+        public void EmailSender(string body, string subject, string nameTo, string emailTo)
         {
-            try
-            {
-                MimeMessage Message = BuildMessage(body, subject, new MailboxAddress(nameTo, emailTo));
-                await EmailSendAsync(Message);
-            }
-            catch(Exception)
-            {
-
-            }
-
+            
+            MimeMessage Message = BuildMessage(body, subject, new MailboxAddress(nameTo, emailTo));
+            EmailSend(Message);
         }
 
         /// <summary>
@@ -48,37 +40,17 @@ namespace RoomAid.ServiceLayer.Emailing
         /// </summary>
         /// <param name="message"></param>
         /// <returns></returns>
-        private async Task EmailSendAsync(MimeMessage message)
+        private void EmailSend(MimeMessage message)
         {
-            var secrets = new ClientSecrets
-            {
-                ClientId = _clientID,
-                ClientSecret = _clientSecret
-            };
-       //waits for credentials bassed on the secrets given, and gets a refresh token if too much time has passed 
-        var credentials = await GoogleWebAuthorizationBroker.AuthorizeAsync(secrets, new[] { GmailService.Scope.MailGoogleCom }, _email, CancellationToken.None);
-            if(credentials.Token.IsExpired(SystemClock.Default))
-            {
-                await credentials.RefreshTokenAsync(CancellationToken.None);
-            }
+        
             //using gmail.com to connect securely and send the email message passed into the method
             using (var client = new SmtpClient())
             {
-                try
-                {
-                    client.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-                    var auth = new SaslMechanismOAuth2(credentials.UserId, credentials.Token.AccessToken);
-                    client.Authenticate(auth);
-
-                    await client.SendAsync(message);
-                    client.Disconnect(true);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-             
-                
+                client.Connect("smtp.gmail.com", 587);
+                var Password = Environment.GetEnvironmentVariable("emailPassword", EnvironmentVariableTarget.User);
+                client.Authenticate(_email, Password);
+                client.Send(message);
+                client.Disconnect(true); 
             }
         }
         /// <summary>
