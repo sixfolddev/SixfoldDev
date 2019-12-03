@@ -6,21 +6,21 @@ namespace RoomAid.ServiceLayer
 {
     public class DataStoreHandler : ILogHandler
     {
-        MongoClient client = new MongoClient("mongodb+srv://rwUser:4agLEh9JFz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
-        IMongoDatabase db;
-        public IMongoCollection<BsonDocument> collection;
+        MongoClient _client = new MongoClient("mongodb+srv://rwUser:4agLEh9JFz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
+        IMongoDatabase _db;
+        public IMongoCollection<BsonDocument> _collection;
         public DataStoreHandler()
         {
             string collectionName = "Mongo_" + DateTime.Now.ToString("yyyyMMdd");
-            db = client.GetDatabase("test");
-            collection = db.GetCollection<BsonDocument>(collectionName);
+            _db = _client.GetDatabase("test");
+            _collection = _db.GetCollection<BsonDocument>(collectionName);
         }
         // <summary>
-        // Connects to the database and the collection specified by the time value stored within the log message
-        // Creates a new document and writes it to the collection
+        // Connects to the database and the _collection specified by the time value stored within the log message
+        // Creates a new document and writes it to the _collection
         // <\summary>
 
-        // TODO: Write Asynch Database Write
+        // TODO: Convert to Asynchronous 
         public bool WriteLog(LogMessage logMessage)
         {
             for (var i = 0; i < 4; i++)
@@ -38,7 +38,7 @@ namespace RoomAid.ServiceLayer
                         {"SessionID",BsonValue.Create(logMessage.SessionID) },
                         {"Text",BsonValue.Create(logMessage.Text) }
                     };
-                    collection.InsertOne(document);
+                    _collection.InsertOne(document);
                     return true;
                 }
                 //TODO: Call error handling exception handler
@@ -52,6 +52,7 @@ namespace RoomAid.ServiceLayer
             }
             return false;
         }
+        // TODO: Convert to Asynchronous 
         public bool DeleteLog(LogMessage logMessage)
         {
             for (var i = 0; i < 4; i++)
@@ -59,7 +60,7 @@ namespace RoomAid.ServiceLayer
                 try
                 {
                     var deleteFilter = Builders<BsonDocument>.Filter.Eq("LogID", logMessage.LogGUID);
-                    collection.FindOneAndDelete(deleteFilter);
+                    _collection.FindOneAndDelete(deleteFilter);
 
                     return true;
                 }
