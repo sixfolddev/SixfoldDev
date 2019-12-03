@@ -15,7 +15,7 @@ namespace RoomAid.ErrorHandling
     {
 
         private readonly Exception _exceptione;
-        public Level Lev
+        public AnalyzedError Err
         { get;set; }
         public ErrorController(Exception e)
         { 
@@ -27,9 +27,10 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         public void Handle()
         {
-            Lev = ErrorThreatManager.GetThreatLevel(_exceptione);
+
+            Err = ErrorThreatManager.GetThreatLevel(_exceptione);
             ErrorResponseManager ResponseManager = new ErrorResponseManager(_exceptione);
-            ResponseManager.GetResponse(Lev);
+            ResponseManager.GetResponse(Err);
         }
         
         

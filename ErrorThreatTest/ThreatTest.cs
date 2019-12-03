@@ -34,7 +34,7 @@ namespace ErrorThreatTest
                 ErrorController ErrorThreatController = new ErrorController(e);
 
                 ErrorThreatController.Handle();
-                Answer = ErrorThreatController.Lev == Level.Warning;
+                Answer = ErrorThreatController.Err.Lev == Level.Warning;
             }
             catch (Exception)
             {
@@ -67,7 +67,7 @@ namespace ErrorThreatTest
             ErrorController ThreatController = new ErrorController(new MongoConfigurationException("yeet"));
 
             ThreatController.Handle();
-            Answer = (ThreatController.Lev == Level.Warning);
+            Answer = (ThreatController.Err.Lev == Level.Warning);
 
             Assert.IsTrue(Answer);
 
@@ -91,7 +91,7 @@ namespace ErrorThreatTest
             ErrorController ErrorThreatController = new ErrorController(new MongoException("yeet"));
             //act
             ErrorThreatController.Handle();
-            bool Answer = (ErrorThreatController.Lev == Level.Warning);
+            bool Answer = (ErrorThreatController.Err.Lev == Level.Warning);
 
             //assert
             Assert.IsTrue(Answer);
@@ -102,8 +102,10 @@ namespace ErrorThreatTest
         public void TestErrorThreatManager()
         {
             bool Answer = false;
-
-            Answer = (ErrorThreatManager.GetThreatLevel(new Exception()) == Level.Warning);
+            var Err = new AnalyzedError(new Exception());
+            Err.Lev = Level.Warning;
+            var Compare = ErrorThreatManager.GetThreatLevel(new Exception());
+            Answer = (Compare.Lev == Err.Lev);
             Assert.IsTrue(Answer);
 
 
@@ -116,7 +118,7 @@ namespace ErrorThreatTest
             ErrorController ThreatController = new ErrorController(new System.Exception("yee"));
 
             ThreatController.Handle();
-            Answer = (ThreatController.Lev == Level.Warning);
+            Answer = (ThreatController.Err.Lev == Level.Warning);
 
             Assert.IsTrue(Answer);
         }
@@ -135,7 +137,7 @@ namespace ErrorThreatTest
 
                 ErrorController ThreatController = new ErrorController(e);
                 ThreatController.Handle();
-                Answer = (ThreatController.Lev == Level.Warning);
+                Answer = (ThreatController.Err.Lev == Level.Warning);
             }
             catch (Exception)
             {

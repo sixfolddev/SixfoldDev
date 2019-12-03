@@ -11,9 +11,11 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public static Level GetThreatLevel(Exception exceptione)
+        public static AnalyzedError GetThreatLevel(Exception exceptione)
         {
-            return ErrorThreatService.GetThreatLevel(exceptione);
+             AnalyzedError Analysis = new AnalyzedError(exceptione);
+             Analysis.Lev = ErrorThreatService.GetThreatLevel(exceptione);
+             return Analysis;
         }
     }
 }

@@ -111,6 +111,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnalyzedError.cs" />
     <Compile Include="ErrorController.cs" />
     <Compile Include="ErrorResponseManager.cs" />
     <Compile Include="ErrorResponseService.cs" />

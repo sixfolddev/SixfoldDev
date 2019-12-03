@@ -17,14 +17,14 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="e"></param>
         /// <param name="level"></param>
-        public void GetResponse(Level level)
+        public void GetResponse(AnalyzedError Err)
         {
             IErrorResponseService ResponseService;
-            if(level == Level.Fatal)
+            if(Err.Lev == Level.Fatal)
             {
                  ResponseService = new FatalResponseService(_e);
             }
-            else if (level == Level.Error)
+            else if (Err.Lev == Level.Error)
             {
                  ResponseService = new ErrorResponseService(_e);
             }
@@ -36,7 +36,7 @@ namespace RoomAid.ErrorHandling
             ResponseService.GetResponse();
             try
             {
-                //Log(level, E.ToString())
+                //Log(Err, E.ToString())
             }
             catch (Exception caught)
             {
