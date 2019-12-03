@@ -8,12 +8,12 @@ namespace RoomAid.ServiceLayer
     {
         MongoClient client = new MongoClient("mongodb+srv://rwUser:4agLEh9JFz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
         IMongoDatabase db;
-        public IMongoCollection<IConvertibleToBsonDocument> collection;
+        public IMongoCollection<BsonDocument> collection;
         public DataStoreHandler()
         {
             string collectionName = "Mongo_" + DateTime.Now.ToString("yyyyMMdd");
             db = client.GetDatabase("test");
-            collection = db.GetCollection<IConvertibleToBsonDocument>(collectionName);
+            collection = db.GetCollection<BsonDocument>(collectionName);
         }
         // <summary>
         // Connects to the database and the collection specified by the time value stored within the log message
@@ -58,12 +58,10 @@ namespace RoomAid.ServiceLayer
             {
                 try
                 {
-                    string collectionName = "Mongo_" + logMessage.Time.ToString("yyyyMMdd");
-                    var client = new MongoClient("mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
-                    var database = client.GetDatabase("test");
-                    var collection = database.GetCollection<BsonDocument>(collectionName);
-                    collection.FindOneAndDelete(Builders<BsonDocument>.Filter
-                        .Eq("LogID", logMessage.LogGUID));
+                    var deleteFilter = Builders<BsonDocument>.Filter.Eq("LogID", logMessage.LogGUID);
+                    collection.FindOneAndDelete(deleteFilter);
+
+                    return true;
                 }
                 //TODO: Error Handling exception handler
                 catch (Exception e)
