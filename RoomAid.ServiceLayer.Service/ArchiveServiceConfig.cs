@@ -2,7 +2,7 @@
 using System.IO;
 
 
-namespace RoomAid.ServiceLayer.Service
+namespace RoomAid.ServiceLayer.Archive
 {
     class ArchiveServiceConfig
     {

@@ -5,7 +5,7 @@ using System.Globalization;
 using System.IO;
 
 
-namespace RoomAid.ServiceLayer.Service
+namespace RoomAid.ServiceLayer.Archive
 {
     public class ArchiveService
     {

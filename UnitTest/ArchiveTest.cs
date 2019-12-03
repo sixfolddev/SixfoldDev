@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using RoomAid.ServiceLayer.Service;
+using RoomAid.ServiceLayer.Archive;
 
 namespace UnitTest
 {
