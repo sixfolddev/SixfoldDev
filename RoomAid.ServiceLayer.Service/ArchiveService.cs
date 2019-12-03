@@ -47,116 +47,40 @@ namespace RoomAid.ServiceLayer.Service
         public ArchiveService()
         {
             //All these attributes should be store in a configuration file for furture development
-            //Hard code is for testing.
 
-            //For testing, set both path for log and archive storage to D drive
-            logStorageDirectory = @"D:\LogStorage\";
-            archiveStorageDirectory = @"D:\ArchiveStorage\";
+            //Get configuration from ArchiveConfig
+            ArchiveServiceConfig config = new ArchiveServiceConfig();
 
-            //Follow the business requirement, the log life should be 30 days
-            logLife = 30;
+            //Get file path for storage
+            logStorageDirectory = config.GetLogStorage();
+            archiveStorageDirectory = config.GetArchiveStorage();
 
-            //Follow the business requirement, dateFormat should be yyyyMMdd
-            dateFormat = "yyyyMMdd";
+            //Get log life
+            logLife = config.GetLogLife();
 
-            //en-US for culture info as a default
-            cultureInfo = "en-US";
+            //Get Date Format
+            dateFormat = config.GetDateFormat();
+
+            //Get culture info
+            cultureInfo = config.GetCultureInfo();
 
             //Get information about D drive
-            driveOfArchive = new DriveInfo("D");
+            driveOfArchive = config.GetDriveInfo();
 
-            //Assuem we always leave 0.25 GB for a minmum allocated space
-            RequiredSpace = 250000000;
+            //Get space requirement for archive
+            RequiredSpace = config.GetRequiredSpace();
 
-            //The default file path for 7z.exe
-            sevenZipPath = @"D:\7-Zip\7z.exe";
+            //Get file path for 7z.exe
+            sevenZipPath = config.GetSevenZipPath();
 
-            //Follow the business requirement, the retry limit is 3
-            timeOfRetry = 3;
+            //Get retry limit
+            timeOfRetry = config.GetTimeOfRetry();
 
             //Default message, should return successed if all steps returns true
             message = "Archive Successed";
         }
 
-        /// <summary>
-        /// Method Archiveable will check the given filename to see if this log file is old enough to be
-        /// archived. 
-        /// </summary>
-        /// <param name="fileName">log file that being checked</param>
-        /// <returns>True if it is old enough, False if it is not</returns>
-        public bool Archiveable(string fileName)
-        {
-            //Split the file name to remove ".csv"
-            string[] split = fileName.Split('.');
-
-            //After split, the first element in string[] should be the log's created date
-            string logDate = split[0];
-
-            //Convert and check if it is a datetime
-            bool isDateTime = DateTime.TryParseExact(logDate, dateFormat, new CultureInfo(cultureInfo),
-                DateTimeStyles.None, out DateTime logDateTime);
-
-            //Check if the log's life is old enough, return true if file name is correct and it is old enough
-            //Else, return false
-            if ((DateTime.UtcNow - logDateTime).TotalDays > logLife&& isDateTime==true)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        /// <summary>
-        /// Method GetFileNames will go through the log storage, for each file under the storage path, Archiveable()
-        /// method shall be called to check if the log file should be archived, and if the return is true, certain
-        /// file's file name shall be added into a list.
-        /// </summary>
-        /// <returns>resultSet the list of log files that should be archived</returns>
-        public List<string> GetFileNames()
-        {
-            //Create the list for all file names that should be archived
-            var resultSet = new List<string>();
-
-            //Use a for loop to go through the log storage path
-            foreach (string logFile in Directory.GetFiles(logStorageDirectory))
-            {
-                //Get the file name
-                string fileName = Path.GetFileName(logFile);
-
-                //Call Archiveable() method with the file name
-                if (Archiveable(fileName) == true)
-                {
-                    //If the method return true then add the file name into the list
-                    resultSet.Add(fileName);
-                }
-            }
-            
-            //return the list once the for loop ended
-            return resultSet;
-        }
-
-        /// <summary>
-        /// Method IsPsaceEnough() will check if the storage has enough space for archiving.
-        /// </summary>
-        /// <param name="driveOfArchive">the information of drive where the storage at</param>
-        /// <param name="requiredSpace">the estimated required space for archiving</param>
-        /// <returns>True if the space is enough and the drive is availabe, otherwise return false</returns>
-        public bool IsSpaceEnough(DriveInfo driveOfArchive, double requiredSpace)
-        {
-            //Check if the drive's available free space is less than the required space, it also check if
-            //the drive is curretly not available
-            if (driveOfArchive.AvailableFreeSpace < requiredSpace || !driveOfArchive.IsReady)
-            {
-                //Write the message to explain the failure
-                message = "Archive Start Failure: Insufficient space for archiving.";
-
-                //return false if space is not enough or the drive is not available
-                return false;
-            }
-
-            //return true otherwise
-            return true;
-        }
+     
 
         /// <summary>
         /// RunArchive() method is the main method which will call each method step by step to finish the archive
@@ -199,6 +123,86 @@ namespace RoomAid.ServiceLayer.Service
                 return false;
             }
             //Only if all steps were oeprated succeffully, the archive process could return true
+            return true;
+        }
+
+        /// <summary>
+        /// Method Archiveable will check the given filename to see if this log file is old enough to be
+        /// archived. 
+        /// </summary>
+        /// <param name="fileName">log file that being checked</param>
+        /// <returns>True if it is old enough, False if it is not</returns>
+        public bool Archiveable(string fileName)
+        {
+            //Split the file name to remove ".csv"
+            string[] split = fileName.Split('.');
+
+            //After split, the first element in string[] should be the log's created date
+            string logDate = split[0];
+
+            //Convert and check if it is a datetime
+            bool isDateTime = DateTime.TryParseExact(logDate, dateFormat, new CultureInfo(cultureInfo),
+                DateTimeStyles.None, out DateTime logDateTime);
+
+            //Check if the log's life is old enough, return true if file name is correct and it is old enough
+            //Else, return false
+            if ((DateTime.UtcNow - logDateTime).TotalDays > logLife && isDateTime == true)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Method GetFileNames will go through the log storage, for each file under the storage path, Archiveable()
+        /// method shall be called to check if the log file should be archived, and if the return is true, certain
+        /// file's file name shall be added into a list.
+        /// </summary>
+        /// <returns>resultSet the list of log files that should be archived</returns>
+        public List<string> GetFileNames()
+        {
+            //Create the list for all file names that should be archived
+            var resultSet = new List<string>();
+
+            //Use a for loop to go through the log storage path
+            foreach (string logFile in Directory.GetFiles(logStorageDirectory))
+            {
+                //Get the file name
+                string fileName = Path.GetFileName(logFile);
+
+                //Call Archiveable() method with the file name
+                if (Archiveable(fileName) == true)
+                {
+                    //If the method return true then add the file name into the list
+                    resultSet.Add(fileName);
+                }
+            }
+
+            //return the list once the for loop ended
+            return resultSet;
+        }
+
+        /// <summary>
+        /// Method IsPsaceEnough() will check if the storage has enough space for archiving.
+        /// </summary>
+        /// <param name="driveOfArchive">the information of drive where the storage at</param>
+        /// <param name="requiredSpace">the estimated required space for archiving</param>
+        /// <returns>True if the space is enough and the drive is availabe, otherwise return false</returns>
+        public bool IsSpaceEnough(DriveInfo driveOfArchive, double requiredSpace)
+        {
+            //Check if the drive's available free space is less than the required space, it also check if
+            //the drive is curretly not available
+            if (driveOfArchive.AvailableFreeSpace < requiredSpace || !driveOfArchive.IsReady)
+            {
+                //Write the message to explain the failure
+                message = "Archive Start Failure: Insufficient space for archiving.";
+
+                //return false if space is not enough or the drive is not available
+                return false;
+            }
+
+            //return true otherwise
             return true;
         }
 
