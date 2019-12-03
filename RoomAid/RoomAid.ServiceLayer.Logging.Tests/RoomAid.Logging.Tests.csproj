@@ -51,16 +51,15 @@
   <ItemGroup>
     <Compile Include="DsHandlerTest.cs" />
     <Compile Include="FileHandlerTest.cs" />
-    <Compile Include="LogMessageTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoomAid.ServiceLayer\RoomAid.Logging.csproj">
+    <ProjectReference Include="..\RoomAid.ServiceLayer\RoomAid.ServiceLayer.Logging.csproj">
       <Project>{29a3335e-7538-4cde-90dc-ace201f259f6}</Project>
-      <Name>RoomAid.Logging</Name>
+      <Name>RoomAid.ServiceLayer.Logging</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
