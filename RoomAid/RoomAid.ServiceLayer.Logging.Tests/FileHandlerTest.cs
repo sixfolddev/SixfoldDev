@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RoomAid.ServiceLayer;
 
@@ -105,13 +106,31 @@ namespace RoomAid.Logging.Tests
         public void DeleteLog_LogFileUnaltered_Pass()
         {
             //Arrange
-
+            var fileHandler = new FileHandler();
+            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
+                "LogFileUnaltered_Pass()", LogLevels.Levels.None, "Tester", "4", "Testing...");
+            string fileName = fileHandler.MakeFileNameByDate(msg);
+            string path = Path.Combine(@"C:\SixfoldLogFiles", fileName);
+            var formatter = new SingleLineFormatter();
+            var expected = true;
+            var actual = false;
 
             //Act
-            //pass in a log message that DNE in file; file should have all logs intact
+            string[] entries = File.ReadAllLines(path);
+            string message = formatter.FormatLog(msg);
+            if(!entries.Any(message.Equals))
+            {
+                fileHandler.DeleteLog(msg);
+                entries = File.ReadAllLines(path);
+                var lastEntry = entries.Length - 1;
+                if (!entries[lastEntry].Equals(message))
+                {
+                    actual = true;
+                }
+            }
 
             //Assert
-            Assert.Fail();
+            Assert.IsTrue(expected == actual);
         }
     }   
 }

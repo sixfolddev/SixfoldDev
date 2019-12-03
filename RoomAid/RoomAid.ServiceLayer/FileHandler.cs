@@ -11,12 +11,22 @@ namespace RoomAid.ServiceLayer
 
         /// <summary>
         /// Default constructor. Initializes a directory to store the log files and the formatter to
-        /// format the log message.
+        /// format the log message into a single line format.
         /// </summary>
         public FileHandler()
         {
-            _directory = @"C:\SixfoldLogFiles"; // Temporary directory; set up temp prod environment and store to server?
+            _directory = @"C:\SixfoldLogFiles"; // Temporary directory
             _formatter = new SingleLineFormatter();
+        }
+
+        /// <summary>
+        /// Constructor with specified formatter passed in. Initializes a directory to store the log files 
+        /// and the formatter to format the log message.
+        /// </summary>
+        public FileHandler(ILogFormatter format)
+        {
+            _directory = @"C:\SixfoldLogFiles"; // Temporary directory
+            _formatter = format;
         }
 
         // TODO: Write async
@@ -80,7 +90,7 @@ namespace RoomAid.ServiceLayer
                     for(var j = 0; j < logEntries.Length; j++)
                     {
                         string[] tokens = logEntries[j].Split(',');
-                        if (!(tokens[0].Equals(logMessage.LogGUID.ToString())))
+                        if (!(tokens[0].Equals(logMessage.LogGUID.ToString()))) // First token is always the GUID
                         {
                             using(StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8)) // Overwrite existing file
                             {
