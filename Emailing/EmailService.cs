@@ -22,9 +22,11 @@ namespace RoomAid.ServiceLayer.Emailing
         public string clientSecret = "_AWrAdZ267-QJDFbZQWxE3T-";
         public string email = "roomaidnotifications@gmail.com";
 
+        //blank constructor
         public EmailService()
         { }
 
+        //async method that creates message and then sends the email
         public async void EmailSenderAsync(string body, string subject, string nameTo, string emailTo)
         {
             MimeMessage Message = BuildMessage(body, subject, new MailboxAddress(nameTo, emailTo));
@@ -33,7 +35,11 @@ namespace RoomAid.ServiceLayer.Emailing
 
         }
 
-
+        /// <summary>
+        /// Sends an email after gathering correct credentials to send gmail safely
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns></returns>
         private async Task EmailSendAsync(MimeMessage message)
         {
             var secrets = new ClientSecrets
@@ -69,17 +75,18 @@ namespace RoomAid.ServiceLayer.Emailing
         }
         /// <summary>
         /// uses passed in parameters in order to build email messages for sending
+        /// 
         /// </summary>
-        /// <param name="body"></param>
-        /// <param name="subject"></param>
-        /// <param name="to"></param>
+        /// <param name="body"> Message.body = body</param>
+        /// <param name="subject">Message.subject = subject</param>
+        /// <param name="to">Message.to = to</param>
         /// <returns></returns>
         private MimeMessage BuildMessage(string body, string subject, MailboxAddress to)
         {
             MimeMessage Message = new MimeMessage();
             
             
-            Message.From.Add(new MailboxAddress("RoomAidNotifications@DoNotRespond", "roomaidnotifications@gmail.com"));
+            Message.From.Add(new MailboxAddress("RoomAidNotifications@DoNotRespond", email));
             Message.To.Add(to);
             Message.Subject = subject;
             var BuildBody = new BodyBuilder

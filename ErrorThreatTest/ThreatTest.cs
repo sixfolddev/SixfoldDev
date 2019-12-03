@@ -20,7 +20,7 @@ namespace ErrorThreatTest
         public void TestMongoAuthenticationException()
         {
             
-            bool answer = false;
+            bool Answer = false;
             try
             {
                 String ConnectionString = "mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority";
@@ -32,7 +32,7 @@ namespace ErrorThreatTest
                 ErrorController ErrorThreatController = new ErrorController(e);
 
                 ErrorThreatController.Handle();
-                answer = (ErrorThreatController.Lev == Level.Fatal);
+                Answer = (ErrorThreatController.Lev == Level.Fatal);
             }
             catch (Exception)
             {
@@ -40,18 +40,18 @@ namespace ErrorThreatTest
             }
 
             
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
         }
 
         [TestMethod]
         public void TestMongoConnectionException()
         {
-            bool answer = false;
+            bool Answer = false;
 
 
 
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
 
 
         }
@@ -59,13 +59,13 @@ namespace ErrorThreatTest
         [TestMethod]
         public void TestMongoConfigurationException()
         {
-            bool answer;
+            bool Answer;
             ErrorController ThreatController = new ErrorController(new MongoConfigurationException("yeet"));
 
             ThreatController.Handle();
-            answer = (ThreatController.Lev == Level.Warning);
+            Answer = (ThreatController.Lev == Level.Warning);
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
 
 
         }
@@ -73,24 +73,24 @@ namespace ErrorThreatTest
         [TestMethod]
         public void TestMongoCursorNotFoundException()
         {
-            //bool answer;
+            //bool Answer;
             //ErrorController ThreatController = new ErrorController(new MongoCursorNotFoundException());
         }
 
         [TestMethod]
         public void TestMongoInternalException()
         {
-            bool answer = false;
+            bool Answer = false;
             ErrorController ThreatController = new ErrorController(new MongoInternalException("ye"));
 
             ThreatController.Handle();
-            answer = (ThreatController.Lev == Level.Warning);
+            Answer = (ThreatController.Lev == Level.Warning);
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
         }
 
         /// <summary>
-        /// Test For Valid answer of generic MongoException, returning error
+        /// Test For Valid Answer of generic MongoException, returning error
         /// </summary>
         [TestMethod]
         public void TestMongoException()
@@ -99,29 +99,40 @@ namespace ErrorThreatTest
             ErrorController ErrorThreatController = new ErrorController(new MongoException("yeet"));
             //act
             ErrorThreatController.Handle();
-            bool answer = (ErrorThreatController.Lev == Level.Warning);
+            bool Answer = (ErrorThreatController.Lev == Level.Warning);
 
             //assert
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
+
+        }
+
+        [TestMethod]
+        public void TestErrorThreatManager()
+        {
+            bool Answer = false;
+
+            Answer = (ErrorThreatManager.GetThreatLevel(new Exception()) == Level.Warning);
+            Assert.IsTrue(Answer);
+
 
         }
 
         [TestMethod]
         public void TestGeneralException()
         {
-            bool answer;
+            bool Answer;
             ErrorController ThreatController = new ErrorController(new System.Exception("yee"));
 
             ThreatController.Handle();
-            answer = (ThreatController.Lev == Level.Warning);
+            Answer = (ThreatController.Lev == Level.Warning);
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
         }
 
         [TestMethod]
         public void TestSqlExceptionUnderEleven()
         {
-            bool answer = false;
+            bool Answer = false;
             string connect = "";
             try
             {
@@ -132,48 +143,48 @@ namespace ErrorThreatTest
 
                 ErrorController ThreatController = new ErrorController(e);
                 ThreatController.Handle();
-                answer = (ThreatController.Lev == Level.Warning);
+                Answer = (ThreatController.Lev == Level.Warning);
             }
             catch (Exception)
             {
 
             }
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
 
         }
 
         [TestMethod]
         public void TestSqlExceptionBetweenElevenAndSixteen()
         {
-            bool answer = false;
+            bool Answer = false;
 
 
 
 
 
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
         }
 
         [TestMethod]
         public void TestSqlExceptionBetweenSeventeenAndNineteen()
         {
-            bool answer = false;
+            bool Answer = false;
 
 
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
         }
 
         [TestMethod]
         public void TestSqlExceptionAboveNineteen()
         {
-            bool answer = false;
+            bool Answer = false;
 
 
 
-            Assert.IsTrue(answer);
+            Assert.IsTrue(Answer);
         }
 
         
