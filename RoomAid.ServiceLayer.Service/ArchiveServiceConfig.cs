@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace RoomAid.ServiceLayer.Service
 {
@@ -12,63 +9,63 @@ namespace RoomAid.ServiceLayer.Service
         //Variables used 
 
         //The directory path for log file storages
-        private string logStorageDirectory = @"D:\LogStorage\";
+        private const string LOG_STORAGE_DIRECTORY = @"D:\LogStorage\";
 
         //The directory path for Archived file storages
-        private string archiveStorageDirectory = @"D:\ArchiveStorage\";
+        private const string ARCHIVE_STORAGE_DIRECTORY = @"D:\ArchiveStorage\";
 
         //How many days a log file should exist, logs older than this limit should be archived
         //Follow the business requirement, the log life should be 30 days
-        private int logLife = 30;
+        private const int LOG_LIFE = 30;
 
         //The data fromat used for the log file name, shall be used to convert file name to a datetime
-        //Follow the business requirement, dateFormat should be yyyyMMdd
-        private string dateFormat = "yyyyMMdd";
+        //Follow the business requirement, DATE_FORMAT should be yyyyMMdd
+        private const string DATE_FORMAT = "yyyyMMdd";
 
         //The culture information used for converting file name to datetime
         //en-US for culture info as a default
-        private string cultureInfo = "en-US";
+        private const string CULTURE_INFO = "en-US";
 
         //The drive information for archive storage
         //Get information about testing drive
-        private DriveInfo driveOfArchive = new DriveInfo("D");
+        private readonly DriveInfo driveOfArchive = new DriveInfo("D");
 
         //An estimated size for archive storage, should not start archive if the available space is less than this
         //Assuem we always leave 0.25 GB for a minmum allocated space
-        private double RequiredSpace = 250000000;
+        private const double SPACE_REQUIRED = 250000000;
 
         //The file path for '7z.exe'
         //The default file path for 7z.exe
-        private string sevenZipPath = @"D:\7-Zip\7z.exe";
+        private const string SEVEN_ZIP_PATH = @"D:\7-Zip\7z.exe";
 
         //The limit times for retry failed process
         //Follow the business requirement, the retry limit is 3
-        private int timeOfRetry = 3;
+        private const int TIME_OF_RETRY = 3;
 
         //Getters
         public string GetLogStorage()
         {
-            return logStorageDirectory;
+            return LOG_STORAGE_DIRECTORY;
         }
 
         public string GetArchiveStorage()
         {
-            return archiveStorageDirectory;
+            return ARCHIVE_STORAGE_DIRECTORY;
         }
 
         public int GetLogLife()
         {
-            return logLife;
+            return LOG_LIFE;
         }
 
         public string GetDateFormat()
         {
-            return dateFormat;
+            return DATE_FORMAT;
         }
 
         public string GetCultureInfo()
         {
-            return cultureInfo;
+            return CULTURE_INFO;
         }
 
         public DriveInfo GetDriveInfo()
@@ -78,17 +75,17 @@ namespace RoomAid.ServiceLayer.Service
 
         public double GetRequiredSpace()
         {
-            return RequiredSpace;
+            return SPACE_REQUIRED;
         }
 
         public string GetSevenZipPath()
         {
-            return sevenZipPath;
+            return SEVEN_ZIP_PATH;
         }
 
         public int GetTimeOfRetry()
         {
-            return timeOfRetry;
+            return TIME_OF_RETRY;
         }
     }
 }

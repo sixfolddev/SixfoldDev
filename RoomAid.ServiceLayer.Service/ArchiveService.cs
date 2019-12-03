@@ -9,83 +9,30 @@ namespace RoomAid.ServiceLayer.Service
 {
     public class ArchiveService
     {
-        //Variables used 
-
-        //The directory path for log file storages
-        private string logStorageDirectory;
-
-        //The directory path for Archived file storages
-        private string archiveStorageDirectory;
-
-        //How many days a log file should exist, logs older than this limit should be archived
-        private int logLife;
-
-        //The data fromat used for the log file name, shall be used to convert file name to a datetime
-        private string dateFormat;
-
-        //The culture information used for converting file name to datetime
-        private string cultureInfo;
-
-        //The drive information for archive storage
-        private DriveInfo driveOfArchive;
-
-        //An estimated size for archive storage, should not start archive if the available space is less than this
-        private double RequiredSpace;
-
-        //The file path for '7z.exe'
-        private string sevenZipPath;
-
-        //The limit times for retry failed process
-        private int timeOfRetry;
-
-        //The error message for logging
-        private string message;
+        //The error _message for logging
+        private string _message;
 
         //Message catched from deletion or compress
-        private string errorMessage;
+        private string _errorMessage;
+
+        private ArchiveServiceConfig _config;
+
         //Constructor
         public ArchiveService()
         {
             //All these attributes should be store in a configuration file for furture development
 
             //Get configuration from ArchiveConfig
-            ArchiveServiceConfig config = new ArchiveServiceConfig();
+             _config = new ArchiveServiceConfig();
 
-            //Get file path for storage
-            logStorageDirectory = config.GetLogStorage();
-            archiveStorageDirectory = config.GetArchiveStorage();
-
-            //Get log life
-            logLife = config.GetLogLife();
-
-            //Get Date Format
-            dateFormat = config.GetDateFormat();
-
-            //Get culture info
-            cultureInfo = config.GetCultureInfo();
-
-            //Get information about D drive
-            driveOfArchive = config.GetDriveInfo();
-
-            //Get space requirement for archive
-            RequiredSpace = config.GetRequiredSpace();
-
-            //Get file path for 7z.exe
-            sevenZipPath = config.GetSevenZipPath();
-
-            //Get retry limit
-            timeOfRetry = config.GetTimeOfRetry();
-
-            //Default message, should return successed if all steps returns true
-            message = "Archive Successed";
+            //Default _message, should return successed if all steps returns true
+            _message = "Archive Successed";
         }
-
-     
 
         /// <summary>
         /// RunArchive() method is the main method which will call each method step by step to finish the archive
         /// Only if all steps were successful, the method shall return true, otherwise the method shall return false
-        /// and create message based on reasons of failure
+        /// and create _message based on reasons of failure
         /// </summary>
         /// <returns>true for archive successed, ortherwise false</returns>
         public bool RunArchive()
@@ -93,16 +40,16 @@ namespace RoomAid.ServiceLayer.Service
             //Before any step of archive started, the space check is required, if the free space is
             //not less than the required space, or the drive is not available, the archive process should not start
             //The admin shall be notified and this archive period shall be logged as failure
-            if(IsSpaceEnough(driveOfArchive, RequiredSpace) == false)
+            if(IsSpaceEnough(_config.GetDriveInfo(), _config.GetRequiredSpace()) == false)
             {
                 return false;
             }
 
             //Before start the archive, system need to make sure that 7z.exe is installed in the machine
-            if (File.Exists(sevenZipPath) == false)
+            if (File.Exists(_config.GetSevenZipPath()) == false)
             {
-                //Write the message to explain the failure
-                message = "Archive Start Failure: Cannot found 7z.exe for archiving";
+                //Write the _message to explain the failure
+                _message = "Archive Start Failure: Cannot found 7z.exe for archiving";
                 return false;
             }
 
@@ -112,8 +59,8 @@ namespace RoomAid.ServiceLayer.Service
             //if the result set is empty, the archive process must be stopped.
             if (resultSet.Count == 0)
             {
-                //Write the message to explain the failure
-                message = "Archive Start Failure: No files are required to be archived";
+                //Write the _message to explain the failure
+                _message = "Archive Start Failure: No files are required to be archived";
                 return false;
             }
 
@@ -141,12 +88,12 @@ namespace RoomAid.ServiceLayer.Service
             string logDate = split[0];
 
             //Convert and check if it is a datetime
-            bool isDateTime = DateTime.TryParseExact(logDate, dateFormat, new CultureInfo(cultureInfo),
+            bool isDateTime = DateTime.TryParseExact(logDate, _config.GetDateFormat(), new CultureInfo(_config.GetCultureInfo()),
                 DateTimeStyles.None, out DateTime logDateTime);
 
             //Check if the log's life is old enough, return true if file name is correct and it is old enough
             //Else, return false
-            if ((DateTime.UtcNow - logDateTime).TotalDays > logLife && isDateTime == true)
+            if ((DateTime.UtcNow - logDateTime).TotalDays > _config.GetLogLife() && isDateTime == true)
             {
                 return true;
             }
@@ -166,7 +113,7 @@ namespace RoomAid.ServiceLayer.Service
             var resultSet = new List<string>();
 
             //Use a for loop to go through the log storage path
-            foreach (string logFile in Directory.GetFiles(logStorageDirectory))
+            foreach (string logFile in Directory.GetFiles(_config.GetLogStorage()))
             {
                 //Get the file name
                 string fileName = Path.GetFileName(logFile);
@@ -195,8 +142,8 @@ namespace RoomAid.ServiceLayer.Service
             //the drive is curretly not available
             if (driveOfArchive.AvailableFreeSpace < requiredSpace || !driveOfArchive.IsReady)
             {
-                //Write the message to explain the failure
-                message = "Archive Start Failure: Insufficient space for archiving.";
+                //Write the _message to explain the failure
+                _message = "Archive Start Failure: Insufficient space for archiving.";
 
                 //return false if space is not enough or the drive is not available
                 return false;
@@ -228,13 +175,13 @@ namespace RoomAid.ServiceLayer.Service
             Process process = new Process();
 
             //The process shall use 7z.exe to call the commandline
-            process.StartInfo.FileName = sevenZipPath;
+            process.StartInfo.FileName = _config.GetSevenZipPath();
 
             //Use a for loop to go through every file name in resultSet
             foreach (string fileName in resultSet)
             {
-                //Reset the error message
-                errorMessage = "";
+                //Reset the error _message
+                _errorMessage = "";
 
                 //Call AddToCompress() method to check if certain file is added into compressed file successfully
                 bool compressSuccess = AddToCompress(fileName, process);
@@ -243,7 +190,7 @@ namespace RoomAid.ServiceLayer.Service
                 if (compressSuccess == false)
                 {
                     //Retry until it reached the limit time of retry or it successed
-                    for (int i = 0; i< timeOfRetry;i++)
+                    for (int i = 0; i< _config.GetTimeOfRetry();i++)
                     {
                         //Call AddToCompress() method again to check if certain file is added into compressed file successfully
                         compressSuccess = AddToCompress(fileName, process);
@@ -259,10 +206,10 @@ namespace RoomAid.ServiceLayer.Service
                     }
 
                     //If the retry failed three times, skip this file and start to compress the next file
-                    //Add this file's name into the message, so the admin can know what files have problems
+                    //Add this file's name into the _message, so the admin can know what files have problems
                     if(compressSuccess == false)
                     {
-                        compressFailedFiles = compressFailedFiles + fileName + " "+errorMessage+",\n ";
+                        compressFailedFiles = compressFailedFiles + fileName + " "+_errorMessage+",\n ";
                         ifSuccess = false;
                     } 
                 }   
@@ -270,8 +217,8 @@ namespace RoomAid.ServiceLayer.Service
                 //If this file is compressed successfully, then start to delete the original log file
                 if (compressSuccess == true)
                 {
-                    //Reset the error message
-                    errorMessage = "";
+                    //Reset the error _message
+                    _errorMessage = "";
 
                     //Call DeleteLog() method to check if it could be deleted successfully
                     bool deleteSuccess = DeleteLog(fileName);
@@ -280,7 +227,7 @@ namespace RoomAid.ServiceLayer.Service
                     if(deleteSuccess == false)
                     {
                         //Use a for loop to retry the deletion until it return true, or reach the limit retry time
-                        for (int i = 0; i < timeOfRetry; i++)
+                        for (int i = 0; i < _config.GetTimeOfRetry(); i++)
                         {
 
                             //Call DeleteLog() method again
@@ -295,10 +242,10 @@ namespace RoomAid.ServiceLayer.Service
 
                         }
 
-                        //If the deletion still failed, add this file name into the message, and return false
+                        //If the deletion still failed, add this file name into the _message, and return false
                         if (deleteSuccess == false)
                         {
-                            deleteFailedFiles = deleteFailedFiles + fileName + " " + errorMessage + ",\n ";
+                            deleteFailedFiles = deleteFailedFiles + fileName + " " + _errorMessage + ",\n ";
                             ifSuccess = false;
                         }
                     }
@@ -319,17 +266,17 @@ namespace RoomAid.ServiceLayer.Service
                     //The notification should includes the file path and all file names for the errored files
                     notification ="Compress Failed: One or multiple files " +
                                                "could not be added into the compressed file:\nFile Path: " 
-                                               + logStorageDirectory + "\nFile Names: "+ compressFailedFiles;
+                                               + _config.GetLogStorage() + "\nFile Names: "+ compressFailedFiles;
                 }
                 if(string.IsNullOrEmpty(deleteFailedFiles) == false)
                 {
                     //The notification should includes the file path and all file names for the errored files
                     notification = notification + "Deletion Failed: One or multiple files " +
-                            "could not be deleted:\nFile Path: " + logStorageDirectory + "\nFile Names: " + deleteFailedFiles;
+                            "could not be deleted:\nFile Path: " + _config.GetLogStorage() + "\nFile Names: " + deleteFailedFiles;
                 }
 
-                //Write the message to explain the failure
-                message = "File Out Put Failure: Failed to compress or delete one or multiple files";
+                //Write the _message to explain the failure
+                _message = "File Out Put Failure: Failed to compress or delete one or multiple files";
                 //Notify the admin
             }
             //Return the result if the file out put is successfully
@@ -347,11 +294,11 @@ namespace RoomAid.ServiceLayer.Service
             try
             {
                 //Set the file path for the output compressed file
-                string outPutFilePath = archiveStorageDirectory + DateTime.Now.ToString(dateFormat) +
+                string outPutFilePath = _config.GetArchiveStorage() + DateTime.Now.ToString(_config.GetDateFormat()) +
                     ".7z";
 
                 //Set path for the log file which needed to be archived
-                string filePath = logStorageDirectory + fileName;
+                string filePath = _config.GetLogStorage() + fileName;
 
                 //Set the argument as the commanline for 7z to add a file into to the compressed file.
                 //a - means add for 7z commandline
@@ -367,8 +314,8 @@ namespace RoomAid.ServiceLayer.Service
             }
             catch (Exception e)
             {
-                //Write the error message for certain file
-                errorMessage = e.ToString();
+                //Write the error _message for certain file
+                _errorMessage = e.ToString();
 
                 //Catch any error during the process such as the file opened or not found at the moment.
                 //Return false if the add to compress file failed
@@ -388,7 +335,7 @@ namespace RoomAid.ServiceLayer.Service
         public bool DeleteLog(string fileName)
         {
             //Get the file path by combineing the storage path and the file name
-            string filePath = logStorageDirectory + fileName;
+            string filePath = _config.GetLogStorage() + fileName;
 
             try
             {
@@ -404,8 +351,8 @@ namespace RoomAid.ServiceLayer.Service
             }
             catch (Exception e)
             {
-                //Write the error message for certain file
-                errorMessage = e.ToString();
+                //Write the error _message for certain file
+                _errorMessage = e.ToString();
 
                 //Catch the error while deleting the file, such as the file was opened or cannot be find when delete it
                 return false;
@@ -423,13 +370,13 @@ namespace RoomAid.ServiceLayer.Service
         }
 
         /// <summary>
-        /// Method GetMessage() will return the message to the caller, the message shall explain if the archive is
+        /// Method GetMessage() will return the _message to the caller, the _message shall explain if the archive is
         /// successed or the reason of failure
         /// </summary>
-        /// <returns> The message </returns>
+        /// <returns> The _message </returns>
         public string GetMessage()
         {
-            return message;
+            return _message;
         }
     }
 }
