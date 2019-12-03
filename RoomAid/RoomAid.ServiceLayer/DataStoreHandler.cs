@@ -44,13 +44,21 @@ namespace RoomAid.ServiceLayer
                 try
                 {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+>>>>>>> 9aa6315386d1380191eca09ae8cb16637b91ee95
                     string collectionName = "Mongo_" + logMessage.Time.ToString("yyyyMMdd");
 >>>>>>> Michell
                     var client = new MongoClient("mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
                     var database = client.GetDatabase("test");
                     var collection = database.GetCollection<BsonDocument>(collectionName);
 =======
+<<<<<<< HEAD
 >>>>>>> Michell
+=======
+>>>>>>> Stashed changes
+>>>>>>> 9aa6315386d1380191eca09ae8cb16637b91ee95
                     var document = new BsonDocument
                     {
                         {"LogID",BsonValue.Create(logMessage.LogGUID) },
