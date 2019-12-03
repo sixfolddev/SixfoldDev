@@ -6,7 +6,7 @@ namespace RoomAid.ServiceLayer
     {
         public Guid LogGUID { get; set; }
         public DateTime Time { get; set; }
-        public LogLevels.Levels Level { get; set; }
+        public String Level { get; set; }
         public string UserID { get; set; }
         public string SessionID { get; set; }
         public string CallingClass { get; set; }
@@ -16,7 +16,7 @@ namespace RoomAid.ServiceLayer
         public LogMessage(Guid logId, DateTime time, string className, string methodName, LogLevels.Levels level, string user, string session,string text)
         {
             LogGUID = logId;
-            Level = level;
+            Level = level.ToString();
             Time = time;
             UserID = user;
             SessionID = session;
