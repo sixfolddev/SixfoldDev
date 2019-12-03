@@ -1,0 +1,80 @@
+﻿using System;
+using MongoDB.Bson;
+using MongoDB.Driver;
+
+namespace RoomAid.ServiceLayer
+{
+    public class DataStoreHandler : ILogHandler
+    {
+        MongoClient client = new MongoClient("mongodb+srv://rwUser:4agLEh9JFz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
+        IMongoDatabase db;
+        public IMongoCollection<IConvertibleToBsonDocument> collection;
+        public DataStoreHandler()
+        {
+            string collectionName = "Mongo_" + DateTime.Now.ToString("yyyyMMdd");
+            db = client.GetDatabase("test");
+            collection = db.GetCollection<IConvertibleToBsonDocument>(collectionName);
+        }
+        // <summary>
+        // Connects to the database and the collection specified by the time value stored within the log message
+        // Creates a new document and writes it to the collection
+        // <\summary>
+
+        // TODO: Write Asynch Database Write
+        public bool WriteLog(LogMessage logMessage)
+        {
+            for (var i = 0; i < 4; i++)
+            {
+                try
+                {
+                    var document = new BsonDocument
+                    {
+                        {"LogID",BsonValue.Create(logMessage.LogGUID) },
+                        {"DateTime", BsonValue.Create(logMessage.Time) },
+                        {"Class",BsonValue.Create(logMessage.CallingClass)},
+                        {"Method",BsonValue.Create(logMessage.CallingMethod) },
+                        {"Level",BsonValue.Create(logMessage.Level) },
+                        {"UserID",BsonValue.Create(logMessage.UserID) },
+                        {"SessionID",BsonValue.Create(logMessage.SessionID) },
+                        {"Text",BsonValue.Create(logMessage.Text) }
+                    };
+                    collection.InsertOne(document);
+                    return true;
+                }
+                //TODO: Call error handling exception handler
+                catch (Exception e)
+                {
+                    if (i == 3)
+                    {
+                        throw e;
+                    }
+                }
+            }
+            return false;
+        }
+        public bool DeleteLog(LogMessage logMessage)
+        {
+            for (var i = 0; i < 4; i++)
+            {
+                try
+                {
+                    string collectionName = "Mongo_" + logMessage.Time.ToString("yyyyMMdd");
+                    var client = new MongoClient("mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
+                    var database = client.GetDatabase("test");
+                    var collection = database.GetCollection<BsonDocument>(collectionName);
+                    collection.FindOneAndDelete(Builders<BsonDocument>.Filter
+                        .Eq("LogID", logMessage.LogGUID));
+                }
+                //TODO: Error Handling exception handler
+                catch (Exception e)
+                {
+                    if (i == 3)
+                    {
+                        throw e;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+}
