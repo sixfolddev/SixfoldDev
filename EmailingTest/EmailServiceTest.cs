@@ -17,7 +17,7 @@ namespace EmailingTest
         [TestMethod]
         public void EmailSendTest()
         {
-            bool Answer = true;
+            
             string Body = "body";
             string Subject = "subject";
             var User = "User";

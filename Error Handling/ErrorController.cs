@@ -13,7 +13,6 @@ namespace RoomAid.ErrorHandling
     /// </summary>
     public class ErrorController
     {
-
         private readonly Exception _exceptione;
         public AnalyzedError Err
         { get;set; }
