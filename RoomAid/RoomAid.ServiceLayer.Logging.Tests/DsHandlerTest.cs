@@ -22,5 +22,11 @@ namespace RoomAid.Logging.Tests
             }
             Assert.IsTrue(expected == actual);
         }
+
+        [TestMethod]
+        public void WriteLog_InvalidDate_Pass()
+        {
+            var dsHandler = new DataStoreHandler();
+        }
     }
 }

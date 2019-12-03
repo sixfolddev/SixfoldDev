@@ -57,30 +57,15 @@
       <HintPath>..\packages\System.Buffers.4.4.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
-      <Private>True</Private>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System.Xml.Linq" />
-=======
->>>>>>> 6d6680a106a5427ceae85ee38f264694b3e31ab9
-=======
->>>>>>> Michell
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-<<<<<<< HEAD
-=======
     <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
->>>>>>> Michell
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStoreHandler.cs" />
@@ -93,18 +78,9 @@
     <Compile Include="LogMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SingleLineFormatter.cs" />
-<<<<<<< HEAD
-<<<<<<< HEAD
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-=======
->>>>>>> 6d6680a106a5427ceae85ee38f264694b3e31ab9
-=======
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
->>>>>>> Michell
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

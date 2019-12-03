@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-=======
-﻿using System;
->>>>>>> Michell
 using MongoDB.Bson;
 using MongoDB.Driver;
 
@@ -32,33 +23,10 @@ namespace RoomAid.ServiceLayer
         // TODO: Write Asynch Database Write
         public bool WriteLog(LogMessage logMessage)
         {
-<<<<<<< HEAD
-            for(var i = 0; i < 4; i++)
-            {
-                try
-                {
-                    string collectionName = "Mongo_" + logMessage.Time.toString("yyyyMMdd");
-=======
             for (var i = 0; i < 4; i++)
             {
                 try
                 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-<<<<<<< Updated upstream
->>>>>>> 9aa6315386d1380191eca09ae8cb16637b91ee95
-                    string collectionName = "Mongo_" + logMessage.Time.ToString("yyyyMMdd");
->>>>>>> Michell
-                    var client = new MongoClient("mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
-                    var database = client.GetDatabase("test");
-                    var collection = database.GetCollection<BsonDocument>(collectionName);
-=======
-<<<<<<< HEAD
->>>>>>> Michell
-=======
->>>>>>> Stashed changes
->>>>>>> 9aa6315386d1380191eca09ae8cb16637b91ee95
                     var document = new BsonDocument
                     {
                         {"LogID",BsonValue.Create(logMessage.LogGUID) },
@@ -82,10 +50,7 @@ namespace RoomAid.ServiceLayer
                     }
                 }
             }
-<<<<<<< HEAD
-=======
             return false;
->>>>>>> Michell
         }
         public bool DeleteLog(LogMessage logMessage)
         {
@@ -93,16 +58,6 @@ namespace RoomAid.ServiceLayer
             {
                 try
                 {
-<<<<<<< HEAD
-                    string collectionName = "Mongo_" + logMessage.Time.toString("yyyyMMdd");
-                    var client = new MongoClient("mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
-                    var database = client.GetDatabase("test");
-                    var collection = database.GetCollection<BsonDocument>(collectionName);
-                    collection.FindOneAndDelete(Builders<BsonDocument>).Filter.Eq("LogID", logMessage.LogGUID);
-                }
-                //TODO: Error Handling exception handler
-                catch(Exception e)
-=======
                     string collectionName = "Mongo_" + logMessage.Time.ToString("yyyyMMdd");
                     var client = new MongoClient("mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
                     var database = client.GetDatabase("test");
@@ -112,7 +67,6 @@ namespace RoomAid.ServiceLayer
                 }
                 //TODO: Error Handling exception handler
                 catch (Exception e)
->>>>>>> Michell
                 {
                     if (i == 3)
                     {
