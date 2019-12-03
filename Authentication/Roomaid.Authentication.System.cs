@@ -46,6 +46,8 @@ namespace AuthenticationSystem
         {
             return retrievedSalt;
         }
+
+        //Generate a hash with user entered pw and salt tied to user account
         public string generateHash()
         {
             //Convert salt into byte array for hashing function
@@ -62,6 +64,7 @@ namespace AuthenticationSystem
         }
 
         //Function to retrieve hashed password tied to a userID.
+        //hashed pw not stored in variable for security reasons
         public string dataStoreHash()
         {
             string storedHash;
