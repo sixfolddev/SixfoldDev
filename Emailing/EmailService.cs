@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Google.Apis.Auth.OAuth2;
-using Google.Apis.Gmail.v1;
-using Google.Apis.Util;
 using MailKit.Net.Smtp;
-using MailKit.Security;
 using MimeKit;
 
 
