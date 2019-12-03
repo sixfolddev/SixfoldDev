@@ -4,8 +4,17 @@ using MongoDB.Driver;
 
 namespace RoomAid.ServiceLayer
 {
-    class DataStoreHandler : ILogHandler
+    public class DataStoreHandler : ILogHandler
     {
+        MongoClient client = new MongoClient("mongodb+srv://rwUser:4agLEh9JFz7P5QC4@roomaid-logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
+        IMongoDatabase db;
+        public IMongoCollection<IConvertibleToBsonDocument> collection;
+        public DataStoreHandler()
+        {
+            string collectionName = "Mongo_" + DateTime.Now.ToString("yyyyMMdd");
+            db = client.GetDatabase("test");
+            collection = db.GetCollection<IConvertibleToBsonDocument>(collectionName);
+        }
         // <summary>
         // Connects to the database and the collection specified by the time value stored within the log message
         // Creates a new document and writes it to the collection
@@ -18,10 +27,6 @@ namespace RoomAid.ServiceLayer
             {
                 try
                 {
-                    string collectionName = "Mongo_" + logMessage.Time.ToString("yyyyMMdd");
-                    var client = new MongoClient("mongodb+srv://<rwUser>:<readwrite>@logs-s3nyt.gcp.mongodb.net/test?retryWrites=true&w=majority");
-                    var database = client.GetDatabase("test");
-                    var collection = database.GetCollection<BsonDocument>(collectionName);
                     var document = new BsonDocument
                     {
                         {"LogID",BsonValue.Create(logMessage.LogGUID) },
