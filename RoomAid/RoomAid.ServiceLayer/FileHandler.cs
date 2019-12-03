@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace RoomAid.ServiceLayer
@@ -14,7 +15,11 @@ namespace RoomAid.ServiceLayer
         /// </summary>
         public FileHandler()
         {
+<<<<<<< HEAD
             _directory = @"C:\SixfoldLogFiles"; // Temporary directory
+=======
+            _directory = @"C:\SixfoldLogFiles"; // Temporary directory; set up temp prod environment and store to server?
+>>>>>>> Michell
             _formatter = new SingleLineFormatter();
         }
 
@@ -35,21 +40,36 @@ namespace RoomAid.ServiceLayer
                     {
                         directory.Create();
                     }
+<<<<<<< HEAD
                     string fileName = logMessage.Time.ToString("yyyyMMdd") + ".csv";
                     string path = Path.Combine(_directory, fileName);
                     StreamWriter writer;
                     if (!File.Exists(path)) // If file doesn't exist, create and write parameter names as first line
                     {
                         using (writer = new StreamWriter(path, false, Encoding.UTF8))
+=======
+                    string fileName = MakeFileNameByDate(logMessage);
+                    string path = Path.Combine(_directory, fileName);
+                    if (!File.Exists(path)) // If file doesn't exist, create and write parameter names as first line
+                    {
+                        using (StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8)) // UTF8 Encoding recommended for .NET Framework 4.7.2
+>>>>>>> Michell
                         {
                             writer.WriteLine(logMessage.GetParamNames());
                         }
                     }
+<<<<<<< HEAD
                     using (writer = new StreamWriter(path, true, Encoding.UTF8)) // UTF8 Encoding recommended for .NET Framework 4.7.2
                     {
                         writer.WriteLine(_formatter.FormatLog(logMessage));
                     }
                     writer.Close();
+=======
+                    using (StreamWriter writer = new StreamWriter(path, true, Encoding.UTF8))
+                    {
+                        writer.WriteLine(_formatter.FormatLog(logMessage));
+                    }
+>>>>>>> Michell
                     return true;
                 }
                 catch (IOException e)
@@ -75,6 +95,7 @@ namespace RoomAid.ServiceLayer
             {
                 try
                 {
+<<<<<<< HEAD
                     string fileName = logMessage.Time.ToString("yyyyMMdd") + ".csv";
                     string path = Path.Combine(_directory, fileName);
                     using (var reader = new StreamReader(path))
@@ -93,6 +114,21 @@ namespace RoomAid.ServiceLayer
                             }
                         }
                         writer.Close();
+=======
+                    string fileName = MakeFileNameByDate(logMessage);
+                    string path = Path.Combine(_directory, fileName);
+                    string[] logEntries = File.ReadAllLines(path);
+                    for(var j = 0; j < logEntries.Length; j++)
+                    {
+                        string[] tokens = logEntries[j].Split(',');
+                        if (!(tokens[0].Equals(logMessage.LogGUID.ToString())))
+                        {
+                            using(StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8)) // Overwrite existing file
+                            {
+                                writer.WriteLine(logMessage);
+                            }
+                        }
+>>>>>>> Michell
                     }
                     return true;
                 }
@@ -105,6 +141,11 @@ namespace RoomAid.ServiceLayer
                 }
             }
             return false;
+        }
+
+        public string MakeFileNameByDate(LogMessage logMessage)
+        {
+            return logMessage.Time.ToString("yyyyMMdd") + ".csv";
         }
     }
 }
