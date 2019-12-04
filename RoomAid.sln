@@ -1,15 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.29503.13
+VisualStudioVersion = 16.0.29326.143
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ErrorHandling", "Error Handling\RoomAid.ErrorHandling.csproj", "{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.Archive", "RoomAid.ServiceLayer.Service\RoomAid.ServiceLayer.Archive.csproj", "{F1820B6F-CEE2-4D0D-ABFA-B06F4DC9069C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.Emailing", "Emailing\RoomAid.ServiceLayer.Emailing.csproj", "{4F74C44B-4392-416A-BD1F-CD55034A9D97}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailingTest", "EmailingTest\EmailingTest.csproj", "{6988B81C-BCBA-4480-A9CB-70928D73E12F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHandleTest", "ErrorHandleTest\ErrorHandleTest.csproj", "{E5414F13-EE2C-42A5-9C75-1868ABEC4921}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,27 +13,19 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6988B81C-BCBA-4480-A9CB-70928D73E12F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6988B81C-BCBA-4480-A9CB-70928D73E12F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6988B81C-BCBA-4480-A9CB-70928D73E12F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6988B81C-BCBA-4480-A9CB-70928D73E12F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1820B6F-CEE2-4D0D-ABFA-B06F4DC9069C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1820B6F-CEE2-4D0D-ABFA-B06F4DC9069C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1820B6F-CEE2-4D0D-ABFA-B06F4DC9069C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1820B6F-CEE2-4D0D-ABFA-B06F4DC9069C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {91AA9124-9364-4DBA-9EC8-F3F15E6BB953}
+		SolutionGuid = {800CC879-350D-43AA-BDB4-FA8E15F06F25}
 	EndGlobalSection
 EndGlobal
