@@ -6,7 +6,7 @@ using System;
 namespace UnitTestAuthentication
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTestAuthN
     {
         Authentication authentication = new Authentication("tester01", "password1");
 
@@ -23,5 +23,7 @@ namespace UnitTestAuthentication
             //If this passes, user is authenticated
             Assert.AreEqual(authentication.generateHash(), authentication.dataStoreHash());
         }
+
+
     }
 }
