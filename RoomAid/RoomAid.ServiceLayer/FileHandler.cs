@@ -15,7 +15,7 @@ namespace RoomAid.ServiceLayer.Logging
         /// </summary>
         public FileHandler()
         {
-            _directory = @"C:\SixfoldLogFiles"; // Temporary directory
+            _directory = @"D:\LogStorage\";// Temporary directory
             _formatter = new SingleLineFormatter();
         }
 
@@ -25,7 +25,7 @@ namespace RoomAid.ServiceLayer.Logging
         /// </summary>
         public FileHandler(ILogFormatter format)
         {
-            _directory = @"C:\SixfoldLogFiles"; // Temporary directory
+            _directory = @"D:\LogStorage\";// Temporary directory
             _formatter = format;
         }
 

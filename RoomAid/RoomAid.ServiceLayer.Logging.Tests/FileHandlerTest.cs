@@ -17,7 +17,7 @@ namespace RoomAid.Logging.Tests
             LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
                 "WriteLog_NewFileIsCreatedAndWrites_Pass()", LogLevels.Levels.None, "Tester", "1", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\SixfoldLogFiles", fileName);
+            string path = Path.Combine(@"D:\LogStorage\", fileName);
             var expected = true;
             var actual = false;
 
@@ -46,7 +46,7 @@ namespace RoomAid.Logging.Tests
             LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
                 "WriteLog_LogEntryAppends_Pass()", LogLevels.Levels.None, "Tester", "2", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\SixfoldLogFiles", fileName);
+            string path = Path.Combine(@"D:\LogStorage\", fileName);
             var formatter = new SingleLineFormatter();
             var expected = true;
             var actual = false;
@@ -75,7 +75,7 @@ namespace RoomAid.Logging.Tests
             LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
                 "LogEntryFoundAndDeleted_Pass()", LogLevels.Levels.None, "Tester", "3", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\SixfoldLogFiles", fileName);
+            string path = Path.Combine(@"D:\LogStorage\", fileName);
             var formatter = new SingleLineFormatter();
             var expected = true;
             var actual = false;
@@ -110,7 +110,7 @@ namespace RoomAid.Logging.Tests
             LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
                 "LogFileUnaltered_Pass()", LogLevels.Levels.None, "Tester", "4", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\SixfoldLogFiles", fileName);
+            string path = Path.Combine(@"D:\LogStorage\", fileName);
             var formatter = new SingleLineFormatter();
             var expected = true;
             var actual = false;

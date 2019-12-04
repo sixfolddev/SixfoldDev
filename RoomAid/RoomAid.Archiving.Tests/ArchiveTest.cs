@@ -4,7 +4,7 @@ using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using RoomAid.ServiceLayer.Archive;
 
-namespace UnitTest
+namespace RoomAid.Archiving.Tests
 {
     [TestClass]
     public class ArchiveTest
@@ -21,7 +21,7 @@ namespace UnitTest
             bool expected = false;
 
             //Act
-            bool actual = archiver.IsSpaceEnough(new System.IO.DriveInfo("D"),9999999999999999999);
+            bool actual = archiver.IsSpaceEnough(new System.IO.DriveInfo("D"), 9999999999999999999);
             Console.WriteLine(archiver.GetMessage());
 
             //Assert
@@ -44,7 +44,7 @@ namespace UnitTest
             File.WriteAllText(@"D:\LogStorage\20191119.csv", "testing");
             bool actual = archiver.Archiveable("20191119.csv");
             archiver.DeleteLog("20191119.csv");
-            Console.WriteLine("the result is:"+actual);
+            Console.WriteLine("the result is:" + actual);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -110,7 +110,7 @@ namespace UnitTest
             List<string> resultSet = archiver.GetFileNames();
             if (resultSet.Count == 2)
             {
-                actual =true;
+                actual = true;
             }
             archiver.DeleteLog("20190826.csv");
             archiver.DeleteLog("20190824.csv");
@@ -316,7 +316,7 @@ namespace UnitTest
             ArchiveService archiver = new ArchiveService();
             bool expected = true;
             string filePath = @"D:\LogStorage\2019060";
-            for(int i = 1; i < 10; i++)
+            for (int i = 1; i < 10; i++)
             {
                 string fileName = filePath + i + ".csv";
                 File.WriteAllText(fileName, "testing");
@@ -356,7 +356,7 @@ namespace UnitTest
         {
             //Arrange
             ArchiveService archiver = new ArchiveService();
-            bool expected =false;
+            bool expected = false;
             string filePath = @"D:\LogStorage\2019060";
             for (int i = 1; i < 10; i++)
             {
@@ -381,9 +381,9 @@ namespace UnitTest
             //clean the archive storage
             DirectoryInfo dir = new DirectoryInfo(@"D:\ArchiveStorage\");
 
-           foreach (FileInfo file in dir.GetFiles())
+            foreach (FileInfo file in dir.GetFiles())
             {
-            file.Delete();
+                file.Delete();
             }
         }
     }
