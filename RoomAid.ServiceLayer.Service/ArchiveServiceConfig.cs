@@ -36,7 +36,7 @@ namespace RoomAid.ServiceLayer.Archive
 
         //The file path for '7z.exe'
         //The default file path for 7z.exe
-        private const string SEVEN_ZIP_PATH = @"D:\7-Zip\7z.exe";
+        private const string SEVEN_ZIP_PATH = @"C:\Program Files\7-Zip\7z.exe";
 
         //The limit times for retry failed process
         //Follow the business requirement, the retry limit is 3

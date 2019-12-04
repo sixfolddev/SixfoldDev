@@ -337,4 +337,12 @@ ASALocalRun/
 .localhistory/
 
 # BeatPulse healthcheck temp database
+<<<<<<< HEAD
+<<<<<<< HEAD
 healthchecksdb
+=======
+healthchecksdb
+>>>>>>> 16c2e7f7dc66d524fda78bf5d22932f1d15d5e1c
+=======
+healthchecksdb
+>>>>>>> DanielG
