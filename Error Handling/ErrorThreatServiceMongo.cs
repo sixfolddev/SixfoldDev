@@ -1,6 +1,6 @@
 ﻿using MongoDB.Driver;
 using System;
-
+using RoomAid.ServiceLayer.Logging;
 
 
 namespace RoomAid.ErrorHandling
@@ -18,18 +18,18 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoAuthenticationException exceptione)
+        public LogLevels.Levels GetThreatLevel(MongoAuthenticationException exceptione)
         {
-            return Level.Fatal;
+            return LogLevels.Levels.Fatal;
         }
         /// <summary>
         /// GetThreatLevel of MongoConnectionException
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoConnectionException exceptione)
+        public LogLevels.Levels GetThreatLevel(MongoConnectionException exceptione)
         {
-            return Level.Error;
+            return LogLevels.Levels.Error;
         }
  
         /// <summary>
@@ -37,9 +37,9 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoCursorNotFoundException exceptione)
+        public LogLevels.Levels GetThreatLevel(MongoCursorNotFoundException exceptione)
         {
-            return Level.Error;
+            return LogLevels.Levels.Error;
         }
      
 
@@ -48,9 +48,9 @@ namespace RoomAid.ErrorHandling
         /// </summary>
         /// <param name="exceptione"></param>
         /// <returns>Level</returns>
-        public Level GetThreatLevel(MongoException exceptione)
+        public LogLevels.Levels GetThreatLevel(MongoException exceptione)
         {
-            return Level.Warning;
+            return LogLevels.Levels.Warning;
         }
 
         

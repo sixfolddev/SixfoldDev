@@ -3,7 +3,6 @@
 namespace RoomAid.ErrorHandling
 {
     //Levels are used to determine severity of things logged, as well as helping determine how to handle errors 
-    public enum Level { None, Info, Debug, Warning, Error, Fatal };
 
     /// <summary>
     /// Warning Controller is the Large Controller that handles All operations that are required by 
