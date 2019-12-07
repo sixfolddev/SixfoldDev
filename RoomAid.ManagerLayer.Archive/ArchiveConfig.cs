@@ -1,10 +1,7 @@
-﻿using System;
-using System.IO;
-
-
-namespace RoomAid.ServiceLayer.Archive
+﻿using System.IO;
+namespace RoomAid.ManagerLayer.Archive
 {
-    class ArchiveServiceConfig
+    class ArchiveConfig
     {
         //Variables used 
 

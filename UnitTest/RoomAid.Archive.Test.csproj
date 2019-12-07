@@ -56,9 +56,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoomAid.ServiceLayer.Service\RoomAid.ServiceLayer.Archive.csproj">
+    <ProjectReference Include="..\RoomAid.ManagerLayer.Archive\RoomAid.ManagerLayer.csproj">
       <Project>{f1820b6f-cee2-4d0d-abfa-b06f4dc9069c}</Project>
-      <Name>RoomAid.ServiceLayer.Archive</Name>
+      <Name>RoomAid.ManagerLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoomAid.ServiceLayer.Archive\RoomAid.ServiceLayer.csproj">
+      <Project>{4dd30e8c-96f9-41fe-a68a-303b79305488}</Project>
+      <Name>RoomAid.ServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

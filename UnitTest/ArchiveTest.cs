@@ -2,13 +2,20 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using RoomAid.ManagerLayer.Archive;
 using RoomAid.ServiceLayer.Archive;
 
 namespace UnitTest
 {
+    
     [TestClass]
     public class ArchiveTest
     {
+        private IArchiveService archiver = new SevenZipArchiveService();
+        private ArchiveManager manager = new ArchiveManager();
+        private ArchiveConfig config = new ArchiveConfig();
+
+        //manager test
         [TestMethod]
         ///<summary>
         ///Test for IsSpaceEnough()
@@ -17,17 +24,18 @@ namespace UnitTest
         public void SpaceCheckNotPass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
+            ArchiveManager archiver = new ArchiveManager();
             bool expected = false;
 
             //Act
-            bool actual = archiver.IsSpaceEnough(new System.IO.DriveInfo("D"),9999999999999999999);
+            bool actual = archiver.IsSpaceEnough(new System.IO.DriveInfo("C"),9999999999999999999);
             Console.WriteLine(archiver.GetMessage());
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
+        //manager test
         [TestMethod]
         ///<summary>
         ///Test for log archiveable
@@ -37,19 +45,21 @@ namespace UnitTest
         public void IsNotOldPass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = false;
 
             //Act
-            File.WriteAllText(@"D:\LogStorage\20191119.csv", "testing");
-            bool actual = archiver.Archiveable("20191119.csv");
-            archiver.DeleteLog("20191119.csv");
+            string fileName = DateTime.Now.ToString(config.GetDateFormat()) + config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+
+            bool actual = manager.Archiveable(fileName);
+            archiver.DeleteLog(fileName);
             Console.WriteLine("the result is:"+actual);
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
+        //manager test
         ///<summary>
         ///Test for log archiveable
         ///Given a old log file which the date is larger than the log life
@@ -59,18 +69,21 @@ namespace UnitTest
         public void IsOldPass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = true;
-
             //Act
-            File.WriteAllText(@"D:\LogStorage\20190919.csv", "testing");
-            bool actual = archiver.Archiveable("20190919.csv");
-            archiver.DeleteLog("20190919.csv");
+            string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) + 
+                config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+
+            bool actual = manager.Archiveable(fileName);
+
+            archiver.DeleteLog(fileName);
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
+        //manager 
         ///<summary>
         ///Test for log archiveable
         ///Given a file that has non datetime name
@@ -80,7 +93,7 @@ namespace UnitTest
         public void ArchiveableNotPass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
+            ArchiveManager archiver = new ArchiveManager();
             bool expected = false;
 
             //Act
@@ -100,20 +113,27 @@ namespace UnitTest
         public void GetFileNamesPass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = true;
             bool actual = false;
 
             //Act
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190826.csv", "testing");
-            System.IO.File.WriteAllText(@"D:\LogStorage\20190824.csv", "testing");
-            List<string> resultSet = archiver.GetFileNames();
+            string fileNameA = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) + 
+                config.GetLogExtension();
+
+            File.WriteAllText(config.GetLogStorage() + fileNameA, "testing");
+
+            string fileNameB = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 2)).ToString(config.GetDateFormat()) + 
+                config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
+
+            List<string> resultSet = manager.GetFileNames();
+
             if (resultSet.Count == 2)
             {
                 actual =true;
             }
-            archiver.DeleteLog("20190826.csv");
-            archiver.DeleteLog("20190824.csv");
+            archiver.DeleteLog(fileNameA);
+            archiver.DeleteLog(fileNameB);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -129,20 +149,21 @@ namespace UnitTest
         public void GetFileNamesNotPass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = false;
             bool actual = false;
 
             //Act
-            System.IO.File.WriteAllText(@"D:\LogStorage\201901203.csv", "testing");
-            System.IO.File.WriteAllText(@"D:\LogStorage\201901204.csv", "testing");
-            List<string> resultSet = archiver.GetFileNames();
+            string fileNameA = DateTime.Now.ToString(config.GetDateFormat()) + config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage()+fileNameA, "testing");
+            string fileNameB = DateTime.Now.AddDays(-1).ToString(config.GetDateFormat()) + config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
+            List<string> resultSet = manager.GetFileNames();
             if (resultSet.Count > 0)
             {
                 actual = true;
             }
-            archiver.DeleteLog("201901203.csv");
-            archiver.DeleteLog("201901204.csv");
+            archiver.DeleteLog(fileNameA);
+            archiver.DeleteLog(fileNameB);
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -156,7 +177,6 @@ namespace UnitTest
         public void DeleteNotPassA()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = false;
 
             //Act
@@ -176,13 +196,13 @@ namespace UnitTest
         public void DeleteNotPassB()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = false;
 
             //Act
-            File.WriteAllText(@"D:\LogStorage\20190801.csv", "testing");
-            archiver.DeleteLog("20190801.csv");
-            bool actual = archiver.DeleteLog("20190801.csv");
+            string fileName = "deleteTwice" + config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+            archiver.DeleteLog(fileName);
+            bool actual = archiver.DeleteLog(fileName);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -197,15 +217,15 @@ namespace UnitTest
         public void DeleteNotPassC()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = false;
 
             //Act
-            File.WriteAllText(@"D:\LogStorage\20190701.csv", "testing");
-            StreamReader reader = new StreamReader(@"D:\LogStorage\20190701.csv");
-            bool actual = archiver.DeleteLog("20190701.csv");
+            string fileName = "oepnWhileDeleting" + config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage()+fileName, "testing");
+            StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
+            bool actual = archiver.DeleteLog(fileName);
             reader.Close();
-            archiver.DeleteLog("20190701.csv");
+            archiver.DeleteLog(fileName);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -218,12 +238,12 @@ namespace UnitTest
         public void DeletePass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = true;
 
             //Act
-            File.WriteAllText(@"D:\LogStorage\20190825.csv", "testing");
-            bool actual = archiver.DeleteLog("20190825.csv");
+            string fileName = "deleteSuccess" + config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+            bool actual = archiver.DeleteLog(fileName);
             Console.WriteLine("the result is:" + actual);
 
             //Assert
@@ -238,14 +258,15 @@ namespace UnitTest
         public void OutPutPass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = true;
-            File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
-            var resultSet = archiver.GetFileNames();
+            string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
+            config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+            var resultSet = manager.GetFileNames();
 
             //Act
             bool actual = archiver.FileOutPut(resultSet);
-            Console.WriteLine(archiver.GetMessage());
+            Console.WriteLine(manager.GetMessage());
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -260,17 +281,22 @@ namespace UnitTest
         public void OutPutNotPassA()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = false;
-            File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
-            File.WriteAllText(@"D:\LogStorage\20190819.csv", "testing");
-            var resultSet = archiver.GetFileNames();
-            archiver.DeleteLog("20190819.csv");
+            string fileNameA = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
+         config.GetLogExtension();
+
+            File.WriteAllText(config.GetLogStorage() + fileNameA, "testing");
+
+            string fileNameB = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 2)).ToString(config.GetDateFormat()) +
+                config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
+            var resultSet = manager.GetFileNames();
+            archiver.DeleteLog(fileNameA);
 
             //Act
             bool actual = archiver.FileOutPut(resultSet);
-            Console.WriteLine(archiver.GetMessage());
-            archiver.DeleteLog("20190815.csv");
+            Console.WriteLine(manager.GetMessage());
+            archiver.DeleteLog(fileNameB);
             DirClean();
 
             //Assert
@@ -286,17 +312,19 @@ namespace UnitTest
         public void OutPutNotPassB()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected = false;
-            File.WriteAllText(@"D:\LogStorage\20190815.csv", "testing");
-            var resultSet = archiver.GetFileNames();
-            StreamReader reader = new StreamReader(@"D:\LogStorage\20190815.csv");
+            string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
+         config.GetLogExtension();
+
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+            var resultSet = manager.GetFileNames();
+            StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
 
             //Act
             bool actual = archiver.FileOutPut(resultSet);
             reader.Close();
-            archiver.DeleteLog("20190815.csv");
-            Console.WriteLine(archiver.GetMessage());
+            archiver.DeleteLog(fileName);
+            Console.WriteLine(manager.GetMessage());
             DirClean();
 
             //Assert
@@ -313,29 +341,14 @@ namespace UnitTest
         public void RunArchivePass()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
+            ArchiveManager archiver = new ArchiveManager();
             bool expected = true;
-            string filePath = @"D:\LogStorage\2019060";
             for(int i = 1; i < 10; i++)
             {
-                string fileName = filePath + i + ".csv";
-                File.WriteAllText(fileName, "testing");
+                string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() +i)).ToString(config.GetDateFormat()) +
+        config.GetLogExtension();
+                File.WriteAllText(config.GetLogStorage() + fileName, "testing");
             }
-
-            filePath = @"D:\LogStorage\2019061";
-            for (int i = 1; i < 10; i++)
-            {
-                string fileName = filePath + i + ".csv";
-                File.WriteAllText(fileName, "testing");
-            }
-
-            filePath = @"D:\LogStorage\2019062";
-            for (int i = 1; i < 10; i++)
-            {
-                string fileName = filePath + i + ".csv";
-                File.WriteAllText(fileName, "testing");
-            }
-            File.WriteAllText("20190630.csv", "testing");
             //Act
             bool actual = archiver.RunArchive();
             Console.WriteLine(archiver.GetMessage());
@@ -355,20 +368,20 @@ namespace UnitTest
         public void RunArchiveNotPassA()
         {
             //Arrange
-            ArchiveService archiver = new ArchiveService();
             bool expected =false;
-            string filePath = @"D:\LogStorage\2019060";
+            string fileName = "";
             for (int i = 1; i < 10; i++)
             {
-                string fileName = filePath + i + ".csv";
-                File.WriteAllText(fileName, "testing");
+               fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + i)).ToString(config.GetDateFormat()) +
+      config.GetLogExtension();
+                File.WriteAllText(config.GetLogStorage() + fileName, "testing");
             }
-            StreamReader reader = new StreamReader(@"D:\LogStorage\20190609.csv");
+            StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
             //Act
-            bool actual = archiver.RunArchive();
-            Console.WriteLine(archiver.GetMessage());
+            bool actual = manager.RunArchive();
+            Console.WriteLine(manager.GetMessage());
             reader.Close();
-            archiver.DeleteLog("20190609.csv");
+            archiver.DeleteLog(fileName);
             DirClean();
 
             //Assert
@@ -376,10 +389,10 @@ namespace UnitTest
         }
 
         //Method that used to clean the archive storage for testing
-        public static void DirClean()
+        public  void DirClean()
         {
             //clean the archive storage
-            DirectoryInfo dir = new DirectoryInfo(@"D:\ArchiveStorage\");
+            DirectoryInfo dir = new DirectoryInfo(config.GetArchiveStorage());
 
            foreach (FileInfo file in dir.GetFiles())
             {
