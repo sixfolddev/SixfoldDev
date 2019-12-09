@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using RoomAid.ServiceLayer.Archive;
+using RoomAid.ServiceLayer.Emailing;
 
 namespace RoomAid.ManagerLayer.Archive
 {
@@ -10,9 +11,6 @@ namespace RoomAid.ManagerLayer.Archive
     {
         //The error _message for logging
         private string _message;
-
-        //Message catched from deletion or compress
-        private string _errorMessage;
 
         private ArchiveConfig _config;
 
@@ -36,40 +34,72 @@ namespace RoomAid.ManagerLayer.Archive
         /// <returns>true for archive successed, ortherwise false</returns>
         public bool RunArchive()
         {
-            //Before any step of archive started, the space check is required, if the free space is
-            //not less than the required space, or the drive is not available, the archive process should not start
-            //The admin shall be notified and this archive period shall be logged as failure
-            if(IsSpaceEnough(_config.GetDriveInfo(), _config.GetRequiredSpace()) == false)
+            //
+            bool ifSuccess = false;
+            while (ifSuccess==false)
             {
-                return false;
+                ifSuccess = true;
+
+                //Before any step of archive started, the space check is required, if the free space is
+                //not less than the required space, or the drive is not available, the archive process should not start
+                //The admin shall be notified and this archive period shall be logged as failure
+                if (IsSpaceEnough(_config.GetDriveInfo(), _config.GetRequiredSpace()) == false)
+                {
+                    ifSuccess = false;
+                    break;
+                }
+
+                //Before start the archive, system need to make sure that 7z.exe is installed in the machine
+                if (File.Exists(_config.GetSevenZipPath()) == false)
+                {
+                    //Write the _message to explain the failure
+                    _message = "Archive Start Failure: Cannot found 7z.exe for archiving";
+                    ifSuccess = false;
+                    break;
+                }
+                //Before start the archive, system should check if the log storage can be found
+                if (!Directory.Exists(_config.GetLogStorage()))
+                {
+                    //Write the _message to explain the failure
+                    _message = "Archive Start Failure: Cannot find log storage directory";
+                    ifSuccess = false;
+                    break;
+                }
+
+                //Beofer start archive, system should check if the archive storage directory can be found, if not, then create a new folder
+                if (!Directory.Exists(_config.GetArchiveStorage()))
+                {
+                    Directory.CreateDirectory(_config.GetArchiveStorage());
+                }
+
+                //Create a new list for resultSet to store all file names that are needed to be archived
+                List<string> resultSet = GetFileNames();
+
+                //if the result set is empty, the archive process must be stopped.
+                if (resultSet.Count == 0)
+                {
+                    //Write the _message to explain the failure
+                    _message = "Archive Start Failure: No files are required to be archived";
+                    ifSuccess = false;
+                    break;
+                }
+
+                //Output the compressed file
+                IArchiveService archiver = new SevenZipArchiveService();
+                if (archiver.FileOutPut(resultSet) == false)
+                {
+                    ifSuccess = false;
+                    _message = "Archive Failure: One or multiple files cannot be compressed/deleted";
+                    break;
+                }   
+            }
+            if (ifSuccess == false)
+            {
+                Notification(_message);
             }
 
-            //Before start the archive, system need to make sure that 7z.exe is installed in the machine
-            if (File.Exists(_config.GetSevenZipPath()) == false)
-            {
-                //Write the _message to explain the failure
-                _message = "Archive Start Failure: Cannot found 7z.exe for archiving";
-                return false;
-            }
-
-            //Create a new list for resultSet to store all file names that are needed to be archived
-            List<string> resultSet = GetFileNames();
-
-            //if the result set is empty, the archive process must be stopped.
-            if (resultSet.Count == 0)
-            {
-                //Write the _message to explain the failure
-                _message = "Archive Start Failure: No files are required to be archived";
-                return false;
-            }
-            IArchiveService archiver = new SevenZipArchiveService();
-            //Output the compressed file
-            if (archiver.FileOutPut(resultSet) == false)
-            {
-                return false;
-            }
             //Only if all steps were oeprated succeffully, the archive process could return true
-            return true;
+            return ifSuccess;
         }
 
         /// <summary>
@@ -78,7 +108,7 @@ namespace RoomAid.ManagerLayer.Archive
         /// </summary>
         /// <param name="fileName">log file that being checked</param>
         /// <returns>True if it is old enough, False if it is not</returns>
-        public bool Archiveable(string fileName)
+       private bool Archiveable(string fileName)
         {
             //Split the file name to remove ".csv"
             string[] split = fileName.Split('.');
@@ -106,7 +136,7 @@ namespace RoomAid.ManagerLayer.Archive
         /// file's file name shall be added into a list.
         /// </summary>
         /// <returns>resultSet the list of log files that should be archived</returns>
-        public List<string> GetFileNames()
+        private List<string> GetFileNames()
         {
             //Create the list for all file names that should be archived
             var resultSet = new List<string>();
@@ -135,7 +165,7 @@ namespace RoomAid.ManagerLayer.Archive
         /// <param name="driveOfArchive">the information of drive where the storage at</param>
         /// <param name="requiredSpace">the estimated required space for archiving</param>
         /// <returns>True if the space is enough and the drive is availabe, otherwise return false</returns>
-        public bool IsSpaceEnough(DriveInfo driveOfArchive, double requiredSpace)
+        private bool IsSpaceEnough(DriveInfo driveOfArchive, double requiredSpace)
         {
             //Check if the drive's available free space is less than the required space, it also check if
             //the drive is curretly not available
@@ -152,8 +182,6 @@ namespace RoomAid.ManagerLayer.Archive
             return true;
         }
 
-       
-
         /// <summary>
         /// Method GetMessage() will return the _message to the caller, the _message shall explain if the archive is
         /// successed or the reason of failure
@@ -162,6 +190,12 @@ namespace RoomAid.ManagerLayer.Archive
         public string GetMessage()
         {
             return _message;
+        }
+
+        public void Notification(string message)
+        {
+            EmailService emailer = new EmailService();
+            emailer.EmailSender(message, "Archive Error!", "System Admin", _config.GetEmail());
         }
     }
 }

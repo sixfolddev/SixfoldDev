@@ -47,6 +47,9 @@ namespace RoomAid.ServiceLayer.Archive
         //The file format for archive files, according to the requirement should be .7z
         private const string ARCHIVE_EXTENSION = ".7z";
 
+        //Emaill address for admin notification
+        private const string ADMIN_EMAIL = "roomaidnotifications@gmail.com";
+
         //Getters
         public string GetLogStorage()
         {
@@ -99,6 +102,11 @@ namespace RoomAid.ServiceLayer.Archive
         public string GetArchiveExtension()
         {
             return ARCHIVE_EXTENSION;
+        }
+
+        public string GetEmail()
+        {
+            return ADMIN_EMAIL;
         }
     }
 }

@@ -18,18 +18,19 @@ namespace UnitTest
         //manager test
         [TestMethod]
         ///<summary>
-        ///Test for IsSpaceEnough()
-        ///Given a large required space, should return false for insufficient space
+        ///Test for the archive start condition
+        ///If the logdirectory the method should stop archiving and return a false 
         ///</summary>
-        public void SpaceCheckNotPass()
+        public void LogDirectoryNotPass()
         {
             //Arrange
-            ArchiveManager archiver = new ArchiveManager();
             bool expected = false;
 
             //Act
-            bool actual = archiver.IsSpaceEnough(new System.IO.DriveInfo("C"),9999999999999999999);
-            Console.WriteLine(archiver.GetMessage());
+            Directory.Delete(config.GetLogStorage(), true);
+            bool actual =  manager.RunArchive();
+            Directory.CreateDirectory(config.GetLogStorage());
+            Console.WriteLine(manager.GetMessage());
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -38,102 +39,17 @@ namespace UnitTest
         //manager test
         [TestMethod]
         ///<summary>
-        ///Test for log archiveable
-        ///Given a new log file which the date is less than the log life
-        ///should return false since a log file that is old enough should pass
+        ///Test for the archive start condition
+        //If the log storage is empty, the archive should be stopped and the method return a false
         ///</summary>
-        public void IsNotOldPass()
+        public void EmptyStorageNotPass()
         {
             //Arrange
             bool expected = false;
 
             //Act
-            string fileName = DateTime.Now.ToString(config.GetDateFormat()) + config.GetLogExtension();
-            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
-
-            bool actual = manager.Archiveable(fileName);
-            archiver.DeleteLog(fileName);
-            Console.WriteLine("the result is:"+actual);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        //manager test
-        ///<summary>
-        ///Test for log archiveable
-        ///Given a old log file which the date is larger than the log life
-        ///should return true since a log file is old enough to be archived
-        ///</summary>
-        [TestMethod]
-        public void IsOldPass()
-        {
-            //Arrange
-            bool expected = true;
-            //Act
-            string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) + 
-                config.GetLogExtension();
-            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
-
-            bool actual = manager.Archiveable(fileName);
-
-            archiver.DeleteLog(fileName);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        //manager 
-        ///<summary>
-        ///Test for log archiveable
-        ///Given a file that has non datetime name
-        ///Since the Archiveable method shall check the format, it should return false
-        ///</summary>
-        [TestMethod]
-        public void ArchiveableNotPass()
-        {
-            //Arrange
-            ArchiveManager archiver = new ArchiveManager();
-            bool expected = false;
-
-            //Act
-            bool actual = archiver.Archiveable("BadName.csv");
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        ///<summary>
-        ///Test for GetFileNames() to see if it can return a list correctly
-        ///Write two log files that are older than the log life
-        ///The list should has a size of 2 
-        ///Files shall be deleted after test
-        ///</summary>
-        [TestMethod]
-        public void GetFileNamesPass()
-        {
-            //Arrange
-            bool expected = true;
-            bool actual = false;
-
-            //Act
-            string fileNameA = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) + 
-                config.GetLogExtension();
-
-            File.WriteAllText(config.GetLogStorage() + fileNameA, "testing");
-
-            string fileNameB = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 2)).ToString(config.GetDateFormat()) + 
-                config.GetLogExtension();
-            File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
-
-            List<string> resultSet = manager.GetFileNames();
-
-            if (resultSet.Count == 2)
-            {
-                actual =true;
-            }
-            archiver.DeleteLog(fileNameA);
-            archiver.DeleteLog(fileNameB);
+            bool actual = manager.RunArchive();
+            Console.WriteLine(manager.GetMessage());
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -153,17 +69,20 @@ namespace UnitTest
             bool actual = false;
 
             //Act
+            List<string> resultSet = new List<string>();
             string fileNameA = DateTime.Now.ToString(config.GetDateFormat()) + config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage()+fileNameA, "testing");
+
             string fileNameB = DateTime.Now.AddDays(-1).ToString(config.GetDateFormat()) + config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
-            List<string> resultSet = manager.GetFileNames();
+
+
             if (resultSet.Count > 0)
             {
                 actual = true;
             }
-            archiver.DeleteLog(fileNameA);
-            archiver.DeleteLog(fileNameB);
+            File.Delete(config.GetLogStorage() + fileNameA);
+            File.Delete(config.GetLogStorage() + fileNameB);
             //Assert
             Assert.AreEqual(expected, actual);
         }
@@ -259,10 +178,11 @@ namespace UnitTest
         {
             //Arrange
             bool expected = true;
+            List<string> resultSet = new List<string>();
             string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
             config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileName, "testing");
-            var resultSet = manager.GetFileNames();
+            resultSet.Add(fileName);
 
             //Act
             bool actual = archiver.FileOutPut(resultSet);
@@ -282,21 +202,24 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
+            List<string> resultSet = new List<string>();
+
             string fileNameA = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
          config.GetLogExtension();
-
             File.WriteAllText(config.GetLogStorage() + fileNameA, "testing");
+            resultSet.Add(fileNameA);
 
             string fileNameB = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 2)).ToString(config.GetDateFormat()) +
                 config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
-            var resultSet = manager.GetFileNames();
-            archiver.DeleteLog(fileNameA);
+            resultSet.Add(fileNameB);
+
+            File.Delete(config.GetLogStorage()+fileNameA);
 
             //Act
             bool actual = archiver.FileOutPut(resultSet);
             Console.WriteLine(manager.GetMessage());
-            archiver.DeleteLog(fileNameB);
+            File.Delete(config.GetLogStorage() + fileNameB);
             DirClean();
 
             //Assert
@@ -313,11 +236,12 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
+            List<string> resultSet = new List<string>();
+
             string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
          config.GetLogExtension();
-
             File.WriteAllText(config.GetLogStorage() + fileName, "testing");
-            var resultSet = manager.GetFileNames();
+            resultSet.Add(fileName);
             StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
 
             //Act
@@ -386,6 +310,12 @@ namespace UnitTest
 
             //Assert
             Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void EmailTest()
+        {
+            manager.Notification("TestEmail");
         }
 
         //Method that used to clean the archive storage for testing
