@@ -9,5 +9,7 @@ namespace RoomAid.ServiceLayer.Archive
         bool FileOutPut(List<string> resultSet);
         bool DeleteLog(string fileName);
 
+        string GetMessage();
+
     }
 }

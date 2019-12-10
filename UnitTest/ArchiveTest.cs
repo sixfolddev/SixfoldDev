@@ -120,7 +120,7 @@ namespace UnitTest
             //Act
             string fileName = "deleteTwice" + config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileName, "testing");
-            archiver.DeleteLog(fileName);
+            File.Delete(config.GetLogStorage() + fileName);
             bool actual = archiver.DeleteLog(fileName);
 
             //Assert
@@ -144,7 +144,7 @@ namespace UnitTest
             StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
             bool actual = archiver.DeleteLog(fileName);
             reader.Close();
-            archiver.DeleteLog(fileName);
+            File.Delete(config.GetLogStorage() + fileName);
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -256,6 +256,35 @@ namespace UnitTest
         }
 
         ///<summary>
+        ///Test for FileOutPut() 
+        ///Given one normal logs and make it read only
+        ///Since the FileOutPut cannot compress a readonly file, it should return a false
+        ///</summary>
+        [TestMethod]
+        public void OutPutNotPassC()
+        {
+            //Arrange
+            bool expected = false;
+            List<string> resultSet = new List<string>();
+
+            //Act
+            string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
+   config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+            resultSet.Add(fileName);
+            FileInfo fInfo = new FileInfo(config.GetLogStorage() + fileName);
+            fInfo.IsReadOnly = true;
+            bool actual = archiver.FileOutPut(resultSet);
+            fInfo.IsReadOnly = false;
+            File.Delete(config.GetLogStorage() + fileName);
+            Console.WriteLine(manager.GetMessage());
+            DirClean();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        ///<summary>
         ///Test for RunArchivePass() 
         ///Given 30 log files that is larger than log life
         ///The method should finish archive successfully with all path correct
@@ -285,7 +314,7 @@ namespace UnitTest
         ///<summary>
         ///Test for RunArchivePass() 
         ///Given 10 log files that is larger than log life
-        ///Open one of these logs, the log should not be able to be added into the compressed file
+        ///Open one logs, the logs should not be able to be added into the compressed file
         ///So the whole method should return a false
         ///</summary>
         [TestMethod]
@@ -305,17 +334,42 @@ namespace UnitTest
             bool actual = manager.RunArchive();
             Console.WriteLine(manager.GetMessage());
             reader.Close();
-            archiver.DeleteLog(fileName);
+            File.Delete(config.GetLogStorage() + fileName);
             DirClean();
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
+        ///<summary>
+        ///Test for RunArchivePass() 
+        ///Given 10 log files that is larger than log life
+        ///Madeone logs read only, the log should not be able to be added into the compressed file
+        ///So the whole method should return a false
+        ///</summary>
         [TestMethod]
-        public void EmailTest()
+        public void RunArchiveNotPassB()
         {
-            manager.Notification("TestEmail");
+            //Arrange
+            bool expected = false;
+            string fileName = "";
+            for (int i = 1; i < 10; i++)
+            {
+                fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + i)).ToString(config.GetDateFormat()) +
+       config.GetLogExtension();
+                File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+            }
+            //Act
+            FileInfo fInfo = new FileInfo(config.GetLogStorage() + fileName);
+            fInfo.IsReadOnly = true;
+            bool actual = manager.RunArchive();
+            Console.WriteLine(manager.GetMessage());
+            fInfo.IsReadOnly = false;
+            File.Delete(config.GetLogStorage() + fileName);
+            DirClean();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
         }
 
         //Method that used to clean the archive storage for testing
@@ -326,7 +380,8 @@ namespace UnitTest
 
            foreach (FileInfo file in dir.GetFiles())
             {
-            file.Delete();
+                file.IsReadOnly = false;
+                file.Delete();
             }
         }
     }

@@ -12,15 +12,15 @@ namespace RoomAid.ManagerLayer.Archive
         //The error _message for logging
         private string _message;
 
+        //The configuration class that stored all necessary information about business requirement
         private ArchiveConfig _config;
 
         //Constructor
         public ArchiveManager()
         {
-            //All these attributes should be store in a configuration file for furture development
 
             //Get configuration from ArchiveConfig
-             _config = new ServiceLayer.Archive.ArchiveConfig();
+             _config = new ArchiveConfig();
 
             //Default _message, should return successed if all steps returns true
             _message = "Archive Successed";
@@ -86,12 +86,16 @@ namespace RoomAid.ManagerLayer.Archive
 
                 //Output the compressed file
                 IArchiveService archiver = new SevenZipArchiveService();
+
+                //If the file out put is not successed, get failed file names from archiver and notify the admin
                 if (archiver.FileOutPut(resultSet) == false)
                 {
                     ifSuccess = false;
-                    _message = "Archive Failure: One or multiple files cannot be compressed/deleted";
+                    _message = "Archive Failure: One or multiple files cannot be compressed/deleted"+archiver.GetMessage();
                     break;
                 }   
+
+                //ToDo: create a Log
             }
             if (ifSuccess == false)
             {
@@ -192,7 +196,7 @@ namespace RoomAid.ManagerLayer.Archive
             return _message;
         }
 
-        public void Notification(string message)
+        private void Notification(string message)
         {
             EmailService emailer = new EmailService();
             emailer.EmailSender(message, "Archive Error!", "System Admin", _config.GetEmail());

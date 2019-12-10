@@ -10,76 +10,80 @@ namespace RoomAid.ServiceLayer.Archive
     public class SevenZipArchiveService:IArchiveService
     {
 
-        //The error _message for logging
+        //Message catched from deletion or compress
         private string _message;
 
-        //Message catched from deletion or compress
-        private string _errorMessage;
-
+        //The configuration class which store all required information about business requirements
         private ArchiveConfig _config;
+
+        //The process that will be used to do the compress
+        private Process process;
+
+        //File path for the output compressed file
+        private string outPutFilePath = ""; 
+
+        //String that stores all file names that are failed to be added into compressed file, can help the system admin to find certain files
+        private string compressFailedFiles;
+
+        //String that stores all file names that are failed to be deleted, can help the system admin to find certain files
+        private string deleteFailedFiles;
 
         public SevenZipArchiveService()
 
         {
+            //Load the configurations
             _config = new ArchiveConfig();
+
+            //Instead of create new process each time, we pass through the same process to do the commandline
+            //This will reduce the runtime for archive process from 3 sec to 1 sec
+            process = new Process();
+
+            //The process shall use 7z.exe to call the commandline
+            process.StartInfo.FileName = _config.GetSevenZipPath();
+
+            //Set the file path for the output compressed file
+            outPutFilePath = _config.GetArchiveStorage() + DateTime.Now.ToString(_config.GetDateFormat()) +
+            _config.GetArchiveExtension();
+
+            //Set the name list as empty
+            compressFailedFiles = "";
+
+            //Set the name list as empty
+            deleteFailedFiles = "";
         }
-            /// <summary>
-            /// Method FileOutPut() method shall add all files that needed to be archived into a compressed file and then delete the 
-            /// original log files
-            /// </summary>
-            /// <param name="resultSet">The list which stored all file names of files that required to be archived</param>
-            /// <returns>True if all files in resultSet are archived and original files were deleted successfully
-            /// return false if any file is failed to be archived or deleted</returns>
+
+        /// <summary>
+        /// Method FileOutPut() method shall add all files that needed to be archived into a compressed file and then delete the 
+        /// original log files
+        /// </summary>
+        /// <param name="resultSet">The list which stored all file names of files that required to be archived</param>
+        /// <returns>True if all files in resultSet are archived and original files were deleted successfully
+        /// return false if any file is failed to be archived or deleted</returns>
             public bool FileOutPut(List<string> resultSet)
         {
             //Set the result as true 
             bool ifSuccess = true;
 
-            //Message string used for admin notification, start at the storage path to help the admin find the files with problems
-            string compressFailedFiles = "";
-            string deleteFailedFiles = "";
-
-
-            //Instead of create new process each time, we pass through the same process to do the commandline
-            //This will reduce the runtime for archive process from 3 sec to 1 sec
-            Process process = new Process();
-
-            //The process shall use 7z.exe to call the commandline
-            process.StartInfo.FileName = _config.GetSevenZipPath();
-
             //Use a for loop to go through every file name in resultSet
             foreach (string fileName in resultSet)
             {
                 //Reset the error _message
-                _errorMessage = "";
+                _message = "";
 
                 //Call AddToCompress() method to check if certain file is added into compressed file successfully
-                bool compressSuccess = AddToCompress(fileName, process);
+                bool compressSuccess = AddToCompress(fileName);
 
                 //If any file is failed to be compressed. start to retry compress the file 
                 if (compressSuccess == false)
                 {
-                    //Retry until it reached the limit time of retry or it successed
-                    for (int i = 0; i < _config.GetTimeOfRetry(); i++)
-                    {
-                        //Call AddToCompress() method again to check if certain file is added into compressed file successfully
-                        compressSuccess = AddToCompress(fileName, process);
-
-                        //If the result is true, then stop the retry, set ifSuccess as true
-                        if (compressSuccess == true)
-                        {
-                            ifSuccess = true;
-                            break;
-                            //Notify admin with compressFailed
-                        }
-
-                    }
+                    //Call Retry Method to do the retry for AddToCompress
+                    compressSuccess = Retry(AddToCompress, fileName);
 
                     //If the retry failed three times, skip this file and start to compress the next file
                     //Add this file's name into the _message, so the admin can know what files have problems
                     if (compressSuccess == false)
                     {
-                        compressFailedFiles = compressFailedFiles + fileName + " " + _errorMessage + ",\n ";
+                        compressFailedFiles = compressFailedFiles + fileName + " - " + _message + ",\n ";
                         ifSuccess = false;
                     }
                 }
@@ -88,7 +92,7 @@ namespace RoomAid.ServiceLayer.Archive
                 if (compressSuccess == true)
                 {
                     //Reset the error _message
-                    _errorMessage = "";
+                    _message = "";
 
                     //Call DeleteLog() method to check if it could be deleted successfully
                     bool deleteSuccess = DeleteLog(fileName);
@@ -96,26 +100,13 @@ namespace RoomAid.ServiceLayer.Archive
                     //If the deletion failed, start to retry the deletion
                     if (deleteSuccess == false)
                     {
-                        //Use a for loop to retry the deletion until it return true, or reach the limit retry time
-                        for (int i = 0; i < _config.GetTimeOfRetry(); i++)
-                        {
-
-                            //Call DeleteLog() method again
-                            deleteSuccess = DeleteLog(fileName);
-                            if (deleteSuccess == true)
-                            {
-                                //if retry successed, stop the retry
-                                ifSuccess = true;
-                                break;
-                                //Notify admin with compressFailed
-                            }
-
-                        }
+                        //Call Retry Method to do the retry for DeleteLog
+                        deleteSuccess = Retry(DeleteLog, fileName);
 
                         //If the deletion still failed, add this file name into the _message, and return false
                         if (deleteSuccess == false)
                         {
-                            deleteFailedFiles = deleteFailedFiles + fileName + " " + _errorMessage + ",\n ";
+                            deleteFailedFiles = deleteFailedFiles + fileName + " - " + _message + ",\n ";
                             ifSuccess = false;
                         }
                     }
@@ -126,28 +117,11 @@ namespace RoomAid.ServiceLayer.Archive
             //Close the process when the for loop is finished
             process.Close();
 
-            String notification = "";
-
-            //Check if the name list for errored files is empty, if not, then write the notification for admin
-            if (ifSuccess == false)
+            //Follow the business requirement, made the output file readonly
+            if(ifSuccess == true)
             {
-                if (string.IsNullOrEmpty(compressFailedFiles) == false)
-                {
-                    //The notification should includes the file path and all file names for the errored files
-                    notification = "Compress Failed: One or multiple files " +
-                                               "could not be added into the compressed file:\nFile Path: "
-                                               + _config.GetLogStorage() + "\nFile Names: " + compressFailedFiles;
-                }
-                if (string.IsNullOrEmpty(deleteFailedFiles) == false)
-                {
-                    //The notification should includes the file path and all file names for the errored files
-                    notification = notification + "Deletion Failed: One or multiple files " +
-                            "could not be deleted:\nFile Path: " + _config.GetLogStorage() + "\nFile Names: " + deleteFailedFiles;
-                }
-
-                //Write the _message to explain the failure
-                _message = "File Out Put Failure: Failed to compress or delete one or multiple files";
-                //ToDo: Notify the admin
+                FileInfo fInfo = new FileInfo(outPutFilePath);
+                fInfo.IsReadOnly = true;
             }
             //Return the result if the file out put is successfully
             return ifSuccess;
@@ -159,14 +133,10 @@ namespace RoomAid.ServiceLayer.Archive
         /// <param name="fileName">The name of the file which should be added into the compressed file</param>
         /// <param name="process">The process passed from FileOutPut method which will run the commandline</param>
         /// <returns>True if the file is added into compressed file successfully, otherwise return false</returns>
-        public bool AddToCompress(string fileName, Process process)
+        public bool AddToCompress(string fileName)
         {
             try
             {
-                //Set the file path for the output compressed file
-                string outPutFilePath = _config.GetArchiveStorage() + DateTime.Now.ToString(_config.GetDateFormat()) +
-                    ".7z";
-
                 //Set path for the log file which needed to be archived
                 string filePath = _config.GetLogStorage() + fileName;
 
@@ -185,7 +155,7 @@ namespace RoomAid.ServiceLayer.Archive
             catch (Exception e)
             {
                 //Write the error _message for certain file
-                _errorMessage = e.ToString();
+                _message = e.Message;
 
                 //Catch any error during the process such as the file opened or not found at the moment.
                 //Return false if the add to compress file failed
@@ -222,7 +192,7 @@ namespace RoomAid.ServiceLayer.Archive
             catch (Exception e)
             {
                 //Write the error _message for certain file
-                _errorMessage = e.ToString();
+                _message = e.Message;
 
                 //Catch the error while deleting the file, such as the file was opened or cannot be find when delete it
                 return false;
@@ -237,6 +207,65 @@ namespace RoomAid.ServiceLayer.Archive
 
             //Return true if deletion was sucessful
             return true;
+        }
+
+        /// <summary>
+        /// Method Retry() will do the retry for certain method as the business rule required
+        /// </summary>
+        /// <param name="method">The method that needed to be retried, such as AddToCompress or DeleteLog </param>
+        /// <param name="fileName">The name of the file which should be compressed or deleted</param>
+        /// <returns>True if the retry successfully, otherwise return false</returns>
+        private bool Retry(Func<string, bool> method, string fileName)
+        {
+            //Set a bool as the retry result
+            bool retrySuccess = true;
+
+            //Retry until it reached the limit time of retry or it successed
+            for (int i = 0; i < _config.GetTimeOfRetry(); i++)
+            {
+                //Call method again to check if certain method can be executed successfully
+                retrySuccess = method(fileName);
+
+                //If the result is true, then stop the retry, set retrySuccess as true
+                if (retrySuccess == true)
+                {
+                    retrySuccess = true;
+                    break;
+                }
+            }
+
+            return retrySuccess;
+        }
+
+        /// <summary>
+        /// Method GetMessage() return a message for admin notification, to show what files are failed to be compress or deleted
+        ///This method should only be called when the archive is not successed. 
+        /// </summary>
+        /// <returns>Notification, the message with file names, file path and error messages</returns>
+        public string GetMessage()
+        {
+
+            //Set the default notifaction for admin, if the archive is successfull
+            String notification = "";
+
+            //Check if the name list for errored files is empty, if not, then write the notification for admin
+            if (string.IsNullOrEmpty(compressFailedFiles) == false)
+            {
+               
+                //The notification should includes the file path and all file names for the errored files
+                notification = "Compress Failed: One or multiple files " +
+                                           "could not be added into the compressed file:\nFile Path: "
+                                           + _config.GetLogStorage() + "\nFile Names: " + compressFailedFiles;
+            }
+
+            if (string.IsNullOrEmpty(deleteFailedFiles) == false)
+            {
+                //The notification should includes the file path and all file names for the errored files
+                notification = notification + "Deletion Failed: One or multiple files " +
+                        "could not be deleted:\nFile Path: " + _config.GetLogStorage() + "\nFile Names: " + deleteFailedFiles;
+            }
+
+            return notification;
         }
     }
 }
