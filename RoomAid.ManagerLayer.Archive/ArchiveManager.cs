@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using RoomAid.ServiceLayer.Archive;
+using System.Configuration;
 
 namespace RoomAid.ManagerLayer.Archive
 {
@@ -13,6 +14,7 @@ namespace RoomAid.ManagerLayer.Archive
 
         //The configuration class that stored all necessary information about business requirement
         private ArchiveConfig _config;
+
 
         //Constructor
         public ArchiveManager()
@@ -44,9 +46,10 @@ namespace RoomAid.ManagerLayer.Archive
                 //The admin shall be notified and this archive period shall be logged as failure
                 if (IsSpaceEnough(_config.GetDriveInfo(), _config.GetRequiredSpace()) == false)
                 {
-                    ifSuccess = false;
-                    break;
+                         ifSuccess = false;
+                         break;
                 }
+           
 
                 //Before start the archive, system need to make sure that 7z.exe is installed in the machine
                 if (File.Exists(_config.GetSevenZipPath()) == false)

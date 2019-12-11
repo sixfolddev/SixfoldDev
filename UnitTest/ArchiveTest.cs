@@ -25,9 +25,9 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
+            Directory.Delete(config.GetLogStorage(), true);
 
             //Act
-            Directory.Delete(config.GetLogStorage(), true);
             bool actual =  manager.RunArchive();
             Directory.CreateDirectory(config.GetLogStorage());
             Console.WriteLine(manager.GetMessage());
@@ -67,16 +67,14 @@ namespace UnitTest
             //Arrange
             bool expected = false;
             bool actual = false;
-
-            //Act
             List<string> resultSet = new List<string>();
             string fileNameA = DateTime.Now.ToString(config.GetDateFormat()) + config.GetLogExtension();
-            File.WriteAllText(config.GetLogStorage()+fileNameA, "testing");
+            File.WriteAllText(config.GetLogStorage() + fileNameA, "testing");
 
             string fileNameB = DateTime.Now.AddDays(-1).ToString(config.GetDateFormat()) + config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
 
-
+            //Act
             if (resultSet.Count > 0)
             {
                 actual = true;
@@ -116,10 +114,10 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
-
-            //Act
             string fileName = "deleteTwice" + config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+
+            //Act
             File.Delete(config.GetLogStorage() + fileName);
             bool actual = archiver.DeleteLog(fileName);
 
@@ -137,11 +135,11 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
+            string fileName = "openWhileDeleting" + config.GetLogExtension();
+            File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+            StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
 
             //Act
-            string fileName = "oepnWhileDeleting" + config.GetLogExtension();
-            File.WriteAllText(config.GetLogStorage()+fileName, "testing");
-            StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
             bool actual = archiver.DeleteLog(fileName);
             reader.Close();
             File.Delete(config.GetLogStorage() + fileName);
@@ -158,10 +156,10 @@ namespace UnitTest
         {
             //Arrange
             bool expected = true;
-
-            //Act
             string fileName = "deleteSuccess" + config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileName, "testing");
+
+            //Act
             bool actual = archiver.DeleteLog(fileName);
             Console.WriteLine("the result is:" + actual);
 
@@ -187,6 +185,7 @@ namespace UnitTest
             //Act
             bool actual = archiver.FileOutPut(resultSet);
             Console.WriteLine(manager.GetMessage());
+            DirClean();
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -203,9 +202,8 @@ namespace UnitTest
             //Arrange
             bool expected = false;
             List<string> resultSet = new List<string>();
-
             string fileNameA = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
-         config.GetLogExtension();
+config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileNameA, "testing");
             resultSet.Add(fileNameA);
 
@@ -214,9 +212,8 @@ namespace UnitTest
             File.WriteAllText(config.GetLogStorage() + fileNameB, "testing");
             resultSet.Add(fileNameB);
 
-            File.Delete(config.GetLogStorage()+fileNameA);
-
             //Act
+            File.Delete(config.GetLogStorage() + fileNameA);
             bool actual = archiver.FileOutPut(resultSet);
             Console.WriteLine(manager.GetMessage());
             File.Delete(config.GetLogStorage() + fileNameB);
@@ -266,14 +263,14 @@ namespace UnitTest
             //Arrange
             bool expected = false;
             List<string> resultSet = new List<string>();
-
-            //Act
             string fileName = DateTime.Now.AddDays(-1 * (config.GetLogLife() + 1)).ToString(config.GetDateFormat()) +
-   config.GetLogExtension();
+config.GetLogExtension();
             File.WriteAllText(config.GetLogStorage() + fileName, "testing");
             resultSet.Add(fileName);
             FileInfo fInfo = new FileInfo(config.GetLogStorage() + fileName);
             fInfo.IsReadOnly = true;
+
+            //Act
             bool actual = archiver.FileOutPut(resultSet);
             fInfo.IsReadOnly = false;
             File.Delete(config.GetLogStorage() + fileName);
@@ -302,6 +299,7 @@ namespace UnitTest
         config.GetLogExtension();
                 File.WriteAllText(config.GetLogStorage() + fileName, "testing");
             }
+
             //Act
             bool actual = archiver.RunArchive();
             Console.WriteLine(archiver.GetMessage());
@@ -330,6 +328,7 @@ namespace UnitTest
                 File.WriteAllText(config.GetLogStorage() + fileName, "testing");
             }
             StreamReader reader = new StreamReader(config.GetLogStorage() + fileName);
+
             //Act
             bool actual = manager.RunArchive();
             Console.WriteLine(manager.GetMessage());
@@ -359,9 +358,10 @@ namespace UnitTest
        config.GetLogExtension();
                 File.WriteAllText(config.GetLogStorage() + fileName, "testing");
             }
-            //Act
             FileInfo fInfo = new FileInfo(config.GetLogStorage() + fileName);
             fInfo.IsReadOnly = true;
+
+            //Act
             bool actual = manager.RunArchive();
             Console.WriteLine(manager.GetMessage());
             fInfo.IsReadOnly = false;
