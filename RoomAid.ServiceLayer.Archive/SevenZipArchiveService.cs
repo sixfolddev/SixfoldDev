@@ -34,13 +34,6 @@ namespace RoomAid.ServiceLayer.Archive
             //Load the configurations
             _config = new ArchiveConfig();
 
-            //Instead of create new process each time, we pass through the same process to do the commandline
-            //This will reduce the runtime for archive process from 3 sec to 1 sec
-            process = new Process();
-
-            //The process shall use 7z.exe to call the commandline
-            process.StartInfo.FileName = _config.GetSevenZipPath();
-
             //Set the file path for the output compressed file
             outPutFilePath = _config.GetArchiveStorage() + DateTime.Now.ToString(_config.GetDateFormat()) +
             _config.GetArchiveExtension();
@@ -63,6 +56,13 @@ namespace RoomAid.ServiceLayer.Archive
         {
             //Set the result as true 
             bool ifSuccess = true;
+
+            //Instead of create new process each time, we pass through the same process to do the commandline
+            //This will reduce the runtime for archive process from 3 sec to 1 sec
+            process = new Process();
+
+            //The process shall use 7z.exe to call the commandline
+            process.StartInfo.FileName = _config.GetSevenZipPath();
 
             //Use a for loop to go through every file name in resultSet
             foreach (string fileName in resultSet)
@@ -133,7 +133,7 @@ namespace RoomAid.ServiceLayer.Archive
         /// <param name="fileName">The name of the file which should be added into the compressed file</param>
         /// <param name="process">The process passed from FileOutPut method which will run the commandline</param>
         /// <returns>True if the file is added into compressed file successfully, otherwise return false</returns>
-        public bool AddToCompress(string fileName)
+        private bool AddToCompress(string fileName)
         {
             try
             {

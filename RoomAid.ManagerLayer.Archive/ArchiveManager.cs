@@ -91,17 +91,11 @@ namespace RoomAid.ManagerLayer.Archive
                 if (archiver.FileOutPut(resultSet) == false)
                 {
                     ifSuccess = false;
-                    _message = "Archive Failure: One or multiple files cannot be compressed/deleted"+archiver.GetMessage();
+                    _message = "Archive Failure: One or multiple files cannot be compressed/deleted\n"+archiver.GetMessage();
                     break;
                 }   
-
-                //ToDo: create a Log
             }
-            if (ifSuccess == false)
-            {
-                Notification(_message);
-            }
-
+       
             //Only if all steps were oeprated succeffully, the archive process could return true
             return ifSuccess;
         }
