@@ -45,10 +45,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Emailing\RoomAid.ServiceLayer.Emailing.csproj">
-      <Project>{4f74c44b-4392-416a-bd1f-cd55034a9d97}</Project>
-      <Name>RoomAid.ServiceLayer.Emailing</Name>
-    </ProjectReference>
     <ProjectReference Include="..\RoomAid.ServiceLayer.Archive\RoomAid.ServiceLayer.csproj">
       <Project>{4dd30e8c-96f9-41fe-a68a-303b79305488}</Project>
       <Name>RoomAid.ServiceLayer</Name>

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using RoomAid.ServiceLayer.Archive;
-using RoomAid.ServiceLayer.Emailing;
 
 namespace RoomAid.ManagerLayer.Archive
 {
@@ -182,7 +181,8 @@ namespace RoomAid.ManagerLayer.Archive
 
         /// <summary>
         /// Method GetMessage() will return the _message to the caller, the _message shall explain if the archive is
-        /// successed or the reason of failure
+        /// successed or the reason of failure, if the reason of failure is file out put failure, message shall also include
+        /// a name list of failed files with their error message
         /// </summary>
         /// <returns> The _message </returns>
         public string GetMessage()
@@ -190,10 +190,5 @@ namespace RoomAid.ManagerLayer.Archive
             return _message;
         }
 
-        private void Notification(string message)
-        {
-            EmailService emailer = new EmailService();
-            emailer.EmailSender(message, "Archive Error!", "System Admin", _config.GetEmail());
-        }
     }
 }
