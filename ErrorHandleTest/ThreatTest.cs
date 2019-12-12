@@ -4,7 +4,7 @@ using MongoDB.Driver;
 using System.Data.SqlClient;
 using System;
 using MongoDB.Bson;
-
+using RoomAid.ServiceLayer.Logging;
 
 namespace RoomAid.ErrorHandlingTest
 {
@@ -35,7 +35,7 @@ namespace RoomAid.ErrorHandlingTest
                 ErrorController ErrorThreatController = new ErrorController(e);
 
                 ErrorThreatController.Handle();
-                Answer = ErrorThreatController.Err.Lev == Level.Warning;
+                Answer = ErrorThreatController.Err.Lev == LogLevels.Levels.Warning;
             }
             catch (Exception)
             {
@@ -73,7 +73,7 @@ namespace RoomAid.ErrorHandlingTest
             {
 
                 ErrorThreatService Service = new ErrorThreatService();
-                Answer = Service.GetThreatLevel(e) == Level.Warning;
+                Answer = Service.GetThreatLevel(e) == LogLevels.Levels.Warning;
             }
             Assert.IsTrue(Answer);
 
@@ -97,7 +97,7 @@ namespace RoomAid.ErrorHandlingTest
             bool Answer;
             //act
             var Service = new ErrorThreatService();
-            Answer = Service.GetThreatLevel(new MongoException("yeet")) == Level.Warning;
+            Answer = Service.GetThreatLevel(new MongoException("yeet")) == LogLevels.Levels.Warning;
             //assert
             Assert.IsTrue(Answer);
 
@@ -109,7 +109,7 @@ namespace RoomAid.ErrorHandlingTest
             bool Answer = false;
             var Err = new AnalyzedError(new Exception())
             {
-                Lev = Level.Warning
+                Lev = LogLevels.Levels.Warning
             };
             var Manager = new ErrorThreatManager(new Exception());
             var Compare = Manager.GetThreatLevel();
@@ -127,7 +127,7 @@ namespace RoomAid.ErrorHandlingTest
 
             try
             {
-                Answer = Service.GetThreatLevel(new Exception()) == Level.Warning;
+                Answer = Service.GetThreatLevel(new Exception()) == LogLevels.Levels.Warning;
             }
             catch
             {
@@ -150,7 +150,7 @@ namespace RoomAid.ErrorHandlingTest
 
                 ErrorController ThreatController = new ErrorController(e);
                 ThreatController.Handle();
-                Answer = (ThreatController.Err.Lev == Level.Warning);
+                Answer = (ThreatController.Err.Lev == LogLevels.Levels.Warning);
             }
             catch (Exception)
             {

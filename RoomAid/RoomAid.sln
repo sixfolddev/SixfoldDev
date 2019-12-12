@@ -15,6 +15,18 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.Archiv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Archiving.Tests", "RoomAid.Archiving.Tests\RoomAid.Archiving.Tests.csproj", "{D3F37166-AC10-412F-A6CD-EC7F61554EE8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ErrorHandling", "..\Error Handling\RoomAid.ErrorHandling.csproj", "{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ErrorHandleTest", "..\ErrorHandleTest\ErrorHandleTest.csproj", "{E5414F13-EE2C-42A5-9C75-1868ABEC4921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.Emailing", "..\Emailing\RoomAid.ServiceLayer.Emailing.csproj", "{4F74C44B-4392-416A-BD1F-CD55034A9D97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmailingTest", "..\EmailingTest\EmailingTest.csproj", "{ABFD73B7-661A-4A6D-9FED-60872525E5E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication", "RoomAid.Authentication\RoomAid.Authentication.csproj", "{BFEC3A09-462F-49A7-8351-73F8BEE32B27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication.Tests", "RoomAid.Authentication.Tests\RoomAid.Authentication.Tests.csproj", "{1E82DD5F-B683-48DE-B159-1D03AF88114D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +57,30 @@ Global
 		{D3F37166-AC10-412F-A6CD-EC7F61554EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3F37166-AC10-412F-A6CD-EC7F61554EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3F37166-AC10-412F-A6CD-EC7F61554EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2B51ABB-D068-47D8-A03A-8AF61A40EFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F74C44B-4392-416A-BD1F-CD55034A9D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABFD73B7-661A-4A6D-9FED-60872525E5E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABFD73B7-661A-4A6D-9FED-60872525E5E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABFD73B7-661A-4A6D-9FED-60872525E5E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABFD73B7-661A-4A6D-9FED-60872525E5E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

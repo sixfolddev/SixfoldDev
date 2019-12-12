@@ -1,7 +1,8 @@
 ﻿using System;
-
+using RoomAid.ServiceLayer.Logging;
 
 namespace RoomAid.ErrorHandling
+
 {/// <summary>
 /// Handles the repsonses of the system based on the severity and type of exception
 /// </summary>
@@ -20,11 +21,11 @@ namespace RoomAid.ErrorHandling
         public AnalyzedError GetResponse(AnalyzedError Err)
         {
             IErrorResponseService ResponseService;
-            if(Err.Lev == Level.Fatal)
+            if(Err.Lev == LogLevels.Levels.Fatal)
             {
                  ResponseService = new FatalResponseService(Err);
             }
-            else if (Err.Lev == Level.Error)
+            else if (Err.Lev == LogLevels.Levels.Error)
             {
                  ResponseService = new ErrorResponseService(Err);
             }
@@ -34,14 +35,14 @@ namespace RoomAid.ErrorHandling
             }
             try
             {
-                //Log(Err, E.ToString())
+                Logger.Log(Err.ToString());
             }
             catch (Exception caught)
             {
                 var Failure = new FatalResponseService(new AnalyzedError(caught)
                 {
-                    Lev = Level.Fatal
-                });
+                    Lev = LogLevels.Levels.Fatal
+                }) ;
                 Failure.GetResponse();
             }
 

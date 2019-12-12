@@ -5,11 +5,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{79E444B3-AB82-43A4-8315-5C434B5ABE39}</ProjectGuid>
+    <ProjectGuid>{1E82DD5F-B683-48DE-B159-1D03AF88114D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RoomAid.ServiceLayer.Logging.Tests</RootNamespace>
-    <AssemblyName>RoomAid.ServiceLayer.Logging.Tests</AssemblyName>
+    <RootNamespace>RoomAid.Authentication.Tests</RootNamespace>
+    <AssemblyName>RoomAid.Authentication.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,8 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DsHandlerTest.cs" />
-    <Compile Include="FileHandlerTest.cs" />
+    <Compile Include="UnitTestAuthN.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -58,9 +57,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\RoomAid.ServiceLayer\RoomAid.ServiceLayer.Logging.csproj">
-      <Project>{29a3335e-7538-4cde-90dc-ace201f259f6}</Project>
-      <Name>RoomAid.ServiceLayer.Logging</Name>
+    <ProjectReference Include="..\RoomAid.Authentication\RoomAid.Authentication.csproj">
+      <Project>{bfec3a09-462f-49a7-8351-73f8bee32b27}</Project>
+      <Name>RoomAid.Authentication</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
