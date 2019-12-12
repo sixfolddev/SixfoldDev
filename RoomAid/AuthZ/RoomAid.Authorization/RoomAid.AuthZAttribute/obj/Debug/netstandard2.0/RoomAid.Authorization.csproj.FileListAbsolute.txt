@@ -22,3 +22,4 @@ C:\Users\miche\Desktop\SixFoldDev local\RoomAid\AuthZ\RoomAid.Authorization\Room
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.AssemblyInfo.cs
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.dll
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.pdb
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.csprojAssemblyReference.cache

@@ -57,7 +57,7 @@ namespace RoomAid.ManagerLayer.Archiving
                     break;
                 }
                 //Before start the archive, system should check if the log storage can be found
-                if (!Directory.Exists(config["logStorage"]))
+                if (!Directory.Exists(@config["logStorage"]))
                 {
                     //Write the _message to explain the failure
                     _message = config["logStorageNotFound"];
@@ -66,9 +66,9 @@ namespace RoomAid.ManagerLayer.Archiving
                 }
 
                 //Beofer start archive, system should check if the archive storage directory can be found, if not, then create a new folder
-                if (!Directory.Exists(config["archiveStorage"]))
+                if (!Directory.Exists(@config["archiveStorage"]))
                 {
-                    Directory.CreateDirectory(config["archiveStorage"]);
+                    Directory.CreateDirectory(@config["archiveStorage"]);
                 }
 
                 //Create a new list for resultSet to store all file names that are needed to be archived

@@ -14,7 +14,7 @@ namespace UnitTest
     {
         private IArchiveService archiver = new SevenZipArchiveService();
         private ArchiveManager manager = new ArchiveManager();
-        private string logStorage = ConfigurationManager.AppSettings["logStorage"];
+        private string logStorage = @ConfigurationManager.AppSettings["logStorage"];
         private int logLife = Int32.Parse(ConfigurationManager.AppSettings["logLife"]);
         private string dateFormat = ConfigurationManager.AppSettings["dateFormat"];
         private string logExtension = ConfigurationManager.AppSettings["logExtension"];
