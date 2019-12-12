@@ -14,10 +14,11 @@ namespace UnitTest
     {
         private IArchiveService archiver = new SevenZipArchiveService();
         private ArchiveManager manager = new ArchiveManager();
-        private string logStorage = @ConfigurationManager.AppSettings["logStorage"];
+        private string logStorage = ConfigurationManager.AppSettings["logStorage"];
         private int logLife = Int32.Parse(ConfigurationManager.AppSettings["logLife"]);
         private string dateFormat = ConfigurationManager.AppSettings["dateFormat"];
         private string logExtension = ConfigurationManager.AppSettings["logExtension"];
+
 
         //manager test
         [TestMethod]
@@ -29,8 +30,13 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
-            Directory.Delete(logStorage, true);
 
+            //For testing, make sure directory exists then delete it
+            if (Directory.Exists(logStorage))
+            {
+               Directory.Delete(logStorage);
+            }
+            
             //Act
             bool actual =  manager.RunArchive();
             Directory.CreateDirectory(logStorage);
@@ -50,6 +56,9 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
+
+            //Make sure logStorage exists
+            LogStorageCheck();
 
             //Act
             bool actual = manager.RunArchive();
@@ -71,6 +80,10 @@ namespace UnitTest
             //Arrange
             bool expected = false;
             bool actual = false;
+
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             List<string> resultSet = new List<string>();
             string fileNameA = DateTime.Now.ToString(dateFormat) + logExtension;
             File.WriteAllText(logStorage + fileNameA, "testing");
@@ -100,6 +113,9 @@ namespace UnitTest
             //Arrange
             bool expected = false;
 
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             //Act
             bool actual = archiver.DeleteLog("FileNotExist.csv");
 
@@ -118,6 +134,10 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
+
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             string fileName = "deleteTwice" + logExtension;
             File.WriteAllText(logStorage + fileName, "testing");
 
@@ -139,6 +159,10 @@ namespace UnitTest
         {
             //Arrange
             bool expected = false;
+
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             string fileName = "openWhileDeleting" + logExtension;
             File.WriteAllText(logStorage + fileName, "testing");
             StreamReader reader = new StreamReader(logStorage + fileName);
@@ -160,124 +184,16 @@ namespace UnitTest
         {
             //Arrange
             bool expected = true;
+
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             string fileName = "deleteSuccess" + logExtension;
             File.WriteAllText(logStorage + fileName, "testing");
 
             //Act
             bool actual = archiver.DeleteLog(fileName);
             Console.WriteLine("the result is:" + actual);
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        ///<summary>
-        ///Test for FileOutPut() the method should return true if no error occurs
-        ///correct
-        ///</summary>
-        [TestMethod]
-        public void OutPutPass()
-        {
-            //Arrange
-            bool expected = true;
-            List<string> resultSet = new List<string>();
-            string fileName = DateTime.Now.AddDays(-1 * (logLife + 1)).ToString(dateFormat) +
-            logExtension;
-            File.WriteAllText(logStorage + fileName, "testing");
-            resultSet.Add(fileName);
-
-            //Act
-            bool actual = archiver.FileOutPut(resultSet);
-            Console.WriteLine(manager.GetMessage());
-            DirClean();
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        ///<summary>
-        ///Test for FileOutPut() 
-        ///Given one two normal logs and then delete one of it after the archiver get the filenames
-        ///Since the FileOutPut cannot find one of the file, it should return a false
-        ///</summary>
-        [TestMethod]
-        public void OutPutNotPassA()
-        {
-            //Arrange
-            bool expected = false;
-            List<string> resultSet = new List<string>();
-            string fileNameA = DateTime.Now.AddDays(-1 * (logLife + 1)).ToString(dateFormat) + logExtension;
-            File.WriteAllText(logStorage + fileNameA, "testing");
-            resultSet.Add(fileNameA);
-
-            string fileNameB = DateTime.Now.AddDays(-1 * (logLife + 2)).ToString(dateFormat) +
-                logExtension;
-            File.WriteAllText(logStorage + fileNameB, "testing");
-            resultSet.Add(fileNameB);
-
-            //Act
-            File.Delete(logStorage + fileNameA);
-            bool actual = archiver.FileOutPut(resultSet);
-            Console.WriteLine(manager.GetMessage());
-            File.Delete(logStorage + fileNameB);
-            DirClean();
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        ///<summary>
-        ///Test for FileOutPut() 
-        ///Given one normal logs and then open the log file while compress it
-        ///Since the FileOutPut cannot compress a opened file, it should return a false
-        ///</summary>
-        [TestMethod]
-        public void OutPutNotPassB()
-        {
-            //Arrange
-            bool expected = false;
-            List<string> resultSet = new List<string>();
-
-            string fileName = DateTime.Now.AddDays(-1 * (logLife + 1)).ToString(dateFormat) +
-         logExtension;
-            File.WriteAllText(logStorage + fileName, "testing");
-            resultSet.Add(fileName);
-            StreamReader reader = new StreamReader(logStorage + fileName);
-
-            //Act
-            bool actual = archiver.FileOutPut(resultSet);
-            reader.Close();
-            archiver.DeleteLog(fileName);
-            Console.WriteLine(manager.GetMessage());
-            DirClean();
-
-            //Assert
-            Assert.AreEqual(expected, actual);
-        }
-
-        ///<summary>
-        ///Test for FileOutPut() 
-        ///Given one normal logs and make it read only
-        ///Since the FileOutPut cannot compress a readonly file, it should return a false
-        ///</summary>
-        [TestMethod]
-        public void OutPutNotPassC()
-        {
-            //Arrange
-            bool expected = false;
-            List<string> resultSet = new List<string>();
-            string fileName = DateTime.Now.AddDays(-1 * (logLife + 1)).ToString(dateFormat) + logExtension;
-            File.WriteAllText(logStorage + fileName, "testing");
-            resultSet.Add(fileName);
-            FileInfo fInfo = new FileInfo(logStorage + fileName);
-            fInfo.IsReadOnly = true;
-
-            //Act
-            bool actual = archiver.FileOutPut(resultSet);
-            fInfo.IsReadOnly = false;
-            File.Delete(logStorage + fileName);
-            Console.WriteLine(manager.GetMessage());
-            DirClean();
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -293,6 +209,10 @@ namespace UnitTest
         public void RunArchivePass()
         {
             //Arrange
+
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             ArchiveManager archiver = new ArchiveManager();
             bool expected = true;
             for(int i = 1; i < 10; i++)
@@ -301,11 +221,13 @@ namespace UnitTest
         logExtension;
                 File.WriteAllText(logStorage + fileName, "testing");
             }
+            DirClean();
+           
 
             //Act
             bool actual = archiver.RunArchive();
             Console.WriteLine(archiver.GetMessage());
-            DirClean();
+            
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -322,6 +244,10 @@ namespace UnitTest
         {
             //Arrange
             bool expected =false;
+
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             string fileName = "";
             for (int i = 1; i < 10; i++)
             {
@@ -330,13 +256,14 @@ namespace UnitTest
                 File.WriteAllText(logStorage + fileName, "testing");
             }
             StreamReader reader = new StreamReader(logStorage + fileName);
+            DirClean();
 
             //Act
             bool actual = manager.RunArchive();
             Console.WriteLine(manager.GetMessage());
             reader.Close();
             File.Delete(logStorage + fileName);
-            DirClean();
+           
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -348,11 +275,15 @@ namespace UnitTest
         ///Madeone logs read only, the log should not be able to be added into the compressed file
         ///So the whole method should return a false
         ///</summary>
-        [TestMethod]
-        public void RunArchiveNotPassB()
+          [TestMethod]
+         public void RunArchiveNotPassB()
         {
             //Arrange
             bool expected = false;
+
+            //Make sure logStorage exists
+            LogStorageCheck();
+
             string fileName = "";
             for (int i = 1; i < 10; i++)
             {
@@ -360,30 +291,46 @@ namespace UnitTest
        logExtension;
                 File.WriteAllText(logStorage + fileName, "testing");
             }
-            FileInfo fInfo = new FileInfo(logStorage + fileName);
-            fInfo.IsReadOnly = true;
+            File.SetAttributes(logStorage + fileName, FileAttributes.ReadOnly);
+            DirClean();
 
             //Act
             bool actual = manager.RunArchive();
             Console.WriteLine(manager.GetMessage());
-            fInfo.IsReadOnly = false;
+            File.SetAttributes(logStorage + fileName, FileAttributes.Normal);
             File.Delete(logStorage + fileName);
-            DirClean();
+            
 
             //Assert
             Assert.AreEqual(expected, actual);
         }
 
         //Method that used to clean the archive storage for testing
-        public  void DirClean()
+        public void DirClean()
         {
+            //clean up tool to delete all files in archive storage, because the requirement said
+            //the successed output file should be read only, to avoid conflict in testing, just delete output files from 
+            //last test
+
             //clean the archive storage
             DirectoryInfo dir = new DirectoryInfo(ConfigurationManager.AppSettings["archiveStorage"]);
-
-           foreach (FileInfo file in dir.GetFiles())
+            if (dir.Exists)
             {
-                file.IsReadOnly = false;
-                file.Delete();
+                foreach (FileInfo file in dir.GetFiles())
+                {
+                    File.SetAttributes(file.FullName, FileAttributes.Normal);
+                    file.Delete();
+                }
+            }
+        }
+
+        //logStorage should already be given by the logging component, create logStorage for testing if logStorage not exists
+        public void LogStorageCheck()
+        {
+            var directory = new DirectoryInfo(logStorage);
+            if(!directory.Exists)
+            {
+                directory.Create();
             }
         }
     }

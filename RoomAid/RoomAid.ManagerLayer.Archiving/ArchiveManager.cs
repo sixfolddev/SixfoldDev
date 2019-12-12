@@ -30,73 +30,65 @@ namespace RoomAid.ManagerLayer.Archiving
         public bool RunArchive()
         {
             var config = ConfigurationManager.AppSettings;
-            //set default value for RunArchive as false to run the while loop only once
-            bool ifSuccess = false;
-            while (ifSuccess==false)
+            
+            //Before any step of archive started, the space check is required, if the free space is
+            //not less than the required space, or the drive is not available, the archive process should not start
+            //The admin shall be notified and this archive period shall be logged as failure
+            DriveInfo archiveDrive = new DriveInfo(config["driveInfo"]);
+            double spaceRequired = double.Parse(config["spaceRequired"]);
+            if (IsSpaceEnough(archiveDrive, spaceRequired) == false)
             {
-                //Make sure the loop only run once, change false to true
-                ifSuccess = true;
-               
-                //Before any step of archive started, the space check is required, if the free space is
-                //not less than the required space, or the drive is not available, the archive process should not start
-                //The admin shall be notified and this archive period shall be logged as failure
-                DriveInfo archiveDrive = new DriveInfo(config["driveInfo"]);
-                double spaceRequired = double.Parse(config["spaceRequired"]);
-                if (IsSpaceEnough(archiveDrive, spaceRequired) == false)
-                {
-                         ifSuccess = false;
-                         break;
-                }
-           
-                //Before start the archive, system need to make sure that 7z.exe is installed in the machine
-                if (File.Exists(config["sevenZipPath"]) == false)
-                {
-                    //Write the _message to explain the failure
-                    _message =config["sevenZipNotFound"];
-                    ifSuccess = false;
-                    break;
-                }
-                //Before start the archive, system should check if the log storage can be found
-                if (!Directory.Exists(@config["logStorage"]))
-                {
-                    //Write the _message to explain the failure
-                    _message = config["logStorageNotFound"];
-                    ifSuccess = false;
-                    break;
-                }
-
-                //Beofer start archive, system should check if the archive storage directory can be found, if not, then create a new folder
-                if (!Directory.Exists(@config["archiveStorage"]))
-                {
-                    Directory.CreateDirectory(@config["archiveStorage"]);
-                }
-
-                //Create a new list for resultSet to store all file names that are needed to be archived
-                List<string> resultSet = GetFileNames();
-
-                //if the result set is empty, the archive process must be stopped.
-                if (resultSet.Count == 0)
-                {
-                    //Write the _message to explain the failure
-                    _message = config["noLogToArchive"];
-                    ifSuccess = false;
-                    break;
-                }
-
-                //Output the compressed file
-                IArchiveService archiver = new SevenZipArchiveService();
-
-                //If the file out put is not successed, get failed file names from archiver and notify the admin
-                if (archiver.FileOutPut(resultSet) == false)
-                {
-                    ifSuccess = false;
-                    _message = config["outPutFail"] + archiver.GetMessage();
-                    break;
-                }   
+               return false;
             }
+           
+            //Before start the archive, system need to make sure that 7z.exe is installed in the machine
+            if (File.Exists(config["sevenZipPath"]) == false)
+            {
+                //Write the _message to explain the failure
+                _message =config["sevenZipNotFound"];
+                return false;
+            }
+
+            //Before start archive, system should check if the archive storage directory can be found, if not, then create a new folder
+            var directory =  new DirectoryInfo(config["archiveStorage"]);
+            if (!directory.Exists)
+            {
+                directory.Create();
+            }
+
+            //Before start the archive, system should check if the log storage can be found
+            directory = new DirectoryInfo(config["logStorage"]);
+            if (!directory.Exists)
+            {
+                //Write the _message to explain the failure
+                _message = config["logStorageNotFound"];
+                return false;
+            }
+
+            //Create a new list for resultSet to store all file names that are needed to be archived
+            List<string> resultSet = GetFileNames();
+
+            //if the result set is empty, the archive process must be stopped.
+            if (resultSet.Count == 0)
+            {
+                //Write the _message to explain the failure
+                _message = config["noLogToArchive"];
+                return false;
+            }
+
+            //Output the compressed file
+            IArchiveService archiver = new SevenZipArchiveService();
+
+            //If the file out put is not successed, get failed file names from archiver and notify the admin
+            if (archiver.FileOutPut(resultSet) == false)
+            {
+                _message = config["outPutFail"] + archiver.GetMessage();
+            return false;
+            }   
+            
        
             //Only if all steps were oeprated succeffully, the archive process could return true
-            return ifSuccess;
+            return true;
         }
 
         /// <summary>
