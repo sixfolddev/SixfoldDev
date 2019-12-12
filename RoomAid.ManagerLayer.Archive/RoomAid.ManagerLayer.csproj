@@ -51,5 +51,10 @@
       <Name>RoomAid.ServiceLayer</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="..\RoomAid.ServiceLayer.Archive\App.config">
+      <Link>App.config</Link>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

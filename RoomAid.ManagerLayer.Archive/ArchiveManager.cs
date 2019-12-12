@@ -12,19 +12,13 @@ namespace RoomAid.ManagerLayer.Archive
         //The error _message for logging
         private string _message;
 
-        //The configuration class that stored all necessary information about business requirement
-        private ArchiveConfig _config;
-
-
         //Constructor
         public ArchiveManager()
         {
 
-            //Get configuration from ArchiveConfig
-             _config = new ArchiveConfig();
-
             //Default _message, should return successed if all steps returns true
             _message = "Archive Successed";
+
         }
 
         /// <summary>
@@ -35,43 +29,46 @@ namespace RoomAid.ManagerLayer.Archive
         /// <returns>true for archive successed, ortherwise false</returns>
         public bool RunArchive()
         {
-            //
+            var config = ConfigurationManager.AppSettings;
+            //set default value for RunArchive as false to run the while loop only once
             bool ifSuccess = false;
             while (ifSuccess==false)
             {
+                //Make sure the loop only run once, change false to true
                 ifSuccess = true;
-
+               
                 //Before any step of archive started, the space check is required, if the free space is
                 //not less than the required space, or the drive is not available, the archive process should not start
                 //The admin shall be notified and this archive period shall be logged as failure
-                if (IsSpaceEnough(_config.GetDriveInfo(), _config.GetRequiredSpace()) == false)
+                DriveInfo archiveDrive = new DriveInfo(config["driveInfo"]);
+                double spaceRequired = double.Parse(config["spaceRequired"]);
+                if (IsSpaceEnough(archiveDrive, spaceRequired) == false)
                 {
                          ifSuccess = false;
                          break;
                 }
            
-
                 //Before start the archive, system need to make sure that 7z.exe is installed in the machine
-                if (File.Exists(_config.GetSevenZipPath()) == false)
+                if (File.Exists(config["sevenZipPath"]) == false)
                 {
                     //Write the _message to explain the failure
-                    _message = "Archive Start Failure: Cannot found 7z.exe for archiving";
+                    _message =config["sevenZipNotFound"];
                     ifSuccess = false;
                     break;
                 }
                 //Before start the archive, system should check if the log storage can be found
-                if (!Directory.Exists(_config.GetLogStorage()))
+                if (!Directory.Exists(config["logStorage"]))
                 {
                     //Write the _message to explain the failure
-                    _message = "Archive Start Failure: Cannot find log storage directory";
+                    _message = config["logStorageNotFound"];
                     ifSuccess = false;
                     break;
                 }
 
                 //Beofer start archive, system should check if the archive storage directory can be found, if not, then create a new folder
-                if (!Directory.Exists(_config.GetArchiveStorage()))
+                if (!Directory.Exists(config["archiveStorage"]))
                 {
-                    Directory.CreateDirectory(_config.GetArchiveStorage());
+                    Directory.CreateDirectory(config["archiveStorage"]);
                 }
 
                 //Create a new list for resultSet to store all file names that are needed to be archived
@@ -81,7 +78,7 @@ namespace RoomAid.ManagerLayer.Archive
                 if (resultSet.Count == 0)
                 {
                     //Write the _message to explain the failure
-                    _message = "Archive Start Failure: No files are required to be archived";
+                    _message = config["noLogToArchive"];
                     ifSuccess = false;
                     break;
                 }
@@ -93,7 +90,7 @@ namespace RoomAid.ManagerLayer.Archive
                 if (archiver.FileOutPut(resultSet) == false)
                 {
                     ifSuccess = false;
-                    _message = "Archive Failure: One or multiple files cannot be compressed/deleted\n"+archiver.GetMessage();
+                    _message = config["outPutFail"] + archiver.GetMessage();
                     break;
                 }   
             }
@@ -117,12 +114,15 @@ namespace RoomAid.ManagerLayer.Archive
             string logDate = split[0];
 
             //Convert and check if it is a datetime
-            bool isDateTime = DateTime.TryParseExact(logDate, _config.GetDateFormat(), new CultureInfo(_config.GetCultureInfo()),
+            string dateFormat = ConfigurationManager.AppSettings["dateFormat"];
+            string cultureInfo = ConfigurationManager.AppSettings["cultureInfo"];
+            int logLife = Int32.Parse(ConfigurationManager.AppSettings["logLife"]);
+            bool isDateTime = DateTime.TryParseExact(logDate, dateFormat, new CultureInfo(cultureInfo),
                 DateTimeStyles.None, out DateTime logDateTime);
 
             //Check if the log's life is old enough, return true if file name is correct and it is old enough
             //Else, return false
-            if ((DateTime.UtcNow - logDateTime).TotalDays > _config.GetLogLife() && isDateTime == true)
+            if ((DateTime.UtcNow - logDateTime).TotalDays > logLife && isDateTime == true)
             {
                 return true;
             }
@@ -142,7 +142,7 @@ namespace RoomAid.ManagerLayer.Archive
             var resultSet = new List<string>();
 
             //Use a for loop to go through the log storage path
-            foreach (string logFile in Directory.GetFiles(_config.GetLogStorage()))
+            foreach (string logFile in Directory.GetFiles(ConfigurationManager.AppSettings["logStorage"]))
             {
                 //Get the file name
                 string fileName = Path.GetFileName(logFile);
@@ -172,7 +172,7 @@ namespace RoomAid.ManagerLayer.Archive
             if (driveOfArchive.AvailableFreeSpace < requiredSpace || !driveOfArchive.IsReady)
             {
                 //Write the _message to explain the failure
-                _message = "Archive Start Failure: Insufficient space for archiving.";
+                _message = ConfigurationManager.AppSettings["spaceNotEnough"];
 
                 //return false if space is not enough or the drive is not available
                 return false;

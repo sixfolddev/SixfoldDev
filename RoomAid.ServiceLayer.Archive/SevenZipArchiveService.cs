@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
-using RoomAid.ServiceLayer.Archive;
+
 
 
 namespace RoomAid.ServiceLayer.Archive
@@ -12,9 +13,6 @@ namespace RoomAid.ServiceLayer.Archive
 
         //Message catched from deletion or compress
         private string _message;
-
-        //The configuration class which store all required information about business requirements
-        private ArchiveConfig _config;
 
         //The process that will be used to do the compress
         private Process process;
@@ -28,21 +26,25 @@ namespace RoomAid.ServiceLayer.Archive
         //String that stores all file names that are failed to be deleted, can help the system admin to find certain files
         private string deleteFailedFiles;
 
+        //Store the storage path for logs
+        private string logStorage;
+
         public SevenZipArchiveService()
 
         {
-            //Load the configurations
-            _config = new ArchiveConfig();
-
             //Set the file path for the output compressed file
-            outPutFilePath = _config.GetArchiveStorage() + DateTime.Now.ToString(_config.GetDateFormat()) +
-            _config.GetArchiveExtension();
+            outPutFilePath = ConfigurationManager.AppSettings["archiveStorage"] + DateTime.Now.ToString(
+                ConfigurationManager.AppSettings["dateFormat"]) +
+           ConfigurationManager.AppSettings["archiveExtension"];
 
             //Set the name list as empty
             compressFailedFiles = "";
 
             //Set the name list as empty
             deleteFailedFiles = "";
+
+            //Get the log storage path from config 
+            logStorage = ConfigurationManager.AppSettings["logStorage"];
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace RoomAid.ServiceLayer.Archive
             process = new Process();
 
             //The process shall use 7z.exe to call the commandline
-            process.StartInfo.FileName = _config.GetSevenZipPath();
+            process.StartInfo.FileName = ConfigurationManager.AppSettings["sevenZipPath"];
 
             //Use a for loop to go through every file name in resultSet
             foreach (string fileName in resultSet)
@@ -138,11 +140,11 @@ namespace RoomAid.ServiceLayer.Archive
             try
             {
                 //Set path for the log file which needed to be archived
-                string filePath = _config.GetLogStorage() + fileName;
+                string filePath = logStorage + fileName;
 
                 //Set the argument as the commanline for 7z to add a file into to the compressed file.
                 //a - means add for 7z commandline
-                process.StartInfo.Arguments = " a -t7z " + outPutFilePath + " " + filePath + "";
+                process.StartInfo.Arguments = ConfigurationManager.AppSettings["sevenZipCommandLine"] + outPutFilePath + " " + filePath + "";
 
                 //Hide the console page
                 process.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -175,7 +177,7 @@ namespace RoomAid.ServiceLayer.Archive
         public bool DeleteLog(string fileName)
         {
             //Get the file path by combineing the storage path and the file name
-            string filePath = _config.GetLogStorage() + fileName;
+            string filePath = logStorage + fileName;
 
             try
             {
@@ -221,7 +223,8 @@ namespace RoomAid.ServiceLayer.Archive
             bool retrySuccess = true;
 
             //Retry until it reached the limit time of retry or it successed
-            for (int i = 0; i < _config.GetTimeOfRetry(); i++)
+            int retryLimit = Int32.Parse(ConfigurationManager.AppSettings["retryLimit"]);
+            for (int i = 0; i < retryLimit; i++)
             {
                 //Call method again to check if certain method can be executed successfully
                 retrySuccess = method(fileName);
@@ -253,16 +256,13 @@ namespace RoomAid.ServiceLayer.Archive
             {
                
                 //The notification should includes the file path and all file names for the errored files
-                notification = "Compress Failed: One or multiple files " +
-                                           "could not be added into the compressed file:\nFile Path: "
-                                           + _config.GetLogStorage() + "\nFile Names: " + compressFailedFiles;
+                notification = ConfigurationManager.AppSettings["notificationCompress"] + logStorage + "\n"+ compressFailedFiles;
             }
 
             if (string.IsNullOrEmpty(deleteFailedFiles) == false)
             {
                 //The notification should includes the file path and all file names for the errored files
-                notification = notification + "Deletion Failed: One or multiple files " +
-                        "could not be deleted:\nFile Path: " + _config.GetLogStorage() + "\nFile Names: " + deleteFailedFiles;
+                notification = notification + ConfigurationManager.AppSettings["notificationDelete"] + logStorage + "\n" + deleteFailedFiles;
             }
 
             return notification;
