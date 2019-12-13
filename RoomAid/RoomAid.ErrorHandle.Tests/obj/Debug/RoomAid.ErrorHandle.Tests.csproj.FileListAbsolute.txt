@@ -63,3 +63,6 @@ C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Ro
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.Emailing.dll.config
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MimeKit.xml
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MailKit.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\mongocrypt.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MongoDB.Libmongocrypt.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ErrorHandling.dll.config

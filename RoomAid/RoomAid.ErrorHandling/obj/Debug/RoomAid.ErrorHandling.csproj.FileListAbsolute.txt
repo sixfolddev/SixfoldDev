@@ -326,3 +326,6 @@ C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\System
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MimeKit.xml
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MailKit.xml
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\mongocrypt.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ErrorHandling.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Libmongocrypt.dll

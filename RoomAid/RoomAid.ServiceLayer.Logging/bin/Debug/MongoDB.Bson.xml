@@ -6092,6 +6092,11 @@
             An MD5 hash.
             </summary>
         </member>
+        <member name="F:MongoDB.Bson.BsonBinarySubType.Encrypted">
+            <summary>
+            Encrypted binary data.
+            </summary>
+        </member>
         <member name="F:MongoDB.Bson.BsonBinarySubType.UserDefined">
             <summary>
             User defined binary data.

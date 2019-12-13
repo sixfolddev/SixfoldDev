@@ -1887,6 +1887,9 @@
         <member name="P:MongoDB.Driver.Core.Bindings.CoreSession.IsCausallyConsistent">
             <inheritdoc />
         </member>
+        <member name="P:MongoDB.Driver.Core.Bindings.CoreSession.IsDirty">
+            <inheritdoc />
+        </member>
         <member name="P:MongoDB.Driver.Core.Bindings.CoreSession.IsImplicit">
             <inheritdoc />
         </member>
@@ -1927,6 +1930,9 @@
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.Core.Bindings.CoreSession.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.Core.Bindings.CoreSession.MarkDirty">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.Core.Bindings.CoreSession.StartTransaction(MongoDB.Driver.TransactionOptions)">
@@ -2584,6 +2590,14 @@
               <c>true</c> if the session is causally consistent.
             </value>
         </member>
+        <member name="P:MongoDB.Driver.Core.Bindings.ICoreSession.IsDirty">
+            <summary>
+            Gets a value indicate whether this session is dirty.
+            </summary>
+            <value>
+              <c>true</c> if the session is dirty.
+            </value>
+        </member>
         <member name="P:MongoDB.Driver.Core.Bindings.ICoreSession.IsImplicit">
             <summary>
             Gets a value indicating whether this instance is implicit session.
@@ -2673,6 +2687,11 @@
             <param name="cancellationToken">The cancellation token.</param>
             <returns>A Task.</returns>
         </member>
+        <member name="M:MongoDB.Driver.Core.Bindings.ICoreSession.MarkDirty">
+            <summary>
+            Marks the session as dirty.
+            </summary>
+        </member>
         <member name="M:MongoDB.Driver.Core.Bindings.ICoreSession.StartTransaction(MongoDB.Driver.TransactionOptions)">
             <summary>
             Starts a transaction.
@@ -2728,6 +2747,9 @@
         <member name="P:MongoDB.Driver.Core.Bindings.NoCoreSession.IsCausallyConsistent">
             <inheritdoc />
         </member>
+        <member name="P:MongoDB.Driver.Core.Bindings.NoCoreSession.IsDirty">
+            <inheritdoc />
+        </member>
         <member name="P:MongoDB.Driver.Core.Bindings.NoCoreSession.IsImplicit">
             <inheritdoc />
         </member>
@@ -2768,6 +2790,9 @@
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.Core.Bindings.NoCoreSession.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.Core.Bindings.NoCoreSession.MarkDirty">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.Core.Bindings.NoCoreSession.StartTransaction(MongoDB.Driver.TransactionOptions)">
@@ -3062,6 +3087,9 @@
         <member name="P:MongoDB.Driver.Core.Bindings.WrappingCoreSession.Id">
             <inheritdoc />
         </member>
+        <member name="P:MongoDB.Driver.Core.Bindings.WrappingCoreSession.IsDirty">
+            <inheritdoc />
+        </member>
         <member name="P:MongoDB.Driver.Core.Bindings.WrappingCoreSession.IsCausallyConsistent">
             <inheritdoc />
         </member>
@@ -3113,6 +3141,9 @@
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.Core.Bindings.WrappingCoreSession.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.Core.Bindings.WrappingCoreSession.MarkDirty">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.Core.Bindings.WrappingCoreSession.StartTransaction(MongoDB.Driver.TransactionOptions)">
@@ -3468,6 +3499,19 @@
             The cluster is a sharded cluster.
             </summary>
         </member>
+        <member name="T:MongoDB.Driver.Core.Clusters.CryptClientCreator">
+            <summary>
+            Represents a creator for CryptClient.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Core.Clusters.CryptClientCreator.CreateCryptClient(System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}},System.Collections.Generic.IReadOnlyDictionary{System.String,MongoDB.Bson.BsonDocument})">
+            <summary>
+            Create a CryptClient instance.
+            </summary>
+            <param name="kmsProviders">The kms providers.</param>
+            <param name="schemaMap">The schema map.</param>
+            <returns>The CryptClient instance.</returns>
+        </member>
         <member name="T:MongoDB.Driver.Core.Clusters.ElectionId">
             <summary>
             An election id from the server.
@@ -3561,6 +3605,12 @@
             Acquires a core server session.
             </summary>
             <returns>A core server session.</returns>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Clusters.ICluster.CryptClient">
+            <summary>
+            Gets the crypt client.
+            </summary>
+            <returns>A crypt client.</returns>
         </member>
         <member name="M:MongoDB.Driver.Core.Clusters.ICluster.Initialize">
             <summary>
@@ -4080,17 +4130,19 @@
             Represents settings for a cluster.
             </summary>
         </member>
-        <member name="M:MongoDB.Driver.Core.Configuration.ClusterSettings.#ctor(MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ClusterConnectionMode},MongoDB.Driver.Optional{System.Collections.Generic.IEnumerable{System.Net.EndPoint}},MongoDB.Driver.Optional{System.Int32},MongoDB.Driver.Optional{System.String},MongoDB.Driver.Optional{System.TimeSpan},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{MongoDB.Driver.Core.Configuration.ConnectionStringScheme})">
+        <member name="M:MongoDB.Driver.Core.Configuration.ClusterSettings.#ctor(MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ClusterConnectionMode},MongoDB.Driver.Optional{System.Collections.Generic.IEnumerable{System.Net.EndPoint}},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}}},MongoDB.Driver.Optional{System.Int32},MongoDB.Driver.Optional{System.String},MongoDB.Driver.Optional{System.TimeSpan},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,MongoDB.Bson.BsonDocument}},MongoDB.Driver.Optional{MongoDB.Driver.Core.Configuration.ConnectionStringScheme})">
             <summary>
             Initializes a new instance of the <see cref="T:MongoDB.Driver.Core.Configuration.ClusterSettings"/> class.
             </summary>
             <param name="connectionMode">The connection mode.</param>
             <param name="endPoints">The end points.</param>
+            <param name="kmsProviders">The kms providers.</param>
             <param name="maxServerSelectionWaitQueueSize">Maximum size of the server selection wait queue.</param>
             <param name="replicaSetName">Name of the replica set.</param>
             <param name="serverSelectionTimeout">The server selection timeout.</param>
             <param name="preServerSelector">The pre server selector.</param>
             <param name="postServerSelector">The post server selector.</param>
+            <param name="schemaMap">The schema map.</param>
             <param name="scheme">The connection string scheme.</param>
         </member>
         <member name="P:MongoDB.Driver.Core.Configuration.ClusterSettings.ConnectionMode">
@@ -4109,6 +4161,14 @@
             The end points.
             </value>
         </member>
+        <member name="P:MongoDB.Driver.Core.Configuration.ClusterSettings.KmsProviders">
+            <summary>
+            Gets the kms providers.
+            </summary>
+            <value>
+            The kms providers.
+            </value>
+        </member>
         <member name="P:MongoDB.Driver.Core.Configuration.ClusterSettings.MaxServerSelectionWaitQueueSize">
             <summary>
             Gets the maximum size of the server selection wait queue.
@@ -4123,6 +4183,14 @@
             </summary>
             <value>
             The name of the replica set.
+            </value>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Configuration.ClusterSettings.SchemaMap">
+            <summary>
+            Gets the schema map.
+            </summary>
+            <value>
+            The schema map.
             </value>
         </member>
         <member name="P:MongoDB.Driver.Core.Configuration.ClusterSettings.Scheme">
@@ -4157,17 +4225,19 @@
             The post server selector.
             </value>
         </member>
-        <member name="M:MongoDB.Driver.Core.Configuration.ClusterSettings.With(MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ClusterConnectionMode},MongoDB.Driver.Optional{System.Collections.Generic.IEnumerable{System.Net.EndPoint}},MongoDB.Driver.Optional{System.Int32},MongoDB.Driver.Optional{System.String},MongoDB.Driver.Optional{System.TimeSpan},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{MongoDB.Driver.Core.Configuration.ConnectionStringScheme})">
+        <member name="M:MongoDB.Driver.Core.Configuration.ClusterSettings.With(MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ClusterConnectionMode},MongoDB.Driver.Optional{System.Collections.Generic.IEnumerable{System.Net.EndPoint}},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,System.Collections.Generic.IReadOnlyDictionary{System.String,System.Object}}},MongoDB.Driver.Optional{System.Int32},MongoDB.Driver.Optional{System.String},MongoDB.Driver.Optional{System.TimeSpan},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{MongoDB.Driver.Core.Clusters.ServerSelectors.IServerSelector},MongoDB.Driver.Optional{System.Collections.Generic.IReadOnlyDictionary{System.String,MongoDB.Bson.BsonDocument}},MongoDB.Driver.Optional{MongoDB.Driver.Core.Configuration.ConnectionStringScheme})">
             <summary>
             Returns a new ClusterSettings instance with some settings changed.
             </summary>
             <param name="connectionMode">The connection mode.</param>
             <param name="endPoints">The end points.</param>
+            <param name="kmsProviders">The kms providers.</param>
             <param name="maxServerSelectionWaitQueueSize">Maximum size of the server selection wait queue.</param>
             <param name="replicaSetName">Name of the replica set.</param>
             <param name="serverSelectionTimeout">The server selection timeout.</param>
             <param name="preServerSelector">The pre server selector.</param>
             <param name="postServerSelector">The post server selector.</param>
+            <param name="schemaMap">The schema map.</param>
             <param name="scheme">The connection string scheme.</param>
             <returns>A new ClusterSettings instance.</returns>
         </member>
@@ -5436,7 +5506,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterAddedServerEvent">
-            <preliminary/>
             <summary>
             Occurs after a server is added to the cluster.
             </summary>
@@ -5464,7 +5533,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterAddingServerEvent">
-            <preliminary/>
             <summary>
             Occurs before a server is added to the cluster.
             </summary>
@@ -5487,7 +5555,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterClosedEvent">
-            <preliminary/>
             <summary>
             Occurs after a cluster is closed.
             </summary>
@@ -5510,7 +5577,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterClosingEvent">
-            <preliminary/>
             <summary>
             Occurs before a cluster is closed.
             </summary>
@@ -5527,7 +5593,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterDescriptionChangedEvent">
-            <preliminary/>
             <summary>
             Occurs when a cluster has changed.
             </summary>
@@ -5555,7 +5620,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterOpenedEvent">
-            <preliminary/>
             <summary>
             Occurs after a cluster is opened.
             </summary>
@@ -5584,7 +5648,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterOpeningEvent">
-            <preliminary/>
             <summary>
             Occurs before a cluster is opened.
             </summary>
@@ -5607,7 +5670,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterRemovedServerEvent">
-            <preliminary/>
             <summary>
             Occurs after a server has been removed from the cluster.
             </summary>
@@ -5641,7 +5703,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterRemovingServerEvent">
-            <preliminary/>
             <summary>
             Occurs before a server is removed from the cluster.
             </summary>
@@ -5669,7 +5730,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterSelectedServerEvent">
-            <preliminary/>
             <summary>
             Occurs after a server is selected.
             </summary>
@@ -5715,7 +5775,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterSelectingServerEvent">
-            <preliminary/>
             <summary>
             Occurs before a server is selected.
             </summary>
@@ -5749,7 +5808,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ClusterSelectingServerFailedEvent">
-            <preliminary/>
             <summary>
             Occurs when selecting a server fails.
             </summary>
@@ -5926,8 +5984,27 @@
             Gets the request identifier.
             </summary>
         </member>
+        <member name="T:MongoDB.Driver.Core.Events.ConnectionCheckOutFailedReason">
+            <summary>
+            Represents the reason an attempt to check out a connection failed.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionCheckOutFailedReason.PoolClosed">
+            <summary>
+            The connection pool is closed.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionCheckOutFailedReason.Timeout">
+            <summary>
+            Timeout waiting for a connection to become available.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionCheckOutFailedReason.ConnectionError">
+            <summary>
+            Connection error while opening a new connection.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionClosedEvent">
-            <preliminary/>
             <summary>
             Occurs after a connection is closed.
             </summary>
@@ -5965,8 +6042,37 @@
             Gets the server identifier.
             </summary>
         </member>
+        <member name="T:MongoDB.Driver.Core.Events.ConnectionClosedReason">
+            <summary>
+            Represents the reason a connection was closed.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionClosedReason.Stale">
+            <summary>
+            The pool was cleared, making the connection no longer valid.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionClosedReason.Idle">
+            <summary>
+            The connection became stale by being available for too long.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionClosedReason.Error">
+            <summary>
+            The connection experienced an error, making it no longer valid.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionClosedReason.PoolClosed">
+            <summary>
+            The pool was closed, making the connection no longer valid.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.Events.ConnectionClosedReason.Unknown">
+            <summary>
+            The reason the connection was closed is unknown.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionClosingEvent">
-            <preliminary/>
             <summary>
             Occurs before a connection is closed.
             </summary>
@@ -5998,11 +6104,48 @@
             Gets the server identifier.
             </summary>
         </member>
+        <member name="T:MongoDB.Driver.Core.Events.ConnectionCreatedEvent">
+            <summary>
+            Occurs when a connection is created..
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Core.Events.ConnectionCreatedEvent.#ctor(MongoDB.Driver.Core.Connections.ConnectionId,MongoDB.Driver.Core.Configuration.ConnectionSettings,System.Nullable{System.Int64})">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Core.Events.ConnectionCreatedEvent" /> struct.
+            </summary>
+            <param name="connectionId">The connection identifier.</param>
+            <param name="connectionSettings">The connection settings.</param>
+            <param name="operationId">The operation identifier.</param>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionCreatedEvent.ClusterId">
+            <summary>
+            Gets the cluster identifier.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionCreatedEvent.ConnectionId">
+            <summary>
+            Gets the connection identifier.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionCreatedEvent.ConnectionSettings">
+            <summary>
+            Gets the connection settings.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionCreatedEvent.OperationId">
+            <summary>
+            Gets the operation identifier.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionCreatedEvent.ServerId">
+            <summary>
+            Gets the server identifier.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionFailedEvent">
             <summary>
             Occurs when a connection fails.
             </summary>
-            <preliminary />
         </member>
         <member name="M:MongoDB.Driver.Core.Events.ConnectionFailedEvent.#ctor(MongoDB.Driver.Core.Connections.ConnectionId,System.Exception)">
             <summary>
@@ -6035,7 +6178,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionOpenedEvent">
-            <preliminary/>
             <summary>
             Occurs after a connection is opened.
             </summary>
@@ -6080,7 +6222,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionOpeningEvent">
-            <preliminary/>
             <summary>
             Occurs before a connection is opened.
             </summary>
@@ -6119,7 +6260,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionOpeningFailedEvent">
-            <preliminary/>
             <summary>
             Occurs when a connection fails to open.
             </summary>
@@ -6164,7 +6304,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolAddedConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs after a connection is added to the pool.
             </summary>
@@ -6203,7 +6342,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolAddingConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs before a connection is added to the pool.
             </summary>
@@ -6231,7 +6369,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolCheckedInConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs after a connection is checked in to the pool.
             </summary>
@@ -6270,7 +6407,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolCheckedOutConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs after a connection is checked out of the pool.
             </summary>
@@ -6309,7 +6445,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolCheckingInConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs before a connection is checked in to the pool.
             </summary>
@@ -6342,7 +6477,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs before a connection is checking out of the pool.
             </summary>
@@ -6370,18 +6504,18 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionFailedEvent">
-            <preliminary/>
             <summary>
             Occurs when a connection could not be checked out of the pool.
             </summary>
         </member>
-        <member name="M:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionFailedEvent.#ctor(MongoDB.Driver.Core.Servers.ServerId,System.Exception,System.Nullable{System.Int64})">
+        <member name="M:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionFailedEvent.#ctor(MongoDB.Driver.Core.Servers.ServerId,System.Exception,System.Nullable{System.Int64},MongoDB.Driver.Core.Events.ConnectionCheckOutFailedReason)">
             <summary>
             Initializes a new instance of the <see cref="T:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionFailedEvent" /> struct.
             </summary>
             <param name="serverId">The server identifier.</param>
             <param name="exception">The exception.</param>
             <param name="operationId">The operation identifier.</param>
+            <param name="reason">The reason the checkout failed.</param>
         </member>
         <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionFailedEvent.ClusterId">
             <summary>
@@ -6398,13 +6532,71 @@
             Gets the operation identifier.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionFailedEvent.Reason">
+            <summary>
+            Gets the reason the checkout failed.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolCheckingOutConnectionFailedEvent.ServerId">
             <summary>
             Gets the server identifier.
             </summary>
         </member>
+        <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolClearedEvent">
+            <summary>
+            Occurs after the pool is cleared.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Core.Events.ConnectionPoolClearedEvent.#ctor(MongoDB.Driver.Core.Servers.ServerId,MongoDB.Driver.Core.Configuration.ConnectionPoolSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Core.Events.ConnectionPoolClearedEvent"/> struct.
+            </summary>
+            <param name="serverId">The server identifier.</param>
+            <param name="connectionPoolSettings">The connection pool settings.</param>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolClearedEvent.ClusterId">
+            <summary>
+            Gets the cluster identifier.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolClearedEvent.ConnectionPoolSettings">
+            <summary>
+            Gets the connection pool settings.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolClearedEvent.ServerId">
+            <summary>
+            Gets the server identifier.
+            </summary>
+        </member>
+        <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolClearingEvent">
+            <summary>
+            Occurs when the pool is about to be cleared.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Core.Events.ConnectionPoolClearingEvent.#ctor(MongoDB.Driver.Core.Servers.ServerId,MongoDB.Driver.Core.Configuration.ConnectionPoolSettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MongoDB.Driver.Core.Events.ConnectionPoolClearingEvent"/> struct.
+            </summary>
+            <param name="serverId">The server identifier.</param>
+            <param name="connectionPoolSettings">The connection pool settings.</param>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolClearingEvent.ClusterId">
+            <summary>
+            Gets the cluster identifier.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolClearingEvent.ConnectionPoolSettings">
+            <summary>
+            Gets the connection pool settings.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Events.ConnectionPoolClearingEvent.ServerId">
+            <summary>
+            Gets the server identifier.
+            </summary>
+        </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolClosedEvent">
-            <preliminary/>
             <summary>
             Occurs after the pool is closed.
             </summary>
@@ -6426,7 +6618,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolClosingEvent">
-            <preliminary/>
             <summary>
             Occurs before the pool is closed.
             </summary>
@@ -6448,7 +6639,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolOpenedEvent">
-            <preliminary/>
             <summary>
             Occurs after the pool is opened.
             </summary>
@@ -6476,7 +6666,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolOpeningEvent">
-            <preliminary/>
             <summary>
             Occurs before the pool is opened.
             </summary>
@@ -6504,7 +6693,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolRemovedConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs after a connection is removed from the pool.
             </summary>
@@ -6543,7 +6731,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionPoolRemovingConnectionEvent">
-            <preliminary/>
             <summary>
             Occurs before a connection is removed from the pool.
             </summary>
@@ -6579,7 +6766,6 @@
             <summary>
             Occurs after a message is received.
             </summary>
-            <preliminary />
         </member>
         <member name="M:MongoDB.Driver.Core.Events.ConnectionReceivedMessageEvent.#ctor(MongoDB.Driver.Core.Connections.ConnectionId,System.Int32,System.Int32,System.TimeSpan,System.TimeSpan,System.Nullable{System.Int64})">
             <summary>
@@ -6638,7 +6824,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionReceivingMessageEvent">
-            <preliminary/>
             <summary>
             Occurs before a message is received.
             </summary>
@@ -6677,7 +6862,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionReceivingMessageFailedEvent">
-            <preliminary/>
             <summary>
             Occurs when a message was unable to be received.
             </summary>
@@ -6722,7 +6906,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionSendingMessagesEvent">
-            <preliminary/>
             <summary>
             Occurs before a message is sent.
             </summary>
@@ -6761,7 +6944,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionSendingMessagesFailedEvent">
-            <preliminary/>
             <summary>
             Occurs when a message could not be sent.
             </summary>
@@ -6806,7 +6988,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ConnectionSentMessagesEvent">
-            <preliminary/>
             <summary>
             Occurs after a message has been sent.
             </summary>
@@ -6868,7 +7049,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.Diagnostics.PerformanceCounterEventSubscriber">
-            <preliminary/>
             <summary>
             Represents an event subscriber that records certain events to Windows performance counters.
             </summary>
@@ -6960,7 +7140,6 @@
             <inheritdoc />
         </member>
         <member name="T:MongoDB.Driver.Core.Events.SdamInformationEvent">
-            <preliminary/>
             <summary>
             An informational event used for logging Server Discovery and Monitoring (SDAM) events. 
             </summary>
@@ -6986,7 +7165,6 @@
             <inheritdoc />
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerClosedEvent">
-            <preliminary/>
             <summary>
             Occurs after a server is closed.
             </summary>
@@ -7014,7 +7192,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerClosingEvent">
-            <preliminary/>
             <summary>
             Occurs before a server is closed.
             </summary>
@@ -7036,7 +7213,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerDescriptionChangedEvent">
-            <preliminary/>
             <summary>
             Occurs after a server's description has changed.
             </summary>
@@ -7069,7 +7245,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerHeartbeatFailedEvent">
-            <preliminary/>
             <summary>
             Occurs when a heartbeat failed.
             </summary>
@@ -7102,7 +7277,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerHeartbeatStartedEvent">
-            <preliminary/>
             <summary>
             Occurs when a heartbeat succeeded.
             </summary>
@@ -7129,7 +7303,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerHeartbeatSucceededEvent">
-            <preliminary/>
             <summary>
             Occurs before heartbeat is issued.
             </summary>
@@ -7162,7 +7335,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerOpenedEvent">
-            <preliminary/>
             <summary>
             Occurs after a server is opened.
             </summary>
@@ -7196,7 +7368,6 @@
             </summary>
         </member>
         <member name="T:MongoDB.Driver.Core.Events.ServerOpeningEvent">
-            <preliminary/>
             <summary>
             Occurs before a server is opened.
             </summary>
@@ -7854,6 +8025,11 @@
             Gets the change stream post batch resume token feature.
             </summary>
         </member>
+        <member name="P:MongoDB.Driver.Core.Misc.Feature.ClientSideEncryption">
+            <summary>
+            Gets the client side encryption feature.
+            </summary>
+        </member>
         <member name="P:MongoDB.Driver.Core.Misc.Feature.Collation">
             <summary>
             Gets the collation feature.
@@ -8017,6 +8193,11 @@
         <member name="P:MongoDB.Driver.Core.Misc.Feature.ShardedTransactions">
             <summary>
             Gets the sharded transactions feature.
+            </summary>
+        </member>
+        <member name="P:MongoDB.Driver.Core.Misc.Feature.TailableCursor">
+            <summary>
+            Gets the tailable cursor feature.
             </summary>
         </member>
         <member name="P:MongoDB.Driver.Core.Misc.Feature.Transactions">
@@ -9650,6 +9831,7 @@
         <member name="T:MongoDB.Driver.Core.Operations.CountDocumentsOperation">
             <summary>
             Represents a count documents operation.
+            For a fast estimate of the total documents in a collection see <see cref="T:MongoDB.Driver.Core.Operations.CountOperation"/>.
             </summary>
         </member>
         <member name="M:MongoDB.Driver.Core.Operations.CountDocumentsOperation.#ctor(MongoDB.Driver.CollectionNamespace,MongoDB.Driver.Core.WireProtocol.Messages.Encoders.MessageEncoderSettings)">
@@ -15094,6 +15276,50 @@
             The post batch resume token.
             </value>
         </member>
+        <member name="T:MongoDB.Driver.Core.WireProtocol.IBinaryCommandFieldEncryptor">
+            <summary>
+            Interface for decrypting fields in a binary document.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Core.WireProtocol.IBinaryCommandFieldEncryptor.EncryptFields(System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the fields.
+            </summary>
+            <param name="databaseName">The database name.</param>
+            <param name="unencryptedCommandBytes">The unencrypted command bytes.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>An encrypted document.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Core.WireProtocol.IBinaryCommandFieldEncryptor.EncryptFieldsAsync(System.String,System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Encrypts the fields asynchronously.
+            </summary>
+            <param name="databaseName">The database name.</param>
+            <param name="unencryptedCommandBytes">The unencrypted command bytes.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>An encrypted document.</returns>
+        </member>
+        <member name="T:MongoDB.Driver.Core.WireProtocol.IBinaryDocumentFieldDecryptor">
+            <summary>
+            Interface for decrypting fields in a binary document.
+            </summary>
+        </member>
+        <member name="M:MongoDB.Driver.Core.WireProtocol.IBinaryDocumentFieldDecryptor.DecryptFields(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the fields.
+            </summary>
+            <param name="encryptedDocumentBytes">The encrypted document bytes.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>An unencrypted document.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Core.WireProtocol.IBinaryDocumentFieldDecryptor.DecryptFieldsAsync(System.Byte[],System.Threading.CancellationToken)">
+            <summary>
+            Decrypts the fields asynchronously.
+            </summary>
+            <param name="encryptedDocumentBytes">The encrypted document bytes.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <returns>An unencrypted document.</returns>
+        </member>
         <member name="T:MongoDB.Driver.Core.WireProtocol.Messages.CommandMessage">
             <summary>
             Represents a command message.
@@ -15757,6 +15983,14 @@
             The encoding.
             </value>
         </member>
+        <member name="P:MongoDB.Driver.Core.WireProtocol.Messages.Encoders.BinaryEncoders.MessageBinaryEncoderBase.IsEncryptionConfigured">
+            <summary>
+            Gets a flag whether encryption has been configured.
+            </summary>
+            <value>
+            The flag whether encryption is configured or not.
+            </value>
+        </member>
         <member name="P:MongoDB.Driver.Core.WireProtocol.Messages.Encoders.BinaryEncoders.MessageBinaryEncoderBase.MaxDocumentSize">
             <summary>
             Gets the maximum size of the document.
@@ -16393,6 +16627,16 @@
             Represents the names of different encoder settings.
             </summary>
         </member>
+        <member name="F:MongoDB.Driver.Core.WireProtocol.Messages.Encoders.MessageEncoderSettingsName.BinaryDocumentFieldDecryptor">
+            <summary>
+            The name of the binary document field decryptor setting.
+            </summary>
+        </member>
+        <member name="F:MongoDB.Driver.Core.WireProtocol.Messages.Encoders.MessageEncoderSettingsName.BinaryDocumentFieldEncryptor">
+            <summary>
+            The name of the binary document field encryptor setting.
+            </summary>
+        </member>
         <member name="F:MongoDB.Driver.Core.WireProtocol.Messages.Encoders.MessageEncoderSettingsName.FixOldBinarySubTypeOnInput">
             <summary>
             The name of the FixOldBinarySubTypeOnInput setting.
@@ -16499,6 +16743,13 @@
             <param name="name">The name.</param>
             <param name="defaultValue">The default value.</param>
             <returns>The value of the setting, or a default value if the setting does not exist.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.Core.WireProtocol.Messages.Encoders.MessageEncoderSettings.Set(System.String,System.Object)">
+            <summary>
+            Sets the specified setting.
+            </summary>
+            <param name="name">The name.</param>
+            <param name="value">The value.</param>
         </member>
         <member name="T:MongoDB.Driver.Core.WireProtocol.Messages.Encoders.ReplyMessageEncoderSelector`1">
             <summary>
@@ -17014,6 +17265,9 @@
         <member name="P:MongoDB.Driver.CoreServerSession.Id">
             <inheritdoc />
         </member>
+        <member name="P:MongoDB.Driver.CoreServerSession.IsDirty">
+            <inheritdoc />
+        </member>
         <member name="P:MongoDB.Driver.CoreServerSession.LastUsedAt">
             <inheritdoc />
         </member>
@@ -17021,6 +17275,9 @@
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.CoreServerSession.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:MongoDB.Driver.CoreServerSession.MarkDirty">
             <inheritdoc />
         </member>
         <member name="M:MongoDB.Driver.CoreServerSession.WasUsed">
@@ -17062,6 +17319,14 @@
             The session Id.
             </value>
         </member>
+        <member name="P:MongoDB.Driver.ICoreServerSession.IsDirty">
+            <summary>
+            Gets a value indicate whether this session is dirty.
+            </summary>
+            <value>
+              <c>true</c> if the session is dirty.
+            </value>
+        </member>
         <member name="P:MongoDB.Driver.ICoreServerSession.LastUsedAt">
             <summary>
             Gets the time this server session was last used (in UTC).
@@ -17075,6 +17340,11 @@
             Gets the next transaction number.
             </summary>
             <returns>The transaction number.</returns>
+        </member>
+        <member name="M:MongoDB.Driver.ICoreServerSession.MarkDirty">
+            <summary>
+            Marks the session as dirty.
+            </summary>
         </member>
         <member name="M:MongoDB.Driver.ICoreServerSession.WasUsed">
             <summary>

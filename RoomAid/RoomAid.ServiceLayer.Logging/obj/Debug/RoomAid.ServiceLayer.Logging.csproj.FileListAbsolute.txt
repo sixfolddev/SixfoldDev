@@ -86,3 +86,5 @@ C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csproj.CopyComplete
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.dll
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\mongocrypt.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Libmongocrypt.dll

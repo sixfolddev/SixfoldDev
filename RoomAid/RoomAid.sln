@@ -9,10 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomAid.Authorization", "Au
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomAid.AuthorizationTests", "AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\RoomAid.AuthorizationTests.csproj", "{B7164036-EC23-445C-B9F9-DDDD25B54F0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication", "RoomAid.Authentication\RoomAid.Authentication.csproj", "{BFEC3A09-462F-49A7-8351-73F8BEE32B27}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication.Tests", "RoomAid.Authentication.Tests\RoomAid.Authentication.Tests.csproj", "{1E82DD5F-B683-48DE-B159-1D03AF88114D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Archive.Test", "RoomAid.Archiving.Tests\RoomAid.Archive.Test.csproj", "{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.Archiving", "RoomAid.ServiceLayer.Archiving\RoomAid.ServiceLayer.Archiving.csproj", "{4DD30E8C-96F9-41FE-A68A-303B79305488}"
@@ -28,6 +24,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ErrorHandling", "RoomAid.ErrorHandling\RoomAid.ErrorHandling.csproj", "{06B7D27F-94A2-438E-9142-073EE9675B6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ErrorHandle.Tests", "RoomAid.ErrorHandle.Tests\RoomAid.ErrorHandle.Tests.csproj", "{E5414F13-EE2C-42A5-9C75-1868ABEC4921}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication", "RoomAid.Authentication\RoomAid.Authentication.csproj", "{BFEC3A09-462F-49A7-8351-73F8BEE32B27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication.Tests", "RoomAid.Authentication.Tests\RoomAid.Authentication.Tests.csproj", "{1E82DD5F-B683-48DE-B159-1D03AF88114D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,14 +47,6 @@ Global
 		{B7164036-EC23-445C-B9F9-DDDD25B54F0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B7164036-EC23-445C-B9F9-DDDD25B54F0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B7164036-EC23-445C-B9F9-DDDD25B54F0C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A4F087C3-4D06-42BE-ABF3-273A1CD7519C}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -87,6 +79,14 @@ Global
 		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5414F13-EE2C-42A5-9C75-1868ABEC4921}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFEC3A09-462F-49A7-8351-73F8BEE32B27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
