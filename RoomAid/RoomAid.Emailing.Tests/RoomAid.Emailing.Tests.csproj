@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RoomAid.ServiceLayer.Emailing\RoomAid.ServiceLayer.Emailing.csproj" />
-    <ProjectReference Include="..\RoomAid.ServiceLayer.Emailing\RoomAid.ServiceLayer.Emailing.csproj" />
+    <ProjectReference Include="..\RoomAid.Emailing\RoomAid.Emailing.csproj" />
   </ItemGroup>
 
 </Project>

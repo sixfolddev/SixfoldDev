@@ -232,7 +232,6 @@ namespace RoomAid.ServiceLayer.Archiving
                 //If the result is true, then stop the retry, set retrySuccess as true
                 if (retrySuccess == true)
                 {
-                    retrySuccess = true;
                     break;
                 }
             }

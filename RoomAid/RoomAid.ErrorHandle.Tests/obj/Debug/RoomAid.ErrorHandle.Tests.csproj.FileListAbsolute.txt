@@ -21,3 +21,45 @@ C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandle.Tests\bin\De
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ServiceLayer.Emailing.pdb
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ServiceLayer.Emailing.dll.config
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandle.Tests\obj\Debug\RoomAid.ErrorHandle.Tests.csproj.CopyComplete
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\ErrorHandleTest.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\ErrorHandleTest.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\ErrorHandleTest.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ErrorHandling.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\System.Buffers.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MimeKit.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MailKit.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ErrorHandling.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\obj\Debug\RoomAid.ErrorHandle.Tests.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\obj\Debug\RoomAid.ErrorHandle.Tests.csproj.CopyComplete
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\obj\Debug\ErrorHandleTest.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\obj\Debug\ErrorHandleTest.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Crc32C.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\DnsClient.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MongoDB.Bson.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MongoDB.Driver.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\SharpCompress.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Snappy.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.Emailing.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Crc32C.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\DnsClient.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MongoDB.Bson.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MongoDB.Driver.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\Snappy.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\System.Buffers.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.Emailing.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\RoomAid.Emailing.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MimeKit.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandle.Tests\bin\Debug\MailKit.xml

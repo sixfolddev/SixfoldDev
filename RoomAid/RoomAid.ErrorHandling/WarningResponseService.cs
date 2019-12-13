@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Configuration;
+
 
 namespace RoomAid.ErrorHandling
 {
-    class WarningResponseService : IErrorResponseService
+    public class WarningResponseService : IErrorResponseService
     {
+      
+
         public AnalyzedError Err { get; }
         public WarningResponseService(AnalyzedError err)
         {
@@ -12,9 +16,7 @@ namespace RoomAid.ErrorHandling
 
         public AnalyzedError GetResponse()
         {
-
-
-
+            MessageMaker();
             return Err;
         }
 
@@ -26,8 +28,9 @@ namespace RoomAid.ErrorHandling
             }
             else
             {
-                Err.Message = "Something unexpected has occurred";
+                Err.Message = "Something unexpected occurred. Please try again.";
             }
         }
+        
     }
 }

@@ -16,6 +16,16 @@ namespace RoomAid.ErrorHandling
             return LogLevels.Levels.Warning;
         }
         /// <summary>
+        /// test for throwing of timeoutException
+        /// </summary>
+        /// <param name="exceptoine"></param>
+        /// <returns></returns>
+        public LogLevels.Levels GetThreatLevel(TimeoutException exceptoine)
+        {
+            return LogLevels.Levels.Error;
+        }
+
+        /// <summary>
         /// GetThreatLevel of SqlException based off of .Class property, which contains severity
         /// </summary>
         /// <param name="exceptione"></param>
@@ -59,5 +69,10 @@ namespace RoomAid.ErrorHandling
             return LogLevels.Levels.Warning;
         }
         
+
+        public LogLevels.Levels GetThreatLevel(CustomException exceptione)
+        {
+            return exceptione.GetLevel();
+        }
     }
-}
+}   

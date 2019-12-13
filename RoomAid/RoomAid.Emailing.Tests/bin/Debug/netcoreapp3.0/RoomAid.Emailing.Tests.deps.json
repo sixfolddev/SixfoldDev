@@ -12,7 +12,7 @@
           "MSTest.TestFramework": "2.0.0",
           "MailKit": "2.4.1",
           "Microsoft.NET.Test.Sdk": "16.4.0",
-          "RoomAid.ServiceLayer.Emailing": "1.0.0",
+          "RoomAid.Emailing": "1.0.0",
           "coverlet.collector": "1.1.0"
         },
         "runtime": {
@@ -1233,9 +1233,9 @@
           "System.Xml.ReaderWriter": "4.3.0"
         }
       },
-      "RoomAid.ServiceLayer.Emailing/1.0.0": {
+      "RoomAid.Emailing/1.0.0": {
         "runtime": {
-          "RoomAid.ServiceLayer.Emailing.dll": {}
+          "RoomAid.Emailing.dll": {}
         }
       }
     }
@@ -1939,7 +1939,7 @@
       "path": "system.xml.xdocument/4.3.0",
       "hashPath": "system.xml.xdocument.4.3.0.nupkg.sha512"
     },
-    "RoomAid.ServiceLayer.Emailing/1.0.0": {
+    "RoomAid.Emailing/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
