@@ -1,0 +1,37 @@
+title Registration Design
+note left of Controller:Necessary data such as firstName\n, lastName, password, email \nShould all come from frontend
+Controller-> RegistrationManager :RegistrationManager rm = new RegistrationManager()
+RegistrationManager-->Controller:Return instance()
+Controller-> RegistrationManager: bool Register(string fname, string \nlname, string email, string password)
+
+RegistrationManager->RegistrationService: RegistrationService rs = new RegistrationService()
+RegistrationService->RegistrationManager:Return instance()
+
+RegistrationManager->RegistrationService: bool CheckName(string lname)
+note left of RegistrationService: CheckName could be used for both lname and fname\nRight now the requirement is: Can be up to \n200 characters.Can be alphanumeric with\n special characters.
+
+RegistrationService-->RegistrationManager: Return treu/false
+note left of RegistrationManager: Any false won't stop the rest of the checking
+
+RegistrationManager->RegistrationService: bool CheckEmail(string email)
+note left of RegistrationService: Can be up to 200 characters.\nCan be alphanumeric with special characters.\nMust be in email format (name @ domain). \nIf being used as the unique ID (identifying feature), \nhas to be unique among users.
+RegistrationService-->RegistrationManager: Return treu/false
+
+RegistrationManager->RegistrationService: bool CheckPassWord(string password)
+
+note left of RegistrationService: Can be up to 2000 characters.\nCan be alphanumeric with special characters.\nThe allowed special characters are every special character on the US standard keyboard except for\n < and >. Should be a minimum of 12 characters.The password should be compared a list of values \nknown to be commonly-used, expected, or compromised: \nPasswords obtained from previous breach corpuses.Words contained in a dictionary. \nRepetitive or sequential characters (e.g. ‘1234’, ‘bbbbbb’). \nContext specific words, such as the name of the application or the current username.
+RegistrationService-->RegistrationManager: Return treu/false
+
+RegistrationManager->RegistrationService: bool CheckReEnterPassWord(string password, string rePassword)
+note left of RegistrationService: Check if the password is the same as re-enter password
+
+RegistrationService-->RegistrationManager: Return treu/false
+
+RegistrationManager-->Controller: Return treu/false
+note left of RegistrationManager: only return true if all check passed
+
+RegistrationManager-->Controller: string GetMessage()
+
+note left of RegistrationManager: GetMessage() will return which check is failed with specific reasons
+
+note left of Controller: Then the controller can just call \nCreate User if the return is true
