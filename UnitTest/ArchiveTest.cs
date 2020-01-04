@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.IO;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+<<<<<<< HEAD:RoomAid/RoomAid.Archiving.Tests/ArchiveTest.cs
 using System.Configuration;
 using RoomAid.ServiceLayer.Archiving;
 using RoomAid.ManagerLayer.Archiving;
 
+=======
+using RoomAid.ServiceLayer.Archive;
+
+>>>>>>> 3583c8e265bc5dcd4f7d4a7ad3cfc0bb48269448:UnitTest/ArchiveTest.cs
 namespace UnitTest
 {
     
@@ -29,6 +34,7 @@ namespace UnitTest
         public void LogDirectoryNotPass()
         {
             //Arrange
+<<<<<<< HEAD:RoomAid/RoomAid.Archiving.Tests/ArchiveTest.cs
             bool expected = false;
 
             //For testing, make sure directory exists then delete it
@@ -41,6 +47,36 @@ namespace UnitTest
             bool actual =  manager.RunArchive();
             Directory.CreateDirectory(logStorage);
             Console.WriteLine(manager.GetMessage());
+=======
+            ArchiveService archiver = new ArchiveService();
+            bool expected = false;
+
+            //Act
+            bool actual = archiver.IsSpaceEnough(new System.IO.DriveInfo("D"),9999999999999999999);
+            Console.WriteLine(archiver.GetMessage());
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        ///<summary>
+        ///Test for log archiveable
+        ///Given a new log file which the date is less than the log life
+        ///should return false since a log file that is old enough should pass
+        ///</summary>
+        public void IsNotOldPass()
+        {
+            //Arrange
+            ArchiveService archiver = new ArchiveService();
+            bool expected = false;
+
+            //Act
+            File.WriteAllText(@"D:\LogStorage\20191119.csv", "testing");
+            bool actual = archiver.Archiveable("20191119.csv");
+            archiver.DeleteLog("20191119.csv");
+            Console.WriteLine("the result is:"+actual);
+>>>>>>> 3583c8e265bc5dcd4f7d4a7ad3cfc0bb48269448:UnitTest/ArchiveTest.cs
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -61,8 +97,41 @@ namespace UnitTest
             LogStorageCheck();
 
             //Act
+<<<<<<< HEAD:RoomAid/RoomAid.Archiving.Tests/ArchiveTest.cs
             bool actual = manager.RunArchive();
             Console.WriteLine(manager.GetMessage());
+=======
+            bool actual = archiver.Archiveable("BadName.csv");
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
+        ///<summary>
+        ///Test for GetFileNames() to see if it can return a list correctly
+        ///Write two log files that are older than the log life
+        ///The list should has a size of 2 
+        ///Files shall be deleted after test
+        ///</summary>
+        [TestMethod]
+        public void GetFileNamesPass()
+        {
+            //Arrange
+            ArchiveService archiver = new ArchiveService();
+            bool expected = true;
+            bool actual = false;
+
+            //Act
+            System.IO.File.WriteAllText(@"D:\LogStorage\20190826.csv", "testing");
+            System.IO.File.WriteAllText(@"D:\LogStorage\20190824.csv", "testing");
+            List<string> resultSet = archiver.GetFileNames();
+            if (resultSet.Count == 2)
+            {
+                actual =true;
+            }
+            archiver.DeleteLog("20190826.csv");
+            archiver.DeleteLog("20190824.csv");
+>>>>>>> 3583c8e265bc5dcd4f7d4a7ad3cfc0bb48269448:UnitTest/ArchiveTest.cs
 
             //Assert
             Assert.AreEqual(expected, actual);
@@ -243,7 +312,18 @@ namespace UnitTest
         public void RunArchiveNotPassA()
         {
             //Arrange
+<<<<<<< HEAD:RoomAid/RoomAid.Archiving.Tests/ArchiveTest.cs
             bool expected =false;
+=======
+            ArchiveService archiver = new ArchiveService();
+            bool expected = true;
+            string filePath = @"D:\LogStorage\2019060";
+            for(int i = 1; i < 10; i++)
+            {
+                string fileName = filePath + i + ".csv";
+                File.WriteAllText(fileName, "testing");
+            }
+>>>>>>> 3583c8e265bc5dcd4f7d4a7ad3cfc0bb48269448:UnitTest/ArchiveTest.cs
 
             //Make sure logStorage exists
             LogStorageCheck();
@@ -279,12 +359,18 @@ namespace UnitTest
          public void RunArchiveNotPassB()
         {
             //Arrange
+<<<<<<< HEAD:RoomAid/RoomAid.Archiving.Tests/ArchiveTest.cs
             bool expected = false;
 
             //Make sure logStorage exists
             LogStorageCheck();
 
             string fileName = "";
+=======
+            ArchiveService archiver = new ArchiveService();
+            bool expected =false;
+            string filePath = @"D:\LogStorage\2019060";
+>>>>>>> 3583c8e265bc5dcd4f7d4a7ad3cfc0bb48269448:UnitTest/ArchiveTest.cs
             for (int i = 1; i < 10; i++)
             {
                 fileName = DateTime.Now.AddDays(-1 * (logLife + i)).ToString(dateFormat) +
@@ -306,6 +392,7 @@ namespace UnitTest
         }
 
         //Method that used to clean the archive storage for testing
+<<<<<<< HEAD:RoomAid/RoomAid.Archiving.Tests/ArchiveTest.cs
         public void DirClean()
         {
             //clean up tool to delete all files in archive storage, because the requirement said
@@ -321,6 +408,16 @@ namespace UnitTest
                     File.SetAttributes(file.FullName, FileAttributes.Normal);
                     file.Delete();
                 }
+=======
+        public static void DirClean()
+        {
+            //clean the archive storage
+            DirectoryInfo dir = new DirectoryInfo(@"D:\ArchiveStorage\");
+
+           foreach (FileInfo file in dir.GetFiles())
+            {
+            file.Delete();
+>>>>>>> 3583c8e265bc5dcd4f7d4a7ad3cfc0bb48269448:UnitTest/ArchiveTest.cs
             }
         }
 
