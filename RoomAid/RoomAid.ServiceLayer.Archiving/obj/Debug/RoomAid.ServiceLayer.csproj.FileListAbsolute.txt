@@ -1,0 +1,10 @@
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\bin\Debug\RoomAid.ServiceLayer.dll.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\bin\Debug\RoomAid.ServiceLayer.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\bin\Debug\RoomAid.ServiceLayer.pdb
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\bin\Debug\MimeKit.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\bin\Debug\MimeKit.xml
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\obj\Debug\RoomAid.ServiceLayer.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\obj\Debug\RoomAid.ServiceLayer.csproj.CopyComplete
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\obj\Debug\RoomAid.ServiceLayer.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Archive\obj\Debug\RoomAid.ServiceLayer.pdb

@@ -1,0 +1,331 @@
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Error Handling.dll.config
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Error Handling.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Error Handling.pdb
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\csc.exe
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\csc.exe.config
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\csc.rsp
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\csi.exe
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\csi.exe.config
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\csi.rsp
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.AppContext.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Console.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.IO.Compression.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Net.Http.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Net.Sockets.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.ValueTuple.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Xml.XPath.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\vbc.exe
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\vbc.exe.config
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\vbc.rsp
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\VBCSCompiler.exe
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\BouncyCastle.Crypto.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Crc32C.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\DnsClient.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Emailing.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MimeKit.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MongoDB.Bson.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MongoDB.Driver.Core.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MongoDB.Driver.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Newtonsoft.Json.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\SharpCompress.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Snappy.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\System.Buffers.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MailKit.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Emailing.pdb
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Emailing.dll.config
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Crc32C.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\DnsClient.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MimeKit.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MongoDB.Bson.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MongoDB.Driver.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MongoDB.Driver.Core.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Newtonsoft.Json.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\Snappy.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\System.Buffers.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\bin\MailKit.xml
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\obj\Debug\RoomAid.ErrorHandling.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\obj\Debug\RoomAid.ErrorHandling.csproj.CopyComplete
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\obj\Debug\Error Handling.dll
+C:\Users\miche\Desktop\SixfoldDev\Error Handling\obj\Debug\Error Handling.pdb
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Error Handling.dll.config
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Error Handling.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Error Handling.pdb
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\csc.exe
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\csc.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\csc.rsp
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\csi.exe
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\csi.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\csi.rsp
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.AppContext.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Console.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.IO.Compression.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Net.Http.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Net.Sockets.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.ValueTuple.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Xml.XPath.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\vbc.exe
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\vbc.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\vbc.rsp
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\VBCSCompiler.exe
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\BouncyCastle.Crypto.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Crc32C.NET.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\DnsClient.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Emailing.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MimeKit.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MongoDB.Bson.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MongoDB.Driver.Core.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MongoDB.Driver.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Newtonsoft.Json.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\SharpCompress.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Snappy.NET.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\System.Buffers.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MailKit.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Emailing.pdb
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Emailing.dll.config
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Crc32C.NET.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\DnsClient.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MimeKit.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MongoDB.Bson.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MongoDB.Driver.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MongoDB.Driver.Core.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Newtonsoft.Json.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\Snappy.NET.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\System.Buffers.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\bin\MailKit.xml
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\obj\Debug\RoomAid.ErrorHandling.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\obj\Debug\RoomAid.ErrorHandling.csproj.CopyComplete
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\obj\Debug\Error Handling.dll
+C:\Users\miche\Desktop\SixFoldDev local\Error Handling\obj\Debug\Error Handling.pdb
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csc.exe
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csc.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csc.rsp
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csi.exe
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csi.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csi.rsp
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.AppContext.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Console.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.Compression.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Net.Http.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Net.Sockets.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.ValueTuple.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.XPath.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\vbc.exe
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\vbc.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\vbc.rsp
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\VBCSCompiler.exe
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\System.Buffers.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\MailKit.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.csproj.CopyComplete
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ErrorHandling.dll.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ErrorHandling.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ErrorHandling.pdb
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Emailing.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Emailing.pdb
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Emailing.dll.config
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.dll
+C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ErrorHandling.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ErrorHandling.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ErrorHandling.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csc.exe
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csc.exe.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csc.rsp
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csi.exe
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csi.exe.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\csi.rsp
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\Microsoft.Win32.Primitives.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.AppContext.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Console.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Globalization.Calendars.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.Compression.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.Compression.ZipFile.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Net.Http.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Net.Sockets.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Threading.Tasks.Extensions.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.ValueTuple.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.XPath.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\vbc.exe
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\vbc.exe.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\vbc.rsp
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\VBCSCompiler.exe
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Emailing.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\System.Buffers.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\MailKit.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Emailing.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Emailing.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.csproj.CopyComplete
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ErrorHandling.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ErrorHandling.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Crc32C.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\DnsClient.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Bson.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.Emailing.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\SharpCompress.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Snappy.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\System.Buffers.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MimeKit.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MailKit.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.Emailing.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.Emailing.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Crc32C.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\DnsClient.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Bson.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Snappy.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\System.Buffers.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MimeKit.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MailKit.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\mongocrypt.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ErrorHandling.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Libmongocrypt.dll
