@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace RoomAid.ServiceLayer.Logging
         /// </summary>
         public FileHandler()
         {
-            _directory = @"C:\LogStorage\";// Temporary directory
+            _directory = ConfigurationManager.AppSettings["logStorage"]; // Temporary directory
             _formatter = new SingleLineFormatter();
         }
 
@@ -25,7 +26,7 @@ namespace RoomAid.ServiceLayer.Logging
         /// </summary>
         public FileHandler(ILogFormatter format)
         {
-            _directory = @"C:\LogStorage\";// Temporary directory
+            _directory = ConfigurationManager.AppSettings["logStorage"]; // Temporary directory
             _formatter = format;
         }
 
@@ -109,7 +110,7 @@ namespace RoomAid.ServiceLayer.Logging
 
         public string MakeFileNameByDate(LogMessage logMessage)
         {
-            return logMessage.Time.ToString("yyyyMMdd") + ".csv";
+            return logMessage.Time.ToString(ConfigurationManager.AppSettings["dateFormat"]) + ConfigurationManager.AppSettings["logExtension"];
         }
 
 

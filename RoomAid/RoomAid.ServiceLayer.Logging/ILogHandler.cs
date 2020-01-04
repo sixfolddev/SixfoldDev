@@ -8,7 +8,7 @@ namespace RoomAid.ServiceLayer.Logging
 {
     public interface ILogHandler
     {
-        bool WriteLog(LogMessage logMessage); // Change to include paramter for numTrials
+        bool WriteLog(LogMessage logMessage);
         bool DeleteLog(LogMessage logMessage);
     }
 }

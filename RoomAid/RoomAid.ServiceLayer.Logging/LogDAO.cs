@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Diagnostics;
 using System.IO;
 
 namespace RoomAid.ServiceLayer.Logging
@@ -23,7 +22,7 @@ namespace RoomAid.ServiceLayer.Logging
                 DSHandler.WriteLog(logMessage);
 
                 // Log to file
-                if(!FHandler.WriteLog(logMessage)) // If it returns fails and returns false
+                if(!FHandler.WriteLog(logMessage)) // Returns false if logging has failed
                 {
                     if(!Retry(FHandler.WriteLog, logMessage)) // Returns false if three tries fail
                     {
@@ -37,7 +36,7 @@ namespace RoomAid.ServiceLayer.Logging
                 DSHandler.DeleteLog(logMessage);
 
                 // Delete log file
-                if (!FHandler.DeleteLog(logMessage)) // If it returns fails and returns false
+                if (!FHandler.DeleteLog(logMessage)) // Returns false if deleting has failed
                 {
                     if (!Retry(FHandler.DeleteLog, logMessage)) // Returns false if three tries fail
                     {
@@ -50,11 +49,11 @@ namespace RoomAid.ServiceLayer.Logging
         }
 
         /// <summary>
-        /// Method Retry() will do the retry for certain method as the business rule required
+        /// This will try to log the log three times, as required by the business rules
         /// </summary>
-        /// <param name="method">The method that needed to be retried, such as AddToCompress or DeleteLog </param>
-        /// <param name="fileName">The name of the file which should be compressed or deleted</param>
-        /// <returns>True if the retry successfully, otherwise return false</returns>
+        /// <param name="method">The method that needed to be retried</param>
+        /// <param name="msg">The log message that is being retried for logging</param>
+        /// <returns>True if the retry is successful, false otherwise</returns>
         private static bool Retry(Func<LogMessage, bool> method, LogMessage msg)
         {
             //Set a bool as the retry result
@@ -64,7 +63,7 @@ namespace RoomAid.ServiceLayer.Logging
             int retryLimit = Int32.Parse(ConfigurationManager.AppSettings["retryLimit"]);
             for (int i = 0; i < retryLimit; i++)
             {
-                //Call method again to check if certain method can be executed successfully
+                //Call method again to check if the certain method can be executed successfully
                 retrySuccess = method(msg);
 
                 // If the result is true, then stop the retry
