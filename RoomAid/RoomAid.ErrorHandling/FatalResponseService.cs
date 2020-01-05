@@ -1,4 +1,6 @@
-﻿using RoomAid.ServiceLayer.Emailing;
+﻿using RoomAid.Emailing;
+using System.Configuration;
+
 
 namespace RoomAid.ErrorHandling
 {
@@ -13,12 +15,14 @@ namespace RoomAid.ErrorHandling
         /// base class helps to ensure all email fields have been filled out 
         /// </summary>
         /// <param name="e"></param>
-        public FatalResponseService(AnalyzedError err) : base($"System Admin:\n An exception of type {err.E.GetType()} " +
-            $"has occurred and requires your immediate attention. " +
-            $"Please check logs for the day.",
+        public FatalResponseService(AnalyzedError err) : base(
+            $"System Admin: An exception of type {err.E.GetType()} " +
+            $"has occurred and requires your immediate attention." +
+            $" Please check logs for the day.",
             "The System requires your Immediate Attention",
             "SysAdmin",
-            "sixfolddev@gmail.com")
+            "sixfolddev@gmail.com"
+            )
         {
             Err = err;
         }
@@ -38,5 +42,6 @@ namespace RoomAid.ErrorHandling
         {
             Err.Message = "A fatal error has occurred and system admin has been contacted. Please try again at another time";
         }
+    
     }
 }

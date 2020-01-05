@@ -34,6 +34,18 @@ namespace RoomAid.ErrorHandlingTest
             var Err = new FatalResponseService(new AnalyzedError(new Exception()));
             Assert.IsInstanceOfType(Err, typeof(FatalResponseService));
         }
+        [TestMethod]
+        public void ErrorResponseServiceConstructorTest()
+        {
+            var Err = new ErrorResponseService(new AnalyzedError(new Exception()));
+            Assert.IsInstanceOfType(Err, typeof(ErrorResponseService));
+        }
+        [TestMethod]
+        public void WarningResponseServiceConstructorTest()
+        {
+            var Err = new WarningResponseService(new AnalyzedError(new Exception()));
+            Assert.IsInstanceOfType(Err, typeof(WarningResponseService));
+        }
 
         [TestMethod]
         public void ErrorThreatManagerConstructorTest()

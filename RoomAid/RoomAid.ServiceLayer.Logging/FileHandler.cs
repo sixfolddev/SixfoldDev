@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Text;
 
@@ -15,7 +16,7 @@ namespace RoomAid.ServiceLayer.Logging
         /// </summary>
         public FileHandler()
         {
-            _directory = @"C:\LogStorage\";// Temporary directory
+            _directory = ConfigurationManager.AppSettings["logStorage"]; // Temporary directory
             _formatter = new SingleLineFormatter();
         }
 
@@ -25,7 +26,7 @@ namespace RoomAid.ServiceLayer.Logging
         /// </summary>
         public FileHandler(ILogFormatter format)
         {
-            _directory = @"C:\LogStorage\";// Temporary directory
+            _directory = ConfigurationManager.AppSettings["logStorage"]; // Temporary directory
             _formatter = format;
         }
 
@@ -47,40 +48,32 @@ namespace RoomAid.ServiceLayer.Logging
         /// <returns>true if write is successful, false otherwise</returns>
         public bool WriteLog(LogMessage logMessage)
         {
-            for (var i = 0; i < 4; i++)
+            try
             {
-                try
+                var directory = new DirectoryInfo(_directory);
+                if (!directory.Exists)
                 {
-                    var directory = new DirectoryInfo(_directory);
-                    if (!directory.Exists)
-                    {
-                        directory.Create();
-                    }
-                    string fileName = MakeFileNameByDate(logMessage);
-                    string path = Path.Combine(_directory, fileName);
-                    if (!File.Exists(path)) // If file doesn't exist, create and write parameter names as first line
-                    {
-                        using (StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8)) // UTF8 Encoding recommended for .NET Framework 4.7.2
-                        {
-                            writer.WriteLine(logMessage.GetParamNames());
-                        }
-                    }
-                    using (StreamWriter writer = new StreamWriter(path, true, Encoding.UTF8))
-                    {
-                        writer.WriteLine(_formatter.FormatLog(logMessage));
-                    }
-                    return true;
+                    directory.Create();
                 }
-                catch (IOException e)
+                string fileName = MakeFileNameByDate(logMessage);
+                string path = Path.Combine(_directory, fileName);
+                if (!File.Exists(path)) // If file doesn't exist, create and write parameter names as first line
                 {
-                    if (i == 3)
+                    using (StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8)) // UTF8 Encoding recommended for .NET Framework 4.7.2
                     {
-                        throw e;
+                        writer.WriteLine(logMessage.GetParamNames());
                     }
                 }
-                // Insert a catch all?
+                using (StreamWriter writer = new StreamWriter(path, true, Encoding.UTF8))
+                {
+                    writer.WriteLine(_formatter.FormatLog(logMessage));
+                }
+                return true;
             }
-            return false;
+            catch (IOException)
+            {
+                return false;
+            }
         }
 
         /// <summary>
@@ -91,39 +84,33 @@ namespace RoomAid.ServiceLayer.Logging
         /// <returns>true if delete is successful, false otherwise</returns>
         public bool DeleteLog(LogMessage logMessage)
         {
-            for (var i = 0; i < 4; i++)
+            try
             {
-                try
+                string fileName = MakeFileNameByDate(logMessage);
+                string path = Path.Combine(_directory, fileName);
+                string[] logEntries = File.ReadAllLines(path);
+                for (var j = 0; j < logEntries.Length; j++)
                 {
-                    string fileName = MakeFileNameByDate(logMessage);
-                    string path = Path.Combine(_directory, fileName);
-                    string[] logEntries = File.ReadAllLines(path);
-                    for(var j = 0; j < logEntries.Length; j++)
+                    string[] tokens = logEntries[j].Split(',');
+                    if (!(tokens[0].Equals(logMessage.LogGUID.ToString()))) // First token is always the GUID
                     {
-                        string[] tokens = logEntries[j].Split(',');
-                        if (!(tokens[0].Equals(logMessage.LogGUID.ToString()))) // First token is always the GUID
+                        using (StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8)) // Overwrite existing file
                         {
-                            using(StreamWriter writer = new StreamWriter(path, false, Encoding.UTF8)) // Overwrite existing file
-                            {
-                                writer.WriteLine(logMessage);
-                            }
+                            writer.WriteLine(logMessage);
                         }
                     }
-                    return true;
                 }
-                catch (IOException e)
-                {
-                    if (i == 3)
-                    {
-                        throw e;
-                    }
-                }
+                return true;
             }
-            return false;
+            catch (IOException)
+            {
+                return false;
+            }
         }
+
         public string MakeFileNameByDate(LogMessage logMessage)
         {
-            return logMessage.Time.ToString("yyyyMMdd") + ".csv";
+            return logMessage.Time.ToString(ConfigurationManager.AppSettings["dateFormat"]) + ConfigurationManager.AppSettings["logExtension"];
         }
 
 

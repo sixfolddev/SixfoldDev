@@ -64,3 +64,27 @@ C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Logging\obj
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.dll
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.pdb
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\Crc32C.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\DnsClient.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Bson.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Driver.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\SharpCompress.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\Snappy.NET.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\System.Buffers.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\Crc32C.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\DnsClient.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Bson.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Driver.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\Snappy.NET.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\System.Buffers.xml
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csprojAssemblyReference.cache
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csproj.CopyComplete
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\mongocrypt.dll
+C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Libmongocrypt.dll

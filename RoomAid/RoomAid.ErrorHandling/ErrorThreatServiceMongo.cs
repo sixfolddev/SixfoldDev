@@ -14,15 +14,6 @@ namespace RoomAid.ErrorHandling
         { }
 
         /// <summary>
-        /// GetThreatLevel of mongoauthenticationexception
-        /// </summary>
-        /// <param name="exceptione"></param>
-        /// <returns>Level</returns>
-        public LogLevels.Levels GetThreatLevel(MongoAuthenticationException exceptione)
-        {
-            return LogLevels.Levels.Fatal;
-        }
-        /// <summary>
         /// GetThreatLevel of MongoConnectionException
         /// </summary>
         /// <param name="exceptione"></param>
@@ -41,7 +32,9 @@ namespace RoomAid.ErrorHandling
         {
             return LogLevels.Levels.Error;
         }
-     
+
+       
+        
 
         /// <summary>
         /// GetThreatLevel of Generic MongoException

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -9,15 +10,20 @@ namespace RoomAid.Logging.Tests
     [TestClass]
     public class FileHandlerTest
     {
+        // Log Storage directory
+        private string logStorage = ConfigurationManager.AppSettings["logStorage"];
+        private FileHandler fileHandler = new FileHandler();
+        private string className = "FileHandlerTest.cs";
+        private ILogFormatter formatter = new SingleLineFormatter();
+
         [TestMethod]
         public void WriteLog_NewFileIsCreatedAndWrites_Pass()
         {
             //Arrange
-            var fileHandler = new FileHandler();
-            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
+            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, className,
                 "WriteLog_NewFileIsCreatedAndWrites_Pass()", LogLevels.Levels.None, "Tester", "1", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\LogStorage\", fileName);
+            string path = Path.Combine(logStorage, fileName);
             var expected = true;
             var actual = false;
 
@@ -28,9 +34,14 @@ namespace RoomAid.Logging.Tests
             }
             if (fileHandler.WriteLog(msg))
             {
-                if (File.Exists(path))
+                if (File.Exists(path)) // New file created
                 {
-                    actual = true;
+                    string[] entries = File.ReadAllLines(path);
+                    string message = formatter.FormatLog(msg);
+                    if (entries[0].Equals(message)) // Log is properly written
+                    {
+                        actual = true;
+                    }
                 }
             }
 
@@ -42,12 +53,10 @@ namespace RoomAid.Logging.Tests
         public void WriteLog_LogEntryAppends_Pass()
         {
             //Arrange
-            var fileHandler = new FileHandler();
-            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
+            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, className,
                 "WriteLog_LogEntryAppends_Pass()", LogLevels.Levels.None, "Tester", "2", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\LogStorage\", fileName);
-            var formatter = new SingleLineFormatter();
+            string path = Path.Combine(logStorage, fileName);
             var expected = true;
             var actual = false;
 
@@ -71,12 +80,10 @@ namespace RoomAid.Logging.Tests
         public void DeleteLog_LogEntryFoundAndDeleted_Pass()
         {
             //Arrange
-            var fileHandler = new FileHandler();
-            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
+            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, className,
                 "LogEntryFoundAndDeleted_Pass()", LogLevels.Levels.None, "Tester", "3", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\LogStorage\", fileName);
-            var formatter = new SingleLineFormatter();
+            string path = Path.Combine(logStorage, fileName);
             var expected = true;
             var actual = false;
 
@@ -106,12 +113,10 @@ namespace RoomAid.Logging.Tests
         public void DeleteLog_LogFileUnaltered_Pass()
         {
             //Arrange
-            var fileHandler = new FileHandler();
-            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, "FileHandlerTest.cs",
+            LogMessage msg = new LogMessage(Guid.NewGuid(), DateTime.UtcNow, className,
                 "LogFileUnaltered_Pass()", LogLevels.Levels.None, "Tester", "4", "Testing...");
             string fileName = fileHandler.MakeFileNameByDate(msg);
-            string path = Path.Combine(@"C:\LogStorage\", fileName);
-            var formatter = new SingleLineFormatter();
+            string path = Path.Combine(logStorage, fileName);
             var expected = true;
             var actual = false;
 
