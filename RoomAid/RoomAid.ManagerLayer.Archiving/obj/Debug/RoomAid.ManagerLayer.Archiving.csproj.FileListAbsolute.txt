@@ -18,3 +18,13 @@ C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Deb
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Debug\RoomAid.ManagerLayer.Archiving.csproj.CopyComplete
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Debug\RoomAid.ManagerLayer.Archiving.dll
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Debug\RoomAid.ManagerLayer.Archiving.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\bin\Debug\RoomAid.ManagerLayer.Archiving.dll.config
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\bin\Debug\RoomAid.ManagerLayer.Archiving.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\bin\Debug\RoomAid.ManagerLayer.Archiving.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\bin\Debug\RoomAid.ServiceLayer.Archiving.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\bin\Debug\RoomAid.ServiceLayer.Archiving.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\bin\Debug\RoomAid.ServiceLayer.Archiving.dll.config
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Debug\RoomAid.ManagerLayer.Archiving.csprojAssemblyReference.cache
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Debug\RoomAid.ManagerLayer.Archiving.csproj.CopyComplete
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Debug\RoomAid.ManagerLayer.Archiving.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ManagerLayer.Archiving\obj\Debug\RoomAid.ManagerLayer.Archiving.pdb

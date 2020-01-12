@@ -63,7 +63,7 @@ namespace RoomAid.ServiceLayer.Registration
         public Iresult PasswordUserNameCheck(string input, string userName)
         {
             Iresult result = new CheckResult("Password is valid!", true);
-            if (input == userName)
+            if (input.Contains(userName))
             {
                result = new CheckResult("You cannot use username as a password!", false);
                 
@@ -109,27 +109,29 @@ namespace RoomAid.ServiceLayer.Registration
         private string RepetitiveCheck(string input)
         {
             int checkRange = Int32.Parse(ConfigurationManager.AppSettings["repetitiveRange"]);
+
             if (checkRange > input.Length)
             {
                 checkRange = input.Length;
             }
-            string result = "";
-            for (int i = 0; i < input.Length-checkRange; i++)
+
+          
+            for (int i = 1; i < input.Length-checkRange; i++)
             {
                 bool ifRepetitive = true;
-                result = result + input[i];
-
-                for (int j = i + 1; i < checkRange - 1; i++)
+                string result = "" + input[i];
+                for (int j = 1; j < checkRange; j++)
                 {
-                    result = "";
+                   
                     
-                    if (input[i]!=input[j])
+                    if (input[i]!=input[i+j])
                     {
                         ifRepetitive = false;
                     }
+
                     else
                     {
-                        result = result + input[j];
+                        result = result + input[i+j];
                     }
                 }
 
@@ -150,21 +152,23 @@ namespace RoomAid.ServiceLayer.Registration
             {
                 checkRange = input.Length;
             }
-            string result = "";
+            
+
             for (int i =0; i < charList.Length - checkRange; i++)
             {
+                string result = "" + input[i];
                 bool ifSequential = true;
-                result = result + input[i];
-                for(int j=i+1; i < checkRange - 1; i++)
+            
+                for(int j=1; j < checkRange; j++)
                 {
                    
-                    if (charList[j] - charList[i] != 1&&charList[i]-charList[j]!=1)
+                    if (charList[j+i] - charList[i] !=1 && charList[i]-charList[j+i]!=1)
                     {
                         ifSequential = false;
                     }
                     else
                     {
-                        result = result += charList[j];
+                        result = result += charList[j+i];
                     }
                 }
                 if (ifSequential)

@@ -76,7 +76,6 @@
   <ItemGroup>
     <Compile Include="DataStoreHandler.cs" />
     <Compile Include="FileHandler.cs" />
-    <Compile Include="FileWriter.cs" />
     <Compile Include="ILogFormatter.cs" />
     <Compile Include="ILogHandler.cs" />
     <Compile Include="LogDAO.cs" />
