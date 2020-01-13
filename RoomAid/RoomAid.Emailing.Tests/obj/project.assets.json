@@ -2,7 +2,7 @@
   "version": 3,
   "targets": {
     ".NETCoreApp,Version=v3.0": {
-      "coverlet.collector/1.1.0": {
+      "coverlet.collector/1.2.0": {
         "type": "package",
         "build": {
           "build/netstandard1.0/coverlet.collector.targets": {}
@@ -1902,15 +1902,17 @@
     }
   },
   "libraries": {
-    "coverlet.collector/1.1.0": {
-      "sha512": "OBxWQ4vNm+kVvKy8NTk6skRNMQCeQLqSqJ0xq19S0GLovHYTnVTcsjYgV54t6LnjjQ6mDADMcFvHMQHLoNQhIg==",
+    "coverlet.collector/1.2.0": {
+      "sha512": "ZB+EGXsVBIn8cew7D3S2c+rgIlokKv1dSwsXEoiFQaNXF/BSxp9Rlfz/jV1ehSWH5XpLitfRxFNW3ok7uPDOXA==",
       "type": "package",
-      "path": "coverlet.collector/1.1.0",
+      "path": "coverlet.collector/1.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
+        "build/netstandard1.0/Microsoft.DotNet.PlatformAbstractions.dll",
         "build/netstandard1.0/Microsoft.Extensions.DependencyInjection.Abstractions.dll",
         "build/netstandard1.0/Microsoft.Extensions.DependencyInjection.dll",
+        "build/netstandard1.0/Microsoft.Extensions.DependencyModel.dll",
         "build/netstandard1.0/Microsoft.Extensions.FileSystemGlobbing.dll",
         "build/netstandard1.0/Microsoft.TestPlatform.CoreUtilities.dll",
         "build/netstandard1.0/Microsoft.TestPlatform.PlatformAbstractions.dll",
@@ -1927,7 +1929,7 @@
         "build/netstandard1.0/coverlet.collector.targets",
         "build/netstandard1.0/coverlet.core.dll",
         "build/netstandard1.0/coverlet.core.pdb",
-        "coverlet.collector.1.1.0.nupkg.sha512",
+        "coverlet.collector.1.2.0.nupkg.sha512",
         "coverlet.collector.nuspec"
       ]
     },
@@ -6407,7 +6409,7 @@
       "MailKit >= 2.4.1",
       "Microsoft.NET.Test.Sdk >= 16.4.0",
       "RoomAid.Emailing >= 1.0.0",
-      "coverlet.collector >= 1.1.0"
+      "coverlet.collector >= 1.2.0"
     ]
   },
   "packageFolders": {
@@ -6475,7 +6477,7 @@
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
             "target": "Package",
-            "version": "[1.1.0, )"
+            "version": "[1.2.0, )"
           }
         },
         "imports": [

@@ -10,6 +10,13 @@ namespace RoomAid.ServiceLayer.Registration
 {
     public class RegistrationService
     {
+        /// <summary>
+        /// Method NameCheck() is used to check if the firstname and last name entered by user is valid.
+        /// According to the requirement, firstname and lastname can be up to 200 characters.
+        ///can be alphanumeric with special characters. 
+        /// </summary>
+        /// <param name="input">The input string for either firstname or lastname, should be passed from fortnend or controller</param>
+        /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
         public Iresult NameCheck(string input)
         {
             int nameLength = Int32.Parse(ConfigurationManager.AppSettings["nameLength"]);
@@ -17,49 +24,87 @@ namespace RoomAid.ServiceLayer.Registration
             return result;
         }
 
-       public Iresult PasswordCheck(string input)
+        /// <summary>
+        /// Method PasswordCheck() is used to check if thepassword entered by user is valid.
+        /// According to the requirement, password can be up to 2000 characters.
+        ///Can be alphanumeric with special characters.
+        ///The allowed special characters are every special character on the US standard keyboard except for < and >.
+        ///Should be a minimum of 12 characters.
+        ///The password should be compared a list of values known to be commonly-used, expected, or compromised:
+        ///Passwords obtained from previous breach corpuses.
+        ///Words contained in a dictionary.
+        ///Repetitive or sequential characters (e.g. ‘1234’, ‘bbbbbb’).
+        ///Context specific words, such as the name of the application or the current username.
+        ///The method will call all check method to valid the password
+        /// </summary>
+        /// <param name="input">The input string password, should be passed from fortnend or controller</param>
+        /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
+        public Iresult PasswordCheck(string input)
         {
             int nameLength = Int32.Parse(ConfigurationManager.AppSettings["passwordLength"]);
+
+            //check password length
             Iresult result = CheckLength(input, nameLength);
-            if (result.isSuccess == false)
+            if (!result.isSuccess)
             {
                 return result;
             }
-            if(input.Length< Int32.Parse(ConfigurationManager.AppSettings["passwordMinLength"])){
-                result = new CheckResult("Password is too short!", false);
+
+            string message = result.message;
+            bool ifPass = result.isSuccess;
+
+            //check min password length
+            if (input.Length < Int32.Parse(ConfigurationManager.AppSettings["passwordMinLength"]))
+            {
+                result = new CheckResult("Your password needs at least " + ConfigurationManager.AppSettings["passwordMinLength"]
+                    + "characters", false);
                 return result;
             }
-
+            
+            //check if the password contains < and >
             if (input.Contains("<") || input.Contains(">"))
             {
-                result = new CheckResult("Password cannot contain '<' or '>' !", false);
-                return result;
+                message = message + "\nPassword cannot contain '<' or '>' !";
+                ifPass = false;
             }
 
+            //check if the password contains repetitive contents
             string repetitiveCheckResult = RepetitiveCheck(input);
             if (repetitiveCheckResult!=null)
             {
-                result = new CheckResult("Password contains repetitive contents: '"+repetitiveCheckResult+"'", false);
-                return result;
+                message = message + "\n" + ConfigurationManager.AppSettings["passwordRepetitive"]+"'"
+                    + repetitiveCheckResult + "'";
+                ifPass = false;
             }
 
+            //check if the password contains sequential contents
             string sequentialCheckResult = SequentialCheck(input);
             if (sequentialCheckResult != null)
             {
-                result = new CheckResult("Password contains repetitive contents: '"+ sequentialCheckResult+"'", false);
-                return result;
+                message = message + "\n" + ConfigurationManager.AppSettings["passwordSequential"] + "'"
+                  + sequentialCheckResult + "'";
+                ifPass = false;
             }
 
-            string ListCheckResult = ListCheck(input);
+            //check if the password contains words in a list that contains most used password and most used words in dictionary
+            string ListCheckResult = PasswordListCheck(input);
             if (ListCheckResult != null)
             {
-                result = new CheckResult("'"+ListCheckResult+"' can be found in dictionary!", false);
-                return result;
+                message = message + "\n "  + ConfigurationManager.AppSettings["passwordCommon"] + ListCheckResult;
+                ifPass = false;
             }
+            result = new CheckResult(message, ifPass);
 
             return result;
         }
 
+        /// <summary>
+        /// Method PasswordUserNameCheck() is used to check if the password entered by user is valid.
+        /// check if the password contain or is the same input as email/username
+        /// </summary>
+        /// <param name="input">The input string password, should be passed from fortnend or controller</param>
+        /// <param name="userName">The username (should be an email) should be passed from fortnend or controller</param>
+        /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
         public Iresult PasswordUserNameCheck(string input, string userName)
         {
             Iresult result = new CheckResult("Password is valid!", true);
@@ -71,6 +116,16 @@ namespace RoomAid.ServiceLayer.Registration
             return result;
         }
 
+        /// <summary>
+        /// Method EmailCheck() is used to check if the email entered by user is valid.
+        /// According to the requirement: o	Can be up to 200 characters.
+        ///Can be alphanumeric with special characters.
+        ///Must be in email format(name @ domain).
+        ///has to be unique among users.
+        ///will check if the format is correct and then search database to make sure the email is not used
+        /// </summary>
+        /// <param name="input">The input string email, should be passed from fortnend or controller</param>
+        /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
         public Iresult EmailCheck(string input)
         {
             int nameLength = Int32.Parse(ConfigurationManager.AppSettings["emailLength"]);
@@ -83,29 +138,46 @@ namespace RoomAid.ServiceLayer.Registration
                 result = new CheckResult("Not a valid Email Address!", false);
                 return result;
             }
+
+            //If length check passed, continue to check if email is already used, if not, stop checking
+            string message = result.message;
+            bool ifPass = result.isSuccess;
+
             //TODO: check if email is already registered in database
+
+            result = new CheckResult(message, ifPass);
             return result;
            
         }
+
+        /// <summary>
+        /// Method CheckLength() is used to check if the input is empty or too long
+        /// <param name="input">The input string , should be passed from fortnend or controller</param>
+        /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
         private Iresult CheckLength(string input,int length)
         {
             
             Iresult result = null;
             if (string.IsNullOrWhiteSpace(input))
             {
-                result = new CheckResult("No input!", false);
+                result = new CheckResult(ConfigurationManager.AppSettings["messageNameEmpty"], false);
             }
             else if (input.Length > length)
             {
-                 result = new CheckResult("input is too long!", false);
+                 result = new CheckResult("Your name should not be longer than "+ ConfigurationManager.AppSettings["nameLength"]
+                     +"characters ", false);
             }
             else
             {
-                result = new CheckResult("input is valid!", true);
+                result = new CheckResult(ConfigurationManager.AppSettings["messagePass"], true);
             }
             return result;
         }
 
+        /// <summary>
+        /// Method Repetitive(Check) is used to check if the input contains repetitive contents based on a check range in config
+        /// <param name="input">The input string , should be passed from fortnend or controller</param>
+        /// <returns>string result return string that found repetitive or a null</returns>
         private string RepetitiveCheck(string input)
         {
             int checkRange = Int32.Parse(ConfigurationManager.AppSettings["repetitiveRange"]);
@@ -143,6 +215,10 @@ namespace RoomAid.ServiceLayer.Registration
             return null;
         }
 
+        /// <summary>
+        /// Method SequentialCheck() is used to check if the input contains sequential contents based on a check range in config
+        /// <param name="input">The input string , should be passed from fortnend or controller</param>
+        /// <returns>string result return string that found sequential or a null</returns>
         private string SequentialCheck(string input)
         {
 
@@ -180,10 +256,16 @@ namespace RoomAid.ServiceLayer.Registration
             
         }
 
-        private string ListCheck(string input)
+        /// <summary>
+        /// Method PasswordListCheck() is used to check if the input password contains contents that can be found in a check list, the list contains many common used words 
+        /// and password
+        /// <param name="input">The input string , should be passed from fortnend or controller</param>
+        /// <returns>string result return string that found in list or a null</returns>
+        private string PasswordListCheck(string input)
         {
-            List<string> wordList = File.ReadAllLines(Path.GetFullPath(ConfigurationManager.AppSettings["wordListName"])).ToList();
-            foreach(string word in wordList)
+            List<string> passwordList = File.ReadAllLines(Path.GetFullPath(ConfigurationManager.AppSettings["passwordListName"])).ToList();
+
+            foreach (string word in passwordList)
             {
                 if (input.Contains(word))
                 {
@@ -192,5 +274,7 @@ namespace RoomAid.ServiceLayer.Registration
             }
             return null;
         }
+
+
     }
 }
