@@ -4,7 +4,7 @@ using System.Configuration;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using System.ComponentModel.DataAnnotations;
+using System.Text.RegularExpressions;
 
 namespace RoomAid.ServiceLayer.Registration
 {
@@ -50,14 +50,14 @@ namespace RoomAid.ServiceLayer.Registration
                 return result;
             }
 
-            string message = result.message;
-            bool ifPass = result.isSuccess;
+            string message = "";
+            bool ifPass = true;
 
             //check min password length
             if (input.Length < Int32.Parse(ConfigurationManager.AppSettings["passwordMinLength"]))
             {
                 result = new CheckResult("Your password needs at least " + ConfigurationManager.AppSettings["passwordMinLength"]
-                    + "characters", false);
+                    + " characters", false);
                 return result;
             }
             
@@ -107,11 +107,10 @@ namespace RoomAid.ServiceLayer.Registration
         /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
         public Iresult PasswordUserNameCheck(string input, string userName)
         {
-            Iresult result = new CheckResult("Password is valid!", true);
+            Iresult result = new CheckResult(ConfigurationManager.AppSettings["messagePass"], true);
             if (input.Contains(userName))
             {
-               result = new CheckResult("You cannot use username as a password!", false);
-                
+               result = new CheckResult(ConfigurationManager.AppSettings["passwordUserName"], false); 
             }
             return result;
         }
@@ -131,7 +130,10 @@ namespace RoomAid.ServiceLayer.Registration
             int nameLength = Int32.Parse(ConfigurationManager.AppSettings["emailLength"]);
             Iresult result = CheckLength(input, nameLength);
 
-           bool isEmail =  new EmailAddressAttribute().IsValid(input);
+           bool isEmail = Regex.IsMatch(input,
+                @"^(?("")("".+?(?<!\\)""@)|(([0-9a-z]((\.(?!\.))|[-!#\$%&'\*\+/=\?\^`\{\}\|~\w])*)(?<=[0-9a-z])@))" +
+                @"(?(\[)(\[(\d{1,3}\.){3}\d{1,3}\])|(([0-9a-z][-0-9a-z]*[0-9a-z]*\.)+[a-z0-9][\-a-z0-9]{0,22}[a-z0-9]))$",
+                RegexOptions.IgnoreCase, TimeSpan.FromMilliseconds(250));
 
             if (!isEmail)
             {
@@ -222,34 +224,38 @@ namespace RoomAid.ServiceLayer.Registration
         private string SequentialCheck(string input)
         {
 
-            Byte[] charList = Encoding.ASCII.GetBytes(input);
-            int checkRange = Int32.Parse(ConfigurationManager.AppSettings["sequtentialRange"]);
-            if (checkRange > input.Length)
+           char[] charList = input.ToCharArray();
+           for(int i =1; i < input.Length - 1; i++)
             {
-                checkRange = input.Length;
-            }
-            
-
-            for (int i =0; i < charList.Length - checkRange; i++)
-            {
-                string result = "" + input[i];
-                bool ifSequential = true;
-            
-                for(int j=1; j < checkRange; j++)
+                if (charList[i - 1].CompareTo(charList[i]) == -1 && charList[i].CompareTo(charList[i + 1])== -1)
                 {
-                   
-                    if (charList[j+i] - charList[i] !=1 && charList[i]-charList[j+i]!=1)
+                    string result = input.Substring(i-1,3);
+                    for(int j = i+1;j< input.Length; j++)
                     {
-                        ifSequential = false;
-                    }
-                    else
-                    {
-                        result = result += charList[j+i];
+                        if (charList[j].CompareTo(charList[j + 1]) == -1)
+                        {
+                            result = result + charList[j + 1];
+                        }
+                        else{
+                            return result;
+                        }
                     }
                 }
-                if (ifSequential)
+
+                else if (charList[i - 1].CompareTo(charList[i]) == 1 && charList[i].CompareTo(charList[i + 1]) == 1)
                 {
-                    return result;
+                    string result = input.Substring(i - 1, 3);
+                    for (int j = i + 1; j < input.Length; j++)
+                    {
+                        if (charList[j].CompareTo(charList[j + 1]) == 1)
+                        {
+                            result = result + charList[j + 1];
+                        }
+                        else
+                        {
+                            return result;
+                        }
+                    }
                 }
             }
             return null;
