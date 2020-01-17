@@ -27,4 +27,3 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Archiving\bin\D
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Archiving\obj\Debug\RoomAid.ServiceLayer.Archiving.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Archiving\obj\Debug\RoomAid.ServiceLayer.Archiving.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Archiving\obj\Debug\RoomAid.ServiceLayer.Archiving.pdb
-C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Archiving\obj\Debug\RoomAid.ServiceLayer.Archiving.csprojAssemblyReference.cache

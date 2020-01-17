@@ -18,6 +18,7 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MailKit.d
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MimeKit.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MailKit.xml
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MimeKit.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.csprojAssemblyReference.cache
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.pdb
