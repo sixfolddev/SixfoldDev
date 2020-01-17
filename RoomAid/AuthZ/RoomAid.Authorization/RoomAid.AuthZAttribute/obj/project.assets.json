@@ -179,19 +179,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\miche\\.nuget\\packages\\": {}
+    "C:\\Users\\alber\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\AuthZ\\RoomAid.Authorization\\RoomAid.AuthZAttribute\\RoomAid.Authorization.csproj",
+      "projectUniqueName": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\AuthZ\\RoomAid.Authorization\\RoomAid.AuthZAttribute\\RoomAid.Authorization.csproj",
       "projectName": "RoomAid.Authorization",
-      "projectPath": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\AuthZ\\RoomAid.Authorization\\RoomAid.AuthZAttribute\\RoomAid.Authorization.csproj",
-      "packagesPath": "C:\\Users\\miche\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\AuthZ\\RoomAid.Authorization\\RoomAid.AuthZAttribute\\obj\\",
+      "projectPath": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\AuthZ\\RoomAid.Authorization\\RoomAid.AuthZAttribute\\RoomAid.Authorization.csproj",
+      "packagesPath": "C:\\Users\\alber\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\AuthZ\\RoomAid.Authorization\\RoomAid.AuthZAttribute\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\miche\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alber\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -56,3 +56,24 @@ C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.Authentication.Tests\obj
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csproj.CopyComplete
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.dll
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.Tests.dll.config
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.Tests.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.Tests.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.dll.config
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csprojAssemblyReference.cache
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csproj.CopyComplete
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.pdb

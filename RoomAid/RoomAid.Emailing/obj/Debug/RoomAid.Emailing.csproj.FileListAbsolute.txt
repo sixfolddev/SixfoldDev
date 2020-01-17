@@ -10,3 +10,14 @@ C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Ema
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.csproj.CopyComplete
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.dll
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\RoomAid.Emailing.dll.config
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\RoomAid.Emailing.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\RoomAid.Emailing.pdb
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MailKit.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MimeKit.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MailKit.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\bin\Debug\MimeKit.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.csproj.CopyComplete
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.dll
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Emailing\obj\Debug\RoomAid.Emailing.pdb
