@@ -10,6 +10,7 @@ namespace RoomAid.ServiceLayer.Registration
             this.message = reason;
             this.isSuccess = isSuccess;
         }
+
         public string message { get; }
 
         public bool isSuccess { get; }

@@ -2,6 +2,7 @@
 using RoomAid.ServiceLayer.UserManagement;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace RoomAid.ManagerLayer.UserManagement
         /// <param name="gender">User's gender passed from frontend</param>
         /// <param name="password">User's password passed from frontend</param>
         /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
-        public Iresult CreateAccount(string email, string fname, string lname, DateTime dob, string gender, string password)
+        public Iresult CreateAccount(string email, string fname, string lname, DateTime dob, string gender, string password, string repassword)
         {
             //TODO: check session
 
@@ -49,12 +50,29 @@ namespace RoomAid.ManagerLayer.UserManagement
             message = message + checkResult.message;
             ifSuccess = checkResult.isSuccess;
 
+            checkResult = rs.PasswordUserNameCheck(password, email);
+            message = message + checkResult.message;
+            ifSuccess = checkResult.isSuccess;
+
+            if (password!=repassword)
+            {
+                message = message + "/n"+ConfigurationManager.AppSettings["passwordNotMatch"];
+                ifSuccess = false;
+            }
+
             if (ifSuccess)
             {
                 User newUser = new User(email, fname, lname, "Enable", dob, gender);
+                //TODO: Hash the password
+                //TODO: Call the service to add user
+                AddUserService ad = new AddUserService();
+
+                checkResult = ad.AddUser(newUser, password);
+                message = message + checkResult.message;
+                ifSuccess = checkResult.isSuccess;
             }
-            
-            //TODO: Call the service to add user
+
+
             return new CheckResult(message, ifSuccess);
         }
 

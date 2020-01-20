@@ -41,8 +41,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddUserService.cs" />
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\RoomAid.ServiceLayer.Registration\App.config">
+      <Link>App.config</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoomAid.ServiceLayer.Registration\RoomAid.ServiceLayer.Registration.csproj">
+      <Project>{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}</Project>
+      <Name>RoomAid.ServiceLayer.Registration</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
