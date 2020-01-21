@@ -1,4 +1,5 @@
-﻿using RoomAid.ServiceLayer.Registration;
+﻿using RoomAid.Authentication;
+using RoomAid.ServiceLayer.Registration;
 using RoomAid.ServiceLayer.UserManagement;
 using System;
 using System.Collections.Generic;
@@ -71,6 +72,11 @@ namespace RoomAid.ManagerLayer.UserManagement
                 checkResult = ad.AddUser(newUser, password);
                 message = message + checkResult.message;
                 ifSuccess = checkResult.isSuccess;
+
+                string salt = "";
+                checkResult = ad.StoredPassword(newUser, password, salt);
+                message = message + checkResult.message;
+                ifSuccess = checkResult.isSuccess;
             }
 
 
@@ -88,12 +94,18 @@ namespace RoomAid.ManagerLayer.UserManagement
             //TODO: check session
             RegistrationService rs = new RegistrationService();
             Iresult checkResult = null;
+            string message = "";
+            bool ifSuccess = false;
             if (admin != null)
             {
                 checkResult = rs.PasswordCheck(password);
                 if (checkResult.isSuccess)
                 {
-                    //TODO: Call the service to add user
+                    AddUserService ad = new AddUserService();
+
+                    checkResult = ad.AddAdmin(admin, password);
+                    message = message + checkResult.message;
+                    ifSuccess = checkResult.isSuccess;
                 }
             }
             else

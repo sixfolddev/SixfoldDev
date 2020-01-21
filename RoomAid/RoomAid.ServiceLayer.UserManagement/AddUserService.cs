@@ -1,6 +1,7 @@
 ﻿using RoomAid.ServiceLayer.Registration;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,13 +21,43 @@ namespace RoomAid.ServiceLayer.UserManagement
             Iresult result = new CheckResult("Successfully added new user!",true);
             try
             {
+                string sqlConnection = "";
                 //TODO: query for database to insert new user in users table and password in password table
+                using (SqlConnection connection = new SqlConnection(sqlConnection))
+                {
+                    String query = "INSERT INTO Users (Email,FirstName,LastName,DateOfBirth, Gender, AccountStatus) VALUES (@email,@fname,@lname, @dob,@gender, @status)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@email", newUser.UserEmail);
+                        command.Parameters.AddWithValue("@fname", newUser.FirstName);
+                        command.Parameters.AddWithValue("@lname", newUser.LastName);
+                        command.Parameters.AddWithValue("@dob", newUser.DateOfBirth);
+                        command.Parameters.AddWithValue("@gender", newUser.Gender);
+                        command.Parameters.AddWithValue("@status", newUser.AccountStatus);
+
+                        connection.Open();
+                        int error = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (error < 0)
+                            Console.WriteLine("Error inserting data into Database!");
+                    }
+                }
+
+
             }
             catch (Exception e)
             {
                 result = new CheckResult(e.Message, false);
             }
             return result;
+        }
+
+        //TODO: query to insert new user who is an admin
+        public Iresult AddAdmin(User newUser, string password)
+        {
+            return null;
         }
 
         /// <summary>
@@ -52,13 +83,31 @@ namespace RoomAid.ServiceLayer.UserManagement
         /// <param name="user">The new user which is created</param>
         /// <param name="password">The password which is requried to be stored</param>
         /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
-        public Iresult StoredPassword(User newUser, string password)
+        public Iresult StoredPassword(User newUser, string password, string salt)
         {
             Iresult result = new CheckResult("Success!", true);
             string userEmail = newUser.UserEmail;
             try
             {
-                //TODO: query for database to insert new user in users table and password in password table
+                string sqlConnection = "";
+                using (SqlConnection connection = new SqlConnection(sqlConnection))
+                {
+                    String query = "INSERT INTO UserLogin (Email,Salt,Password) VALUES (@email,@salt,@pword)";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@email", newUser.UserEmail);
+                        command.Parameters.AddWithValue("@salt", password);
+                        command.Parameters.AddWithValue("@pword", salt);
+
+                        connection.Open();
+                        int error = command.ExecuteNonQuery();
+
+                        // Check Error
+                        if (error < 0)
+                            Console.WriteLine("Error inserting data into Database!");
+                    }
+                }
             }
             catch (Exception e)
             {

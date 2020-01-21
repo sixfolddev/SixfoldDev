@@ -46,6 +46,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RoomAid.Authentication\RoomAid.Authentication.csproj">
+      <Project>{BFEC3A09-462F-49A7-8351-73F8BEE32B27}</Project>
+      <Name>RoomAid.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RoomAid.ServiceLayer.Registration\RoomAid.ServiceLayer.Registration.csproj">
       <Project>{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}</Project>
       <Name>RoomAid.ServiceLayer.Registration</Name>
