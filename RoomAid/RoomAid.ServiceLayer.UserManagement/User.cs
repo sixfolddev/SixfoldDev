@@ -9,6 +9,7 @@ namespace RoomAid.ServiceLayer.UserManagement
     public class User
     {
         // Private backing fields
+        private string _userId;
         private string _userEmail;
         private string _firstName;
         private string _lastName;
@@ -17,6 +18,7 @@ namespace RoomAid.ServiceLayer.UserManagement
         private string _gender; // Male or female
 
         // Public accessors
+        public string UserId { get; set; }
         public string UserEmail { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

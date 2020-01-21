@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Reflection;
+using RoomAid.ServiceLayer.UserManagement;
+
+
 namespace RoomAid.ServiceLayer.Logging
 {
     public class Logger
@@ -22,8 +25,8 @@ namespace RoomAid.ServiceLayer.Logging
             string className = GetCallingMethod().ReflectedType.Name; // Base class
             string methodName = GetCallingMethod().Name;
             // TODO: Grab session id and user id
-            string userId = "";
-            string sessionId = "";
+            string userId = UserSession.UserId; // mask
+            string sessionId = ""; // mask
             var logId = Guid.NewGuid();
 
             var logMessage = new LogMessage(logId, time, className, methodName, level, userId, sessionId, text);
