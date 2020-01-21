@@ -64,6 +64,7 @@ namespace RoomAid.ManagerLayer.UserManagement
             {
                 User newUser = new User(email, fname, lname, "Enable", dob, gender);
                 //TODO: Hash the password
+                //TODO: Store the salt
                 //TODO: Call the service to add user
                 AddUserService ad = new AddUserService();
 
