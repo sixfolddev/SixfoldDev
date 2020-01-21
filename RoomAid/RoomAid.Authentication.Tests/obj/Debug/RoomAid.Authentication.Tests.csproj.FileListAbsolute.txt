@@ -77,3 +77,24 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Deb
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.Tests.dll.config
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.Tests.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.Tests.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.dll.config
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csproj.CopyComplete
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.pdb

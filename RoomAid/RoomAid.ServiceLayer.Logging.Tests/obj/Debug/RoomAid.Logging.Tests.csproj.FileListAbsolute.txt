@@ -98,3 +98,35 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\b
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.Logging.Tests.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.ServiceLayer.Logging.Tests.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.ServiceLayer.Logging.Tests.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.Tests.dll.config
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.Tests.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.Tests.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\MongoDB.Driver.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\MongoDB.Bson.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\DnsClient.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\SharpCompress.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Snappy.NET.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\System.Buffers.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Crc32C.NET.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\MongoDB.Driver.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\MongoDB.Bson.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\DnsClient.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Snappy.NET.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\System.Buffers.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Crc32C.NET.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.Logging.Tests.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.Logging.Tests.csproj.CopyComplete
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.ServiceLayer.Logging.Tests.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.ServiceLayer.Logging.Tests.pdb

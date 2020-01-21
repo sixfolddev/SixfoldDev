@@ -112,3 +112,4 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Deb
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csprojAssemblyReference.cache

@@ -78,3 +78,30 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\bin\Debug\Sys
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\RoomAid.Authentication.dll.config
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\RoomAid.Authentication.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\RoomAid.Authentication.pdb
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.AspNetCore.WebUtilities.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.Net.Http.Headers.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Buffers.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Memory.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.AspNetCore.WebUtilities.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\Microsoft.Net.Http.Headers.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Buffers.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Memory.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.csprojAssemblyReference.cache
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.csproj.CopyComplete
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.dll
+C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.pdb
