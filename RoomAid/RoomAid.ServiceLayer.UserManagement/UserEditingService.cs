@@ -13,7 +13,7 @@ namespace RoomAid.ServiceLayer.UserManagement
     {
         public User Person { get; set; }
 
-        public UserRetrieval()
+        public UserEditingService()
         { }
 
         public void RetrieveUserInfo(String email)
