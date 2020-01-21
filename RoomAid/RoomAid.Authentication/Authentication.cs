@@ -1,76 +1,61 @@
 ﻿using System;
-using Microsoft.AspNetCore.Cryptography.KeyDerivation;
+using System.Security.Cryptography;
 using System.Text;
 
 namespace RoomAid.Authentication
 {
     public class Authentication
     {
-        private string _retrievedSalt;
-        private string _userID;
-        private string _password;
-        private string _hashed;
+        private string userID;
+        private string password;
         private bool _authenticated;
-
+        
         //Create object when user tries to log in
         public Authentication(string userID, string password)
         {
-            this._userID = userID;
-            this._password = password;
-            _retrievedSalt = "";
-            SetRetrievedSalt();
-            GenerateHash();
+            //Get salt from database tied to input account ID
+            //Call method to hash input password and salt
+            //Call method to retrieve stored hash password
+            //Compare generated password with stored password
+            //Don't store into variables
+            this.userID = userID;
+            this.password = password;
             _authenticated = false;
+            if (CompareHashes())
+                _authenticated = true;
+            else
+                _authenticated = false;
         }
-
-        //Function that retrieves salt that is tied to user ID
-        //If no salt exists, User ID doesn't exist
-        public void SetRetrievedSalt()
+        public bool CompareHashes()
         {
-            try
+            if (GenerateHash(userID, password) == DataStoreHash())
             {
-                //pull salt from pw file
-                _retrievedSalt = "AE2012DEWE193241"; //test salt
+                _authenticated = true;
             }
-            catch (Exception)
-            {
-                //Catch error handling.
-                //Returns error back to login screen if salt doesn't exist 
-                //which means account doesn't exist.
-                _retrievedSalt = "";
-            }
+            else
+                _authenticated = false;
+
+            return _authenticated;
         }
 
-        public string GetRetrievedSalt()
+        public string GenerateHash(string userID, string password)
         {
-            return _retrievedSalt;
+            int iterations = 100000;
+            //concatenate salt and input password to run through hashing
+
+            var hash = new Rfc2898DeriveBytes(password, GetSalt(userID), 
+                iterations, HashAlgorithmName.SHA256);
+            var passwordToCheck = Encoding.Default.GetString(hash.GetBytes(32));
+
+            return passwordToCheck;
         }
-
-        //Generate a hash with user entered pw and salt tied to user account
-        public string GenerateHash()
-        {
-            //Convert salt into byte array for hashing function
-            byte[] array = Encoding.ASCII.GetBytes(_retrievedSalt);
-
-            _hashed = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                password: _password, //User input password when logging in
-                salt: array,        //Salt of user ID turned into byte[]
-                prf: KeyDerivationPrf.HMACSHA256,   //Derived Key Function
-                iterationCount: 100000,             //Iterations to slow down hashing
-                numBytesRequested: 256 / 8));       //32 bytes hash
-
-            return _hashed;
-        }
-
-        //Function to retrieve hashed password tied to a userID.
-        //hashed pw not stored in variable for security reasons
         public string DataStoreHash()
         {
             string storedHash;
             try
             {
                 //Retrieve hash connected to user ID from pw file
-                storedHash = "ZjhxyGVzc0vJ/GAC5udhJxTp41BI6o2l50UFBEtjsmU=";
+                storedHash = "f8qÈessKÉü`\u0002æça'\u0014éãPHê\u008d¥çE\u0005\u0004Kc²e";
             }
             catch (Exception)
             {
@@ -81,18 +66,33 @@ namespace RoomAid.Authentication
 
             return storedHash;
         }
-
-        //function to check if user ID and password that has been input is correct
-        public bool CompareHashes()
+        public byte[] GetSalt(string userID)
         {
-            if (_hashed == DataStoreHash())
+            try
             {
-                _authenticated = true;
+                //pull salt from pw file
+                return Encoding.ASCII.GetBytes("AE2012DEWE193241"); //test salt
             }
-            else
-                _authenticated = false;
-
+            catch (Exception)
+            {
+                //Catch error handling.
+                //Returns error back to login screen if salt doesn't exist 
+                //which means account doesn't exist.
+                return Encoding.ASCII.GetBytes("");
+            }
+        }
+        public bool GetAuthenticated()
+        {
             return _authenticated;
+        }
+        public byte[] GenerateSalt()
+        {
+            var salt = new byte[32];
+
+            var random = new RNGCryptoServiceProvider();
+            random.GetBytes(salt);
+
+            return salt;
         }
     }
 }
