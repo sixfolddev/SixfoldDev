@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace RoomAid.ServiceLayer.UserManagement
 {
-    public class UserRetrieval
+    /// <summary>
+    /// Class that handles User Retrieval and Editing 
+    /// </summary>
+    public class UserEditingService
     {
         public User Person { get; set; }
 

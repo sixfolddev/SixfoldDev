@@ -13,6 +13,13 @@ namespace RoomAid.ServiceLayer.UserManagement
         public UserDAO()
         { }
 
+        /// <summary>
+        /// uses commands in order to pull details of a user from the sql server 
+        /// used to get all of the different variables before editing them and sending them back to the server to update
+        /// stores it inside of a user object 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public User UserRetrieve(String email)
         {
             SqlConnection Cn = new SqlConnection( _connectionString);
