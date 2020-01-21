@@ -75,6 +75,7 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\bin\Debug\Sys
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.csprojAssemblyReference.cache
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.Authentication\obj\Debug\RoomAid.Authentication.pdb

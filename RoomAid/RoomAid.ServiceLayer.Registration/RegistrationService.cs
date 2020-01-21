@@ -153,6 +153,19 @@ namespace RoomAid.ServiceLayer.Registration
         }
 
         /// <summary>
+        /// Method AgeCheck() is used to check if user reach the age requirement
+        /// <param name="dob">The input date of birth , should be passed from fortnend or controller</param>
+        /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
+        public Iresult AgeCheck(DateTime dob)
+        {
+            if (dob.Year-DateTime.Today.Year<Int32.Parse(ConfigurationManager.AppSettings["ageRequired"]))
+            {
+                return new CheckResult(ConfigurationManager.AppSettings["ageNotPass"],false);
+            }
+            return new CheckResult(ConfigurationManager.AppSettings["messagePasss"],true);
+        }
+
+        /// <summary>
         /// Method CheckLength() is used to check if the input is empty or too long
         /// <param name="input">The input string , should be passed from fortnend or controller</param>
         /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>

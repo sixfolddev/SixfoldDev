@@ -108,7 +108,6 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\bin\Deb
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\MongoDB.Driver.Core.xml
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\Snappy.NET.xml
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\bin\Debug\System.Buffers.xml
-C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csprojAssemblyReference.cache
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging\obj\Debug\RoomAid.ServiceLayer.Logging.pdb

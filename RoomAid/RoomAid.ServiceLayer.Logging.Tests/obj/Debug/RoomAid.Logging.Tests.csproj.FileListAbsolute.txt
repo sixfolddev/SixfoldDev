@@ -64,7 +64,6 @@ C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Logging.Tes
 C:\Users\miche\Desktop\SixFoldDev local\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.ServiceLayer.Logging.Tests.pdb
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\mongocrypt.dll
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\MongoDB.Libmongocrypt.dll
-C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.Logging.Tests.csprojAssemblyReference.cache
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\mongocrypt.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
@@ -95,6 +94,7 @@ C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\b
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Snappy.NET.xml
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\System.Buffers.xml
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\bin\Debug\Crc32C.NET.xml
+C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.Logging.Tests.csprojAssemblyReference.cache
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.Logging.Tests.csproj.CopyComplete
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.ServiceLayer.Logging.Tests.dll
 C:\Users\alber\source\repos\RoomAid\RoomAid\RoomAid.ServiceLayer.Logging.Tests\obj\Debug\RoomAid.ServiceLayer.Logging.Tests.pdb
