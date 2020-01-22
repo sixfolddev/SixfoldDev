@@ -1,4 +1,5 @@
 ﻿using RoomAid.Authentication;
+using RoomAid.ServiceLayer.Logging;
 using RoomAid.ServiceLayer.Registration;
 using RoomAid.ServiceLayer.UserManagement;
 using System;
@@ -19,64 +20,66 @@ namespace RoomAid.ManagerLayer.UserManagement
         /// <param name="gender">User's gender passed from frontend</param>
         /// <param name="password">User's password passed from frontend</param>
         /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
-        public Iresult CreateAccount(string email, string fname, string lname, DateTime dob, string gender, string password, string repassword)
+        public Iresult CreateAccount(string email, string fname, string lname, DateTime dob, string gender, string password, string repassword, UserSession session)
         {
-            //TODO: check session
-
             RegistrationService rs = new RegistrationService();
             string message = "";
             bool ifSuccess = false;
-            Iresult checkResult = rs.EmailCheck(email);
-
-            message = message + checkResult.message;
-            ifSuccess = checkResult.isSuccess;
-
-            checkResult = rs.NameCheck(fname);
-            message = message + checkResult.message;
-            ifSuccess = checkResult.isSuccess;
-
-            checkResult = rs.NameCheck(lname);
-            message = message + checkResult.message;
-            ifSuccess = checkResult.isSuccess;
-
-            checkResult = rs.AgeCheck(dob);
-            message = message + checkResult.message;
-            ifSuccess = checkResult.isSuccess;
-
-
-            checkResult = rs.PasswordCheck(password);
-            message = message + checkResult.message;
-            ifSuccess = checkResult.isSuccess;
-
-            checkResult = rs.PasswordUserNameCheck(password, email);
-            message = message + checkResult.message;
-            ifSuccess = checkResult.isSuccess;
-
-            if (password!=repassword)
+            if (session.UserCurrentSession == null)
             {
-                message = message + "/n"+ConfigurationManager.AppSettings["passwordNotMatch"];
-                ifSuccess = false;
-            }
+                
+                
+                Iresult checkResult = rs.EmailCheck(email);
 
-            if (ifSuccess)
-            {
-                User newUser = new User(email, fname, lname, "Enable", dob, gender);
-                //TODO: Hash the password
-                //TODO: Store the salt
-                //TODO: Call the service to add user
-                AddUserService ad = new AddUserService();
-
-                checkResult = ad.AddUser(newUser, password);
                 message = message + checkResult.message;
                 ifSuccess = checkResult.isSuccess;
 
-                string salt = "";
-                checkResult = ad.StoredPassword(newUser, password, salt);
+                checkResult = rs.NameCheck(fname);
                 message = message + checkResult.message;
                 ifSuccess = checkResult.isSuccess;
+
+                checkResult = rs.NameCheck(lname);
+                message = message + checkResult.message;
+                ifSuccess = checkResult.isSuccess;
+
+                checkResult = rs.AgeCheck(dob);
+                message = message + checkResult.message;
+                ifSuccess = checkResult.isSuccess;
+
+
+                checkResult = rs.PasswordCheck(password);
+                message = message + checkResult.message;
+                ifSuccess = checkResult.isSuccess;
+
+                checkResult = rs.PasswordUserNameCheck(password, email);
+                message = message + checkResult.message;
+                ifSuccess = checkResult.isSuccess;
+
+                if (password != repassword)
+                {
+                    message = message + "/n" + ConfigurationManager.AppSettings["passwordNotMatch"];
+                    ifSuccess = false;
+                }
+
+                if (ifSuccess)
+                {
+                    User newUser = new User(email, fname, lname, "Enable", dob, gender);
+                    //TODO: Hash the password
+                    //TODO: Store the salt
+                    //TODO: Call the service to add user
+                    AddUserService ad = new AddUserService();
+
+                    string salt = "";
+                    checkResult = ad.AddUser(newUser, password, salt);
+                    message = message + checkResult.message;
+                    ifSuccess = checkResult.isSuccess;
+
+                }
+
             }
 
-
+            //log
+            Logger.Log(message);
             return new CheckResult(message, ifSuccess);
         }
 
@@ -88,7 +91,7 @@ namespace RoomAid.ManagerLayer.UserManagement
         /// <returns>Iresult result the object that contains a message and if the check is true or false</returns>
         public Iresult CreateAccount(User admin, string password)
         {
-            //TODO: check session
+            //TODO: check if current User is system admin
             RegistrationService rs = new RegistrationService();
             Iresult checkResult = null;
             string message = "";
@@ -110,6 +113,8 @@ namespace RoomAid.ManagerLayer.UserManagement
                 return new CheckResult("no account detected!",false);
             }
 
+            //log
+            Logger.Log(message);
             return checkResult;
         }
     }
