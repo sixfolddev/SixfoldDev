@@ -10,6 +10,9 @@ namespace RoomAid.ServiceLayer.Registration
 {
     public class RegistrationService
     {
+
+        public RegistrationService()
+        { }
         /// <summary>
         /// Method NameCheck() is used to check if the firstname and last name entered by user is valid.
         /// According to the requirement, firstname and lastname can be up to 200 characters.

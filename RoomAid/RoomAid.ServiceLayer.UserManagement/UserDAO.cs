@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,9 @@ namespace RoomAid.ServiceLayer.UserManagement
     {
         private readonly String _connectionString;
         public UserDAO()
-        { }
+        { 
+            _connectionString = ConfigurationManager.AppSettings["connectionString"];
+        }
 
         /// <summary>
         /// uses commands in order to pull details of a user from the sql server 
@@ -23,9 +26,9 @@ namespace RoomAid.ServiceLayer.UserManagement
         public User UserRetrieve(String email)
         {
             SqlConnection Cn = new SqlConnection( _connectionString);
-            SqlCommand CommandStrings = new SqlCommand("Select FirstName, LastName, Gender, AccountStatus from Users where UserEmail = email", Cn);
+            SqlCommand CommandStrings = new SqlCommand(ConfigurationManager.AppSettings["gatherUserStringVariables"], Cn);
             String[] UserDetails = new String[4];
-            SqlCommand CommandDate = new SqlCommand("Select DateOfBirth from Users where UserEmail = email", Cn);
+            SqlCommand CommandDate = new SqlCommand(ConfigurationManager.AppSettings["gatherUserDate"], Cn);
             DateTime DoB = new DateTime();
 
             using (Cn)
@@ -52,6 +55,31 @@ namespace RoomAid.ServiceLayer.UserManagement
             User Person = new User(email, UserDetails[0], UserDetails[1], UserDetails[3], DoB, UserDetails[2]);
             return Person;
 
+        }
+        /// <summary>
+        /// attempts to insert changes to user into the sql database
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
+        public Boolean UserSend(User person)
+        {
+            SqlConnection Cn = new SqlConnection(_connectionString);
+            String temp = ConfigurationManager.AppSettings["updateUser"];
+            temp = String.Format(temp, person.FirstName, person.LastName, person.Gender, person.AccountStatus);
+            SqlCommand Command = new SqlCommand(temp,Cn);
+            using (Cn)
+            {
+                try
+                {
+                    Command.ExecuteNonQuery();
+                }
+                catch(Exception)
+                {
+                    return false;
+                }
+            }
+
+                return true;
         }
 
 

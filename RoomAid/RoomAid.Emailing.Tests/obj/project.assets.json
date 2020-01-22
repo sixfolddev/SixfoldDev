@@ -6413,19 +6413,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Daniel\\.nuget\\packages\\": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Daniel\\Desktop\\Sixfold Dev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
       "projectName": "RoomAid.Emailing.Tests",
-      "projectPath": "C:\\Users\\Daniel\\Desktop\\Sixfold Dev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
-      "packagesPath": "C:\\Users\\Daniel\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Daniel\\Desktop\\Sixfold Dev\\RoomAid\\RoomAid.Emailing.Tests\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Daniel\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -6438,8 +6442,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\Daniel\\Desktop\\Sixfold Dev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj": {
-              "projectPath": "C:\\Users\\Daniel\\Desktop\\Sixfold Dev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj"
+            "C:\\Users\\User\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj"
             }
           }
         }

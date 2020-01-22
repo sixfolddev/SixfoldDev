@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RoomAid.ServiceLayer.UserManagement
 {
     /// <summary>
-    /// Class that handles User Retrieval and Editing 
+    /// Class that handles User Retrieval and Editing and Sending
     /// </summary>
     public class UserEditingService
     {
@@ -20,14 +20,17 @@ namespace RoomAid.ServiceLayer.UserManagement
         {
             UserDAO UserRetrieve = new UserDAO();
             Person = UserRetrieve.UserRetrieve(email);
-            
         }
 
-        //private Boolean SendUserInfo()
-        //{
-
-
-
-        //}
+        /// <summary>
+        /// attempts to send the user info back to the database
+        /// </summary>
+        /// <returns></returns>
+        public Boolean SendUserInfo()
+        {
+            ///TODO Make sure to actual make an authz check before the action 
+            UserDAO UserSend = new UserDAO();
+            return UserSend.UserSend(Person);
+        }
     }
 }
