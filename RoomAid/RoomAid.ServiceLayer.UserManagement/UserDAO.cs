@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RoomAid.ErrorHandling;
+using RoomAid.ServiceLayer.Logging;
 
 namespace RoomAid.ServiceLayer.UserManagement
 {
@@ -25,6 +23,9 @@ namespace RoomAid.ServiceLayer.UserManagement
         /// <returns></returns>
         public User UserRetrieve(String email)
         {
+
+            ///TODO finish user masking and actual authz check
+
             SqlConnection Cn = new SqlConnection( _connectionString);
             SqlCommand CommandStrings = new SqlCommand(ConfigurationManager.AppSettings["gatherUserStringVariables"], Cn);
             String[] UserDetails = new String[4];
@@ -63,6 +64,8 @@ namespace RoomAid.ServiceLayer.UserManagement
         /// <returns></returns>
         public Boolean UserSend(User person)
         {
+            ///TODO finish user masking and actual authz check
+
             SqlConnection Cn = new SqlConnection(_connectionString);
             String temp = ConfigurationManager.AppSettings["updateUser"];
             temp = String.Format(temp, person.FirstName, person.LastName, person.Gender, person.AccountStatus);
@@ -72,9 +75,14 @@ namespace RoomAid.ServiceLayer.UserManagement
                 try
                 {
                     Command.ExecuteNonQuery();
+                    String logMessage = ConfigurationManager.AppSettings["logThis"];
+                    logMessage = String.Format(logMessage, person.UserEmail, person.FirstName, person.LastName, person.Gender, person.AccountStatus);
+                    Logger.Log(logMessage);
                 }
-                catch(Exception)
+                catch(Exception e)
                 {
+                    ErrorController Cont = new ErrorController(e);
+                    Cont.Handle();
                     return false;
                 }
             }

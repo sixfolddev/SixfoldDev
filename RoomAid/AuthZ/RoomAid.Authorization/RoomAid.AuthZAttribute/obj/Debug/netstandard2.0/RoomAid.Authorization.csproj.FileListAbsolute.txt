@@ -39,3 +39,10 @@ C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.AssemblyInfo.cs
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.dll
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\bin\Debug\netstandard2.0\RoomAid.Authorization.deps.json
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\bin\Debug\netstandard2.0\RoomAid.Authorization.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\bin\Debug\netstandard2.0\RoomAid.Authorization.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.AssemblyInfo.cs
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthZAttribute\obj\Debug\netstandard2.0\RoomAid.Authorization.pdb

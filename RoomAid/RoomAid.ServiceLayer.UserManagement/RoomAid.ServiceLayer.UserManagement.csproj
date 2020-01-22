@@ -48,6 +48,14 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\RoomAid.ErrorHandling\RoomAid.ErrorHandling.csproj">
+      <Project>{06b7d27f-94a2-438e-9142-073ee9675b6c}</Project>
+      <Name>RoomAid.ErrorHandling</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RoomAid.ServiceLayer.Logging\RoomAid.ServiceLayer.Logging.csproj">
+      <Project>{29a3335e-7538-4cde-90dc-ace201f259f6}</Project>
+      <Name>RoomAid.ServiceLayer.Logging</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RoomAid.ServiceLayer.Registration\RoomAid.ServiceLayer.Registration.csproj">
       <Project>{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}</Project>
       <Name>RoomAid.ServiceLayer.Registration</Name>

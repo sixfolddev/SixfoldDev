@@ -79,3 +79,19 @@ C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.csproj.CopyComplete
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.dll
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.deps.json
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.runtimeconfig.json
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.runtimeconfig.dev.json
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\RoomAid.Authorization.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\bin\Debug\netcoreapp2.1\RoomAid.Authorization.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.csprojAssemblyReference.cache
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.AssemblyInfo.cs
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.csproj.CopyComplete
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\AuthZ\RoomAid.Authorization\RoomAid.AuthorizationTests\obj\Debug\netcoreapp2.1\RoomAid.AuthorizationTests.pdb

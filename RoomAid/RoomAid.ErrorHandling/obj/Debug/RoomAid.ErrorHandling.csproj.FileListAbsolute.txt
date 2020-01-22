@@ -398,3 +398,38 @@ C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ErrorHandling\obj\Debug\Room
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.csproj.CopyComplete
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.dll
 C:\Users\Daniel\Desktop\Sixfold Dev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\mongocrypt.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ErrorHandling.dll.config
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ErrorHandling.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ErrorHandling.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Crc32C.NET.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\DnsClient.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Bson.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.Core.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Libmongocrypt.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.Emailing.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ServiceLayer.Logging.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\SharpCompress.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Snappy.NET.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\System.Buffers.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MimeKit.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MailKit.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\BouncyCastle.Crypto.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.Emailing.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.Emailing.dll.config
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ServiceLayer.Logging.pdb
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\RoomAid.ServiceLayer.Logging.dll.config
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Crc32C.NET.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\DnsClient.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Bson.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.Core.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\Snappy.NET.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\System.Buffers.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MimeKit.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MailKit.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\bin\Debug\MongoDB.Driver.xml
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.csprojAssemblyReference.cache
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.csproj.CopyComplete
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.dll
+C:\Users\User\Desktop\SixfoldDev\RoomAid\RoomAid.ErrorHandling\obj\Debug\RoomAid.ErrorHandling.pdb

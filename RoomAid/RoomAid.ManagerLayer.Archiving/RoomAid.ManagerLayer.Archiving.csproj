@@ -48,7 +48,7 @@
   <ItemGroup>
     <ProjectReference Include="..\RoomAid.ServiceLayer.Archiving\RoomAid.ServiceLayer.Archiving.csproj">
       <Project>{4dd30e8c-96f9-41fe-a68a-303b79305488}</Project>
-      <Name>RoomAid.ServiceLayer</Name>
+      <Name>RoomAid.ServiceLayer.Archiving</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
