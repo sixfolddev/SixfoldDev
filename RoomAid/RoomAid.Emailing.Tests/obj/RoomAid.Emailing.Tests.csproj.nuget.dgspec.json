@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj": {}
+    "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj": {
+    "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
+        "projectUniqueName": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
         "projectName": "RoomAid.Emailing.Tests",
-        "projectPath": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
-        "packagesPath": "C:\\Users\\alber\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing.Tests\\obj\\",
+        "projectPath": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\RoomAid.Emailing.Tests.csproj",
+        "packagesPath": "C:\\Users\\miche\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing.Tests\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\alber\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\miche\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -30,8 +27,8 @@
         "frameworks": {
           "netcoreapp3.0": {
             "projectReferences": {
-              "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj": {
-                "projectPath": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj"
+              "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj": {
+                "projectPath": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj"
               }
             }
           }
@@ -87,12 +84,12 @@
         }
       }
     },
-    "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj": {
+    "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj",
+        "projectUniqueName": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj",
         "projectName": "RoomAid.Emailing",
-        "projectPath": "C:\\Users\\alber\\source\\repos\\RoomAid\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj"
+        "projectPath": "C:\\Users\\miche\\Desktop\\SixfoldDev\\RoomAid\\RoomAid.Emailing\\RoomAid.Emailing.csproj"
       },
       "frameworks": {
         "net472": {}

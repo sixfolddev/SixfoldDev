@@ -25,7 +25,7 @@ namespace RoomAid.ServiceLayer.Logging
             string className = GetCallingMethod().ReflectedType.Name; // Base class
             string methodName = GetCallingMethod().Name;
             // TODO: Grab session id and user id
-            string userId = UserSession.UserId; // mask
+            string userId = ""; // mask
             string sessionId = ""; // mask
             var logId = Guid.NewGuid();
 
