@@ -57,17 +57,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Include="Base64UrlConverter.cs" />
     <Compile Include="IConverter.cs" />
     <Compile Include="JWTService.cs" />
     <Compile Include="SessionTokenService.cs" />
+=======
+    <Compile Include="AddUserService.cs" />
+>>>>>>> 11959812f5717f6f1f6b292d302b2202446e7069
     <Compile Include="User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserSession.cs" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="App.config" />
     <None Include="packages.config" />
+=======
+    <None Include="..\RoomAid.ServiceLayer.Registration\App.config">
+      <Link>App.config</Link>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RoomAid.ServiceLayer.Registration\RoomAid.ServiceLayer.Registration.csproj">
+      <Project>{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}</Project>
+      <Name>RoomAid.ServiceLayer.Registration</Name>
+    </ProjectReference>
+>>>>>>> 11959812f5717f6f1f6b292d302b2202446e7069
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

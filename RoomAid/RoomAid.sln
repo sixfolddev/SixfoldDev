@@ -29,7 +29,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication", "R
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Authentication.Tests", "RoomAid.Authentication.Tests\RoomAid.Authentication.Tests.csproj", "{1E82DD5F-B683-48DE-B159-1D03AF88114D}"
 EndProject
+<<<<<<< HEAD
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.UserManagement", "RoomAid.ServiceLayer.UserManagement\RoomAid.ServiceLayer.UserManagement.csproj", "{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}"
+=======
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RoomAid.ServiceLayer.Registration", "RoomAid.ServiceLayer.Registration\RoomAid.ServiceLayer.Registration.csproj", "{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.Registration.Test", "RoomAid.Registration.Test\RoomAid.Registration.Test.csproj", "{02263DAA-3D65-464E-A116-2FB3FD0C1246}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.UserManagement", "RoomAid.ServiceLayer.UserManagement\RoomAid.ServiceLayer.UserManagement.csproj", "{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ManagerLayer.UserManagement", "RoomAid.ManagerLayer.UserManagement\RoomAid.ManagerLayer.UserManagement.csproj", "{DA666B3F-9DB3-4C6F-9AC1-ACC6E3F236EF}"
+>>>>>>> 11959812f5717f6f1f6b292d302b2202446e7069
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,10 +99,28 @@ Global
 		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1E82DD5F-B683-48DE-B159-1D03AF88114D}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+=======
+		{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A715F9E8-6D4D-49E2-B0C6-1CCF69AE99F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{02263DAA-3D65-464E-A116-2FB3FD0C1246}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{02263DAA-3D65-464E-A116-2FB3FD0C1246}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{02263DAA-3D65-464E-A116-2FB3FD0C1246}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{02263DAA-3D65-464E-A116-2FB3FD0C1246}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> 11959812f5717f6f1f6b292d302b2202446e7069
 		{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}.Release|Any CPU.Build.0 = Release|Any CPU
+<<<<<<< HEAD
+=======
+		{DA666B3F-9DB3-4C6F-9AC1-ACC6E3F236EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA666B3F-9DB3-4C6F-9AC1-ACC6E3F236EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA666B3F-9DB3-4C6F-9AC1-ACC6E3F236EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA666B3F-9DB3-4C6F-9AC1-ACC6E3F236EF}.Release|Any CPU.Build.0 = Release|Any CPU
+>>>>>>> 11959812f5717f6f1f6b292d302b2202446e7069
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
