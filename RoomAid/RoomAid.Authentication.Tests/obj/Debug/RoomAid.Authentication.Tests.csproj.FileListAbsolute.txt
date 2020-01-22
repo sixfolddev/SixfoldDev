@@ -7,14 +7,10 @@ C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.dll
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.dll
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.dll
-C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
-C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.pdb
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\RoomAid.Authentication.dll.config
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.xml
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.VisualStudio.TestPlatform.TestFramework.Extensions.xml
-C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
-C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\bin\Debug\Microsoft.AspNetCore.Cryptography.Internal.xml
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csprojAssemblyReference.cache
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.csproj.CopyComplete
 C:\Users\miche\Desktop\SixfoldDev\RoomAid\RoomAid.Authentication.Tests\obj\Debug\RoomAid.Authentication.Tests.dll
