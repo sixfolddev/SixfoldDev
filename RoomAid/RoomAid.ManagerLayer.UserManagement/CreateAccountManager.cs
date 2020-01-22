@@ -72,14 +72,11 @@ namespace RoomAid.ManagerLayer.UserManagement
                     //TODO: Call the service to add user
                     AddUserService ad = new AddUserService();
 
-                    checkResult = ad.AddUser(newUser, password);
+                    string salt = "";
+                    checkResult = ad.AddUser(newUser, password, salt);
                     message = message + checkResult.message;
                     ifSuccess = checkResult.isSuccess;
 
-                    string salt = "";
-                    checkResult = ad.StoredPassword(newUser, password, salt);
-                    message = message + checkResult.message;
-                    ifSuccess = checkResult.isSuccess;
                 }
 
             }
