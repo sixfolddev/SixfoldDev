@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace RoomAid.ServiceLayer.UserManagement
 {
+    // TODO: Implement admin parameter
     public class User
     {
         // Private backing fields
@@ -15,7 +16,7 @@ namespace RoomAid.ServiceLayer.UserManagement
         private string _accountStatus;
         private DateTime _dateOfBirth; // To calculate age
         private string _gender; // Male or female
-        private bool _admin;
+        //private bool _admin;
 
         // Public accessors
         public string UserEmail { get; set; }
@@ -24,7 +25,7 @@ namespace RoomAid.ServiceLayer.UserManagement
         public string AccountStatus { get; set; }
         public DateTime DateOfBirth { get; set; }
         public string Gender { get; set; }
-        public bool Admin { get; set; }
+        //public bool Admin { get; set; }
 
         // Empty default constructor
         public User()
@@ -35,10 +36,10 @@ namespace RoomAid.ServiceLayer.UserManagement
             AccountStatus = _accountStatus;
             DateOfBirth = _dateOfBirth;
             Gender = _gender;
-            Admin = _admin;
+            //Admin = _admin;
         }
 
-        public User(string email, string fname, string lname, string status, DateTime dob, string gender, bool admin)
+        public User(string email, string fname, string lname, string status, DateTime dob, string gender/*, bool admin*/)
         {
             UserEmail = email;
             FirstName = fname;
@@ -46,7 +47,7 @@ namespace RoomAid.ServiceLayer.UserManagement
             AccountStatus = status;
             DateOfBirth = dob;
             Gender = gender;
-            Admin = admin;
+            //Admin = admin;
         }
     }
 }

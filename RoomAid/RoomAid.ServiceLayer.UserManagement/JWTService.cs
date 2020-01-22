@@ -18,7 +18,7 @@ namespace RoomAid.ServiceLayer.UserManagement
         public const string EXPIRATION_TIME = "exp";
         public const string JWT_ID = "jti";
         public const string EMAIL = "email";
-        public const string ADMIN = "admin";
+        //public const string ADMIN = "admin";
 
         public Base64UrlConverter Encoder 
         {
@@ -53,7 +53,7 @@ namespace RoomAid.ServiceLayer.UserManagement
             claims.Add(EXPIRATION_TIME, (getTimeNowInSeconds() + sessiontimeout).ToString());
             claims.Add(JWT_ID, Guid.NewGuid().ToString());
             claims.Add(EMAIL, user.UserEmail); // TODO: encrypt email
-            claims.Add(ADMIN, user.Admin.ToString());
+            //claims.Add(ADMIN, user.Admin.ToString());
             string encodedPayload = Encoder.Encode(claims);
 
             return encodedPayload;
