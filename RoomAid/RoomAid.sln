@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ManagerLayer.UserMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoomAid.ServiceLayer.UserManagement", "RoomAid.ServiceLayer.UserManagement\RoomAid.ServiceLayer.UserManagement.csproj", "{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Authorization", "Authorization\Authorization.csproj", "{FB649E53-E653-476C-A926-141D6185B26D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -111,6 +113,10 @@ Global
 		{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E31B0B01-DBC0-40C5-A8CE-0B7672E7244F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB649E53-E653-476C-A926-141D6185B26D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB649E53-E653-476C-A926-141D6185B26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB649E53-E653-476C-A926-141D6185B26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB649E53-E653-476C-A926-141D6185B26D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
